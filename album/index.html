@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ảnh cưới – Quang Huy &amp; Thanh Trang</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Be+Vietnam+Pro:wght@300;400&display=swap">
+<style>
+:root{--paper:#fff4d6;--ink:#33250f;--soft:#7a6642;--gold:#e9a81c;--serif:"Fraunces","Times New Roman",serif;--sans:"Be Vietnam Pro",system-ui,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#1d1708;--ink:#f7e9c6;--soft:#c2ab78}}
+:root[data-theme="dark"]{--paper:#1d1708;--ink:#f7e9c6;--soft:#c2ab78}
+*{box-sizing:border-box;margin:0}
+body{background:var(--paper);color:var(--ink);font:300 16px/1.7 var(--sans)}
+header{text-align:center;padding:12vh 20px 6vh}
+header a{color:var(--soft);text-decoration:none;font-size:15px}
+header a:hover{color:var(--gold)}
+h1{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(44px,10vw,96px);line-height:1.1;margin:.3em 0 .1em}
+header p{color:var(--soft);font-family:var(--serif);font-style:italic;font-size:20px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:14px 16px;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px)}
+nav button{font:inherit;font-size:15px;color:var(--ink);background:none;border:1.5px solid color-mix(in srgb,var(--gold) 50%,transparent);border-radius:30px;padding:7px 20px;cursor:pointer;transition:.25s}
+nav button.on,nav button:hover{background:var(--gold);border-color:var(--gold);color:#2a1d05}
+main{max-width:1200px;margin:0 auto;padding:24px 16px 14vh;columns:3 320px;column-gap:16px}
+.it{break-inside:avoid;margin:0 0 16px;overflow:hidden;border-radius:6px;cursor:zoom-in;opacity:0;transform:translateY(30px);transition:opacity .9s,transform .9s;background:color-mix(in srgb,var(--gold) 18%,transparent)}
+.it.on{opacity:1;transform:none}
+.it img{width:100%;height:auto;transition:transform .8s}
+.it:hover img{transform:scale(1.05)}
+.it[hidden]{display:none}
+#lb{position:fixed;inset:0;z-index:50;background:#0c0904f2;display:none;align-items:center;justify-content:center;touch-action:pan-y}
+#lb.open{display:flex}
+#lb img{max-width:94vw;max-height:84vh;object-fit:contain;border-radius:4px;animation:f .4s}
+@keyframes f{from{opacity:0;transform:scale(.97)}}
+#lb button{position:absolute;background:none;border:0;color:#fff;font-size:34px;cursor:pointer;padding:14px 18px;opacity:.8}
+#lb button:hover{opacity:1;color:var(--gold)}
+#px{left:6px;top:50%}#nx{right:6px;top:50%}#cl{right:8px;top:calc(8px + env(safe-area-inset-top,0px))}
+#cap{position:absolute;bottom:calc(18px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;color:#f7e9c6;font-family:var(--serif);font-style:italic}
+footer{text-align:center;padding:0 20px 8vh;font-family:var(--serif);font-style:italic;color:var(--soft)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.it{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header>
+  <a href="../">← Về trang thiệp</a>
+  <h1>Ảnh cưới</h1>
+  <p>Quang Huy &amp; Thanh Trang</p>
+</header>
+<nav id="tabs" aria-label="Album"></nav>
+<main id="grid"></main>
+<footer>Cảm ơn bạn đã cùng chúng mình trong ngày đặc biệt này.</footer>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Xem ảnh">
+  <button id="cl" aria-label="Đóng">×</button><button id="px" aria-label="Ảnh trước">‹</button><button id="nx" aria-label="Ảnh sau">›</button>
+  <img id="big" alt=""><div id="cap"></div>
+</div>
+
+<script>
+/* ===== SỬA Ở ĐÂY =====
+   Mỗi ảnh: f = tên file (có trong img/full và img/thumbs), a = mã album, c = chú thích, w/h = kích thước ảnh nhỏ.
+   Để thêm ảnh: bỏ file vào 2 thư mục rồi chạy tools/prepare_photos.py, nó in ra danh sách mới để dán vào đây. */
+var ALBUMS={"san-truong":"Sân trường","san-tennis":"Sân tennis"};
+var PHOTOS=[
+ {
+  "f": "p1.jpg",
+  "a": "san-truong",
+  "c": "Nắm tay giữa sân trường",
+  "w": 640,
+  "h": 427
+ },
+ {
+  "f": "p2.jpg",
+  "a": "san-truong",
+  "c": "Nắng sân trường",
+  "w": 427,
+  "h": 640
+ },
+ {
+  "f": "p3.jpg",
+  "a": "san-truong",
+  "c": "Niềm vui không giấu được",
+  "w": 427,
+  "h": 640
+ },
+ {
+  "f": "p4.jpg",
+  "a": "san-truong",
+  "c": "Hành lang xưa",
+  "w": 640,
+  "h": 427
+ },
+ {
+  "f": "p5.jpg",
+  "a": "san-truong",
+  "c": "Dưới tán phượng",
+  "w": 427,
+  "h": 640
+ },
+ {
+  "f": "p6.jpg",
+  "a": "san-truong",
+  "c": "Trở lại nơi đầu tiên",
+  "w": 640,
+  "h": 427
+ },
+ {
+  "f": "p7.jpg",
+  "a": "san-tennis",
+  "c": "Love all",
+  "w": 640,
+  "h": 427
+ },
+ {
+  "f": "p8.jpg",
+  "a": "san-tennis",
+  "c": "Nắng trên sân",
+  "w": 412,
+  "h": 640
+ },
+ {
+  "f": "p9.jpg",
+  "a": "san-tennis",
+  "c": "Theo anh nhé",
+  "w": 480,
+  "h": 640
+ }
+];
+/* ===== HẾT PHẦN SỬA ===== */
+
+var grid=document.getElementById("grid"),tabs=document.getElementById("tabs"),cur="all",list=[],idx=0;
+function mkTab(k,t){var b=document.createElement("button");b.textContent=t;b.onclick=function(){cur=k;[].forEach.call(tabs.children,function(x){x.classList.toggle("on",x===b)});apply()};if(k==="all")b.className="on";tabs.appendChild(b)}
+mkTab("all","Tất cả");for(var k in ALBUMS)mkTab(k,ALBUMS[k]);
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px"});
+PHOTOS.forEach(function(p,i){
+  var d=document.createElement("figure");d.className="it";d.dataset.a=p.a;
+  d.innerHTML='<img loading="lazy" width="'+p.w+'" height="'+p.h+'" src="img/thumbs/'+p.f+'" alt="'+(p.c||"Ảnh cưới")+'">';
+  d.onclick=function(){open(d)};grid.appendChild(d);io.observe(d)});
+function apply(){[].forEach.call(grid.children,function(d){d.hidden=!(cur==="all"||d.dataset.a===cur)});window.scrollTo({top:0,behavior:"smooth"})}
+var lb=document.getElementById("lb"),big=document.getElementById("big"),cap=document.getElementById("cap");
+function vis(){return [].filter.call(grid.children,function(d){return!d.hidden})}
+function show(){var d=list[idx],p=PHOTOS[[].indexOf.call(grid.children,d)];big.src="img/full/"+p.f;big.alt=p.c||"";cap.textContent=(p.c||"")+"  "+(idx+1)+" / "+list.length;
+  [1,-1].forEach(function(s){var n=list[(idx+s+list.length)%list.length];if(n){new Image().src="img/full/"+PHOTOS[[].indexOf.call(grid.children,n)].f}})}
+function open(d){list=vis();idx=list.indexOf(d);lb.classList.add("open");document.body.style.overflow="hidden";show()}
+function close(){lb.classList.remove("open");document.body.style.overflow=""}
+function go(s){idx=(idx+s+list.length)%list.length;show()}
+document.getElementById("cl").onclick=close;document.getElementById("px").onclick=function(){go(-1)};document.getElementById("nx").onclick=function(){go(1)};
+lb.onclick=function(e){if(e.target===lb)close()};
+addEventListener("keydown",function(e){if(!lb.classList.contains("open"))return;if(e.key==="Escape")close();if(e.key==="ArrowLeft")go(-1);if(e.key==="ArrowRight")go(1)});
+var sx=0;lb.addEventListener("touchstart",function(e){sx=e.touches[0].clientX},{passive:true});
+lb.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)go(dx<0?1:-1)});
+</script>
+</body>
+</html>
