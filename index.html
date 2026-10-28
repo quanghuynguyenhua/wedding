@@ -14,7 +14,7 @@
 <title>Quang Huy &amp; Thanh Trang</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Pinyon+Script&family=Be+Vietnam+Pro:wght@300;400;500&family=Patrick+Hand&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Pinyon+Script&family=Josefin+Sans:wght@200;300;400&family=Quicksand:wght@400;500&family=Be+Vietnam+Pro:wght@300;400;500&family=Patrick+Hand&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&text=%E5%9B%8D&display=swap">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datamaps/0.5.9/datamaps.world.min.js"></script>
 <style>
@@ -49,6 +49,7 @@ a{color:inherit}
 .mono b .n1,.bigname b .n1{align-self:flex-start;padding-right:1.1em}
 .mono b .am,.bigname b .am{align-self:center;font-style:italic;font-size:.62em;line-height:.6;margin:-.05em 0 -.1em}
 .mono b .n2,.bigname b .n2{align-self:flex-end;font-style:italic;padding-left:1.1em}
+.mono b{pointer-events:auto;cursor:pointer}
 .mono span.sub{border-left:1px solid currentColor;padding-left:14px;font-size:13px;letter-spacing:.06em;opacity:.8}
 body.dark-top .mono{color:#fff}
 .rail{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:8px var(--gutR) calc(10px + env(safe-area-inset-bottom,0px)) var(--gut);display:flex;flex-direction:column;align-items:center;gap:6px;transition:color .4s}
@@ -450,10 +451,61 @@ img[data-src]{width:100%;display:block;background:var(--soft);max-width:100%}
   .pw-hero img{aspect-ratio:1/1;object-position:22% 50%}
   .pw-hero .badge{left:auto;right:max(18px,env(safe-area-inset-right,0px));bottom:22px}
 }
+
+/* civil ceremony: marieguillaume-style polaroids on peach */
+#p-civil{--mgbg:#fde8d8;--mgink:#e0643a;--mgbg2:#f3d3bf;--mgdot:#e9bda1}
+.mg{background:var(--mgbg);color:var(--mgink);position:relative;overflow:clip}
+.mg-hero{height:220vh;position:relative}
+.mg-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.mg-title{position:absolute;left:0;right:0;top:50%;margin:0;text-align:center;font:400 clamp(60px,13.5vw,230px)/.9 "Quicksand",var(--sans);letter-spacing:-.02em;color:var(--mgink);z-index:4;pointer-events:none;white-space:nowrap;transform:translateY(-46%)}
+.mg-title span{font-weight:400}
+.mg-br,.mg-capm{display:none}
+.mg-capm{font:500 12px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;margin-top:16px}
+@media (max-width:760px){.mg-br{display:inline}.mg-capm{display:block}.mg-arc text{display:none}.mg-arc{top:40%}.mg-title{font-size:23vw;line-height:1.02;white-space:normal}}
+.mg-arc{position:absolute;left:50%;top:50%;width:min(86vh,92vw);height:min(86vh,92vw);margin:calc(min(86vh,92vw)/-2) 0 0 calc(min(86vh,92vw)/-2);color:var(--mgink);z-index:0;overflow:visible}
+.mg-arc text{font:500 26px/1 var(--sans);letter-spacing:.18em;fill:currentColor}
+.mg-pol{position:absolute;margin:0;will-change:transform}
+.mg-fr{background:#fff;padding:clamp(5px,.6vw,9px);box-shadow:0 22px 44px -20px rgba(120,55,25,.5);animation:mgdrop 1.2s cubic-bezier(.2,.7,.2,1) backwards}
+.mg-fr img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;background:#f6dccb}
+.mg-pol.p1{width:clamp(120px,16vw,250px);left:21%;top:7%;z-index:1}
+.mg-pol.p2{width:clamp(130px,17vw,260px);left:50%;top:50%;margin:calc(clamp(130px,17vw,260px)*-.68) 0 0 calc(clamp(130px,17vw,260px)*-.5);z-index:3}
+.mg-pol.p3{width:clamp(120px,16vw,250px);right:20%;bottom:5%;z-index:1}
+.mg-pol.p2 .mg-fr{animation-delay:.15s}.mg-pol.p3 .mg-fr{animation-delay:.3s}
+@keyframes mgdrop{from{opacity:0;transform:translateY(-70px) rotate(-12deg)}}
+.mg-btn,.mg-btn2{background:#fff;color:var(--mgink);border-radius:40px;padding:12px 26px;font:500 13px/1 var(--sans);letter-spacing:.04em;box-shadow:0 10px 24px -14px rgba(120,55,25,.6);transition:background .3s,color .3s}
+.mg-btn{position:absolute;left:50%;bottom:calc(120px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:4}
+.mg-btn:hover,.mg-btn2:hover{background:var(--mgink);color:#fff}
+.mg-circle{position:absolute;left:50%;top:50%;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;background:var(--mgbg2);z-index:5;transform:scale(0);pointer-events:none}
+.mg-gal{background:var(--mgbg2);position:relative;padding:0 0 18vh}
+.mg-head{text-align:center;padding:10vh 16px 6vh}
+.mg-loc{font:500 12px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase}
+.mg-name{font:400 clamp(54px,9vw,150px)/.95 "Quicksand",var(--sans);margin:18px 0 14px;color:var(--mgink)}
+.mg-sub{font:italic 400 clamp(18px,2vw,24px)/1.3 var(--serif);color:#a9583a}
+.mg-blk{position:relative;max-width:1200px;margin:0 auto;padding:8vh 16px;display:flex;justify-content:center;align-items:center;gap:clamp(10px,3vw,44px)}
+.mg-blk .dot{position:absolute;border-radius:50%;background:var(--mgdot);opacity:.6;z-index:0;pointer-events:none}
+.mg-ph{position:relative;z-index:1;margin:0;background:#fff;padding:clamp(5px,.7vw,10px);box-shadow:0 24px 50px -26px rgba(110,55,25,.55);opacity:0;transform:translateY(80px) rotate(calc(var(--r,0deg)*2.5));transition:opacity 1s ease,transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.mg-ph.in{opacity:1;transform:rotate(var(--r,0deg))}
+.mg-ph img{display:block;width:100%;height:auto;background:#f6dccb}
+.mg-one .mg-ph img{width:auto;max-width:min(820px,84vw);max-height:80vh}
+.mg-trio .mg-ph{width:29%}.mg-trio .mg-ph:nth-child(3){margin-top:-70px}
+.mg-pair .mg-ph{width:38%}.mg-pair .mg-ph:nth-child(3){width:31%;margin-top:120px}
+.mg-scat{flex-wrap:wrap}.mg-scat .mg-ph{width:27%;margin:0 -2%}.mg-scat .mg-ph:nth-child(even){margin-top:90px}
+.mg-end{text-align:center;padding:6vh 16px 0;display:flex;flex-direction:column;align-items:center;gap:22px}
+.mg-end p{font:italic 400 clamp(26px,4vw,46px)/1.2 var(--serif);color:#a9583a;max-width:18ch}
+@media (max-width:760px){
+  .mg-hero{height:200vh}
+  .mg-title{top:40%}
+  .mg-pol.p1{left:5%;top:9%}.mg-pol.p3{right:5%;top:13%;bottom:auto}.mg-pol.p2{top:64%}
+  .mg-blk{flex-wrap:wrap;padding:5vh 12px;gap:12px}
+  .mg-trio .mg-ph,.mg-pair .mg-ph,.mg-pair .mg-ph:nth-child(3),.mg-scat .mg-ph{width:46%;margin:0}
+  .mg-trio .mg-ph:nth-child(3){margin-top:0}.mg-trio .mg-ph:last-child{width:60%}
+  .mg-pair .mg-ph:nth-child(3),.mg-scat .mg-ph:nth-child(even){margin-top:40px}
+  .mg-one .mg-ph img{max-width:88vw;max-height:70vh}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 
-<header class="mono" aria-label="Huy &amp; Trang"><b><span class="n1">Huy</span><span class="am">&amp;</span><span class="n2">Trang</span></b><span class="sub">A journey of love</span></header>
+<header class="mono" aria-label="Huy &amp; Trang"><b data-go="intro" role="link" tabindex="0" title="Huy &amp; Trang"><span class="n1">Huy</span><span class="am">&amp;</span><span class="n2">Trang</span></b><span class="sub">A journey of love</span></header>
 
 <!-- INTRO -->
 <section class="view on" id="intro" aria-label="Intro">
@@ -822,17 +874,29 @@ img[data-src]{width:100%;display:block;background:var(--soft);max-width:100%}
       <div class="feat"><div class="side l rv"><img class="bw" data-src="assets/photos/prewedding/HT0513.webp" alt="" style="aspect-ratio:0.6669"></div><div class="mid"><img data-src="assets/photos/prewedding/HT0083.webp" alt="" style="aspect-ratio:1.4995"></div><div class="side r rv"><img class="bw" data-src="assets/photos/prewedding/HT0595.webp" alt="" style="aspect-ratio:0.6669"></div></div><div class="pst flip"><figure class="a rv"><img data-src="assets/photos/prewedding/HT0660.webp" alt="" style="aspect-ratio:0.6669"></figure><figure class="b rv"><img data-src="assets/photos/prewedding/HT0321.webp" alt="" style="aspect-ratio:0.6669"></figure></div><section class="hs"><div class="hs-pin"><div class="hs-track"><figure><img data-src="assets/photos/prewedding/HT0694.webp" alt="" style="aspect-ratio:1.4995"></figure><figure><img data-src="assets/photos/prewedding/HT0710.webp" alt="" style="aspect-ratio:0.6669"></figure><figure><img data-src="assets/photos/prewedding/HT0725.webp" alt="" style="aspect-ratio:1.4995"></figure><figure><img data-src="assets/photos/prewedding/HT0923.webp" alt="" style="aspect-ratio:0.6669"></figure><figure><img data-src="assets/photos/prewedding/HT0958.webp" alt="" style="aspect-ratio:0.6669"></figure><figure><img data-src="assets/photos/prewedding/HT1061.webp" alt="" style="aspect-ratio:0.6669"></figure><figure><img data-src="assets/photos/prewedding/HT1122.webp" alt="" style="aspect-ratio:0.6669"></figure></div></div></section><p class="pline rv" data-t="pw.l1"></p><div class="feat"><div class="side l rv"><img class="bw" data-src="assets/photos/prewedding/HT1613.webp" alt="" style="aspect-ratio:0.6669"></div><div class="mid"><img data-src="assets/photos/prewedding/HT0737.webp" alt="" style="aspect-ratio:1.4995"></div><div class="side r rv"><img class="bw" data-src="assets/photos/prewedding/HT1567.webp" alt="" style="aspect-ratio:0.6669"></div></div><div class="pst"><figure class="a rv"><img data-src="assets/photos/prewedding/HT1329.webp" alt="" style="aspect-ratio:0.6669"></figure><figure class="b rv"><img data-src="assets/photos/prewedding/HT1784.webp" alt="" style="aspect-ratio:1.4995"></figure></div><div class="ptrio"><figure class="rv"><img data-src="assets/photos/prewedding/HT1259.webp" alt="" style="aspect-ratio:0.6669"></figure><figure class="rv"><img data-src="assets/photos/prewedding/HT1372.webp" alt="" style="aspect-ratio:0.6669"></figure><figure class="rv"><img data-src="assets/photos/prewedding/HT1631.webp" alt="" style="aspect-ratio:0.6669"></figure></div><div class="feat"><div class="side l rv"><img class="bw" data-src="assets/photos/prewedding/HT1585.webp" alt="" style="aspect-ratio:0.6669"></div><div class="mid"><img data-src="assets/photos/prewedding/HT1152.webp" alt="" style="aspect-ratio:1.4995"></div><div class="side r rv"><img class="bw" data-src="assets/photos/prewedding/HT1694.webp" alt="" style="aspect-ratio:0.6669"></div></div><div class="pst flip"><figure class="a rv"><img data-src="assets/photos/prewedding/HT1745.webp" alt="" style="aspect-ratio:0.6669"></figure><figure class="b rv"><img data-src="assets/photos/prewedding/HT1680.webp" alt="" style="aspect-ratio:1.4995"></figure></div><figure class="pfull rv"><img data-src="assets/photos/prewedding/HT1779_b.webp" alt="" style="aspect-ratio:1.4981"></figure><section class="hs"><div class="hs-pin"><div class="hs-track"><figure><img data-src="assets/photos/prewedding/HT1095.webp" alt="" style="aspect-ratio:1.4995"></figure><figure><img data-src="assets/photos/prewedding/HT1411.webp" alt="" style="aspect-ratio:1.4995"></figure><figure><img data-src="assets/photos/prewedding/HT1638.webp" alt="" style="aspect-ratio:1.4995"></figure></div></div></section><p class="pline rv" data-t="pw.chapp"></p><div class="tennis" id="tennis"><div class="score" id="score"><div class="pl"><small>HUY</small><b id="sc1">0</b></div><div class="mid"><span class="ball" id="ball"></span><b id="scw" class="win">WIN</b></div><div class="pl"><small>TRANG</small><b id="sc2">0</b></div><p id="scl"></p></div><div class="pst"><figure class="a rv"><img data-src="assets/photos/prewedding/HT1891.webp" alt="" style="aspect-ratio:1.4995"></figure><figure class="b rv"><img data-src="assets/photos/prewedding/HT2025.webp" alt="" style="aspect-ratio:0.6669"></figure></div><div class="feat"><div class="side l rv"><img class="bw" data-src="assets/photos/prewedding/HT2297.webp" alt="" style="aspect-ratio:0.6669"></div><div class="mid"><img data-src="assets/photos/prewedding/HT1976.webp" alt="" style="aspect-ratio:1.4995"></div><div class="side r rv"><img class="bw" data-src="assets/photos/prewedding/HT2323.webp" alt="" style="aspect-ratio:0.6669"></div></div><div class="pst flip"><figure class="a rv"><img data-src="assets/photos/prewedding/HT2225.webp" alt="" style="aspect-ratio:0.6669"></figure><figure class="b rv"><img data-src="assets/photos/prewedding/HT2201.webp" alt="" style="aspect-ratio:1.4995"></figure></div><div class="feat"><div class="side l rv"><img class="bw" data-src="assets/photos/prewedding/HT2357.webp" alt="" style="aspect-ratio:0.6669"></div><div class="mid"><img data-src="assets/photos/prewedding/HT2167.webp" alt="" style="aspect-ratio:1.4995"></div><div class="side r rv"><img class="bw" data-src="assets/photos/prewedding/HT2334.webp" alt="" style="aspect-ratio:1.4995"></div></div><section class="hs"><div class="hs-pin"><div class="hs-track"><figure><img data-src="assets/photos/prewedding/HT2415.webp" alt="" style="aspect-ratio:1.4995"></figure><figure><img data-src="assets/photos/prewedding/HT2472.webp" alt="" style="aspect-ratio:1.4995"></figure><figure><img data-src="assets/photos/prewedding/HT2552.webp" alt="" style="aspect-ratio:1.4995"></figure><figure><img data-src="assets/photos/prewedding/photo_2026-10-18_21-19-49.webp" alt="" style="aspect-ratio:1.4981"></figure></div></div></section><figure class="pfull rv"><img data-src="assets/photos/prewedding/HT2654.webp" alt="" style="aspect-ratio:1.4995"></figure></div>
       <div class="pw-end">
         <p data-t="pw.end">Hẹn gặp bạn ngày 29.12</p>
-        <button class="pill" data-w="damcuoi" data-sub="chitiet"><span data-t="pw.btn">Xem thông tin tiệc cưới</span> →</button>
+        <button class="pill" data-p="civil"><span data-t="pw.next">Tiếp theo: Lễ đăng ký kết hôn</span> →</button>
       </div>
     </div>
 
     <div class="pp" id="p-civil">
-      <div class="civ">
-        <p class="cap" style="color:var(--mute)">Montréal</p>
-        <h2 data-t="p.civ">Lễ đăng ký kết hôn</h2>
-        <div class="civgrid" aria-hidden="true"><i></i><i></i><i></i></div>
-        <p class="civsoon" data-t="civ.soon">Ảnh sẽ được cập nhật sớm</p>
-      </div>
+      <section class="mg" id="mg">
+        <div class="mg-hero" id="mgHero">
+          <div class="mg-stage">
+            <svg class="mg-arc" viewBox="0 0 1000 1000" aria-hidden="true"><path id="mgArcP" d="M 170 500 A 330 330 0 0 1 830 500" fill="none"/><path d="M 150 640 A 360 360 0 0 1 300 200" fill="none" stroke="currentColor" stroke-width="2" opacity=".35"/><path d="M 700 200 A 360 360 0 0 1 850 640" fill="none" stroke="currentColor" stroke-width="2" opacity=".35"/><path d="M 380 860 A 360 360 0 0 1 250 790" fill="none" stroke="currentColor" stroke-width="2" opacity=".35"/><text><textPath href="#mgArcP" startOffset="50%" text-anchor="middle">MONTRÉAL · 26.07.2025</textPath></text></svg>
+            <figure class="mg-pol p1"><div class="mg-fr"><img alt=""></div></figure>
+            <h2 class="mg-title">Huy <span>&amp;</span><br class="mg-br"> Trang<small class="mg-capm">Montréal · 26.07.2025</small></h2>
+            <figure class="mg-pol p2"><div class="mg-fr"><img alt=""></div></figure>
+            <figure class="mg-pol p3"><div class="mg-fr"><img alt=""></div></figure>
+            <button class="mg-btn" id="mgSee"><span data-t="civ.see">Xem album</span></button>
+            <i class="mg-circle" id="mgCircle"></i>
+          </div>
+        </div>
+        <div class="mg-gal" id="mgGal">
+          <div class="mg-head"><p class="mg-loc">Montréal · 26.07.2025</p><h3 class="mg-name">Huy<br>&amp; Trang</h3><p class="mg-sub" data-t="p.civ">Lễ đăng ký kết hôn</p></div>
+          <div class="mg-flow" id="mgFlow"></div>
+          <div class="mg-end"><p data-t="civ.end">Và rồi, một chương mới bắt đầu.</p><button class="mg-btn2" data-p="family"><span data-t="civ.next">Tiếp theo: Lễ gia tiên</span> →</button></div>
+        </div>
+      </section>
     </div>
     <div class="pp" id="p-family">
     <div class="b53" id="b53-family" data-set="family">
@@ -935,6 +999,9 @@ var T={
 "b.empty":["Ảnh sẽ được cập nhật sau ngày cưới","Photos will be added after the wedding","Les photos seront ajoutées après le mariage"],
 "p.pw":["Ảnh cưới","Pre-Wedding","Pré-mariage"],
 "w.photos":["Hình ảnh","Photos","Photos"],
+"civ.see":["Xem album","See the gallery","Voir la galerie"],
+"civ.end":["Và rồi, một chương mới bắt đầu.","And so, a new chapter begins.","Et ainsi commence un nouveau chapitre."],
+"civ.next":["Tiếp theo: Lễ gia tiên","Next: Family Ceremony","Suivant : Cérémonie familiale"],
 "p.civ":["Lễ đăng ký kết hôn","Civil Ceremony","Mariage civil"],
 "civ.soon":["Ảnh sẽ được cập nhật sớm","Photos coming soon","Photos à venir"],
 "p.fam":["Lễ gia tiên","Family Ceremony","Cérémonie familiale"],
@@ -972,6 +1039,7 @@ var T={
 "pw.l1":["Nơi mọi thứ bắt đầu, năm 2010.","Where it all began, in 2010.","Là où tout a commencé, en 2010."],
 "pw.chapp":["Love – Love. Tỉ số đẹp nhất của một trận đấu.","Love – Love. The best score in any match.","Love – Love. Le plus beau score d'un match."],
 "pw.end":["Hẹn gặp bạn ngày 29.12","See you on 29.12","Rendez-vous le 29.12"],
+"pw.next":["Tiếp theo: Lễ đăng ký kết hôn","Next: Civil Ceremony","Suivant : Mariage civil"],
 "pw.btn":["Xem thông tin tiệc cưới","Reception details","Détails de la réception"],
 "d.date2":["Thứ ba, 29 tháng 12 năm 2026","Tuesday, December 29, 2026","mardi 29 décembre 2026"],
 "d.h2":["Lúc 18:00, Khách sạn Lotte Sài Gòn","At 6:00 PM, Lotte Hotel Saigon","À 18h00, hôtel Lotte Saïgon"],
@@ -1035,7 +1103,8 @@ function applyLang(l){
   $$("[data-ta]").forEach(function(e){e.setAttribute("aria-label",tr(e.dataset.ta))});
   $$("#lang button").forEach(function(b){b.classList.toggle("on",b.dataset.l===l)});
   if(window.G)G.relabel();
-  if(window.b53render)$$(".b53").forEach(function(b){b53render(b.dataset.set)});
+  if(typeof ALBUMS!=="undefined"&&ALBUMS)$$(".b53").forEach(function(b){b53render(b.dataset.set)});
+  if(typeof mgLang==="function")mgLang();
   try{localStorage.setItem("qhtt-lang",l)}catch(e){}
   fitPW();
 }
@@ -1106,6 +1175,40 @@ function playMusic(){au.volume=0;au.play().then(function(){started=true;snd.clas
 snd.addEventListener("click",function(){if(!hasMusic){snd.classList.toggle("off");return}if(au.paused){userMuted=false;playMusic()}else{userMuted=true;au.pause();snd.classList.add("off")}});
 
 
+
+/* ---------- civil ceremony (marieguillaume-style) ---------- */
+var CIVIL=["assets/photos/civil/photo_2026-10-26_22-35-32.jpg", "assets/photos/civil/photo_2026-10-26_22-35-35.jpg", "assets/photos/civil/photo_2026-10-26_22-35-34.jpg", "assets/photos/civil/photo_2026-10-26_22-35-33.jpg", "assets/photos/civil/photo_2026-10-26_22-35-31.jpg", "assets/photos/civil/photo_2026-10-26_22-35-21.jpg", "assets/photos/civil/photo_2026-10-26_22-35-20.jpg", "assets/photos/civil/photo_2026-10-26_22-35-29.jpg", "assets/photos/civil/photo_2026-10-26_22-35-22.jpg", "assets/photos/civil/photo_2026-10-26_22-35-36.jpg", "assets/photos/civil/photo_2026-10-26_22-35-24.jpg", "assets/photos/civil/photo_2026-10-26_22-35-37.jpg", "assets/photos/civil/photo_2026-10-26_22-34-21.jpg", "assets/photos/civil/photo_2026-10-26_22-35-17.jpg"],CIVHERO=["assets/photos/civil/photo_2026-10-26_22-35-20.jpg", "assets/photos/civil/photo_2026-10-26_22-35-36.jpg", "assets/photos/civil/photo_2026-10-26_22-35-31.jpg"];
+function civRender(list,hero){var fl=$("#mgFlow");if(!fl)return;fl.innerHTML="";
+  $$("#mgHero .mg-pol img").forEach(function(im,i){var u=(hero&&hero[i])||list[i%list.length];if(u)im.src=u});
+  var PAT=["one","trio","one","scat","pair"],NEED={one:1,trio:3,pair:2,scat:4},ROT={one:[0],trio:[-5,2,6],pair:[-3,4],scat:[-7,4,-2,8]},i=0,k=0;
+  while(i<list.length){var t=PAT[k%PAT.length],n=Math.min(NEED[t],list.length-i);if(n<NEED[t])t=n>=3?"trio":(n===2?"pair":"one");
+    var blk=document.createElement("div");blk.className="mg-blk mg-"+t;
+    var d=document.createElement("i");d.className="dot";var s=160+((k*97)%180);d.style.width=d.style.height=s+"px";d.style[(k%2)?"left":"right"]=(6+(k*37)%22)+"%";d.style.top=(10+(k*53)%50)+"%";blk.appendChild(d);
+    for(var j=0;j<n;j++){var f=document.createElement("figure");f.className="mg-ph";var r=ROT[t][j%ROT[t].length];if(t==="one")r=(k%2?1.5:-1.5);f.style.setProperty("--r",r+"deg");f.style.transitionDelay=(j*.12)+"s";
+      var im=document.createElement("img");im.src=list[i+j];im.alt="";im.loading="lazy";im.decoding="async";f.appendChild(im);blk.appendChild(f)}
+    fl.appendChild(blk);i+=n;k++}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.15});
+  $$(".mg-ph",fl).forEach(function(f){io.observe(f)})}
+civRender(CIVIL,CIVHERO);
+function mgLang(){}
+(function(){var hero=$("#mgHero"),pols=$$("#mgHero .mg-pol"),tt=$("#mgHero .mg-title"),arc=$("#mgHero .mg-arc"),btn=$("#mgSee"),circ=$("#mgCircle"),mx=0,my=0,tk=0;
+  var BASE=[[-8,0,0],[2,0,0],[9,0,0]];
+  function cl(v){return Math.max(0,Math.min(1,v))}
+  function frame(){tk=0;if(!$("#p-civil").classList.contains("on")||cur!=="wedding")return;
+    var r=hero.getBoundingClientRect(),p=cl(-r.top/Math.max(1,r.height-innerHeight)),e=p*p*(3-2*p),W=innerWidth,H=innerHeight;
+    var mv=[[-.42*W,-.35*H,-26],[0,-.55*H,8],[.42*W,.35*H,24]];
+    pols.forEach(function(el,i){var b=BASE[i],m=mv[i],px=mx*(i===1?8:16)*(i===0?-1:1),py=my*(i===1?6:12);
+      el.style.transform="translate("+(m[0]*e+px)+"px,"+(m[1]*e+py)+"px) rotate("+(b[0]+m[2]*e)+"deg)";el.style.opacity=1-cl((p-.45)/.4)});
+    tt.style.transform="translateY(-46%) scale("+(1+e*.25)+")";tt.style.opacity=1-cl(p*1.6);
+    arc.style.transform="rotate("+(p*140)+"deg)";arc.style.opacity=1-cl(p*1.4);
+    btn.style.opacity=1-cl(p*5);btn.style.pointerEvents=p>.15?"none":"auto";
+    var c=cl((p-.3)/.62),D=Math.hypot(W,H)*1.05;circ.style.transform="scale("+(c*D/20)+")"}
+  function req(){if(!tk)tk=requestAnimationFrame(frame)}
+  addEventListener("scroll",req,{passive:true});addEventListener("resize",req);
+  addEventListener("pointermove",function(e){if(e.pointerType!=="mouse")return;mx=e.clientX/innerWidth*2-1;my=e.clientY/innerHeight*2-1;req()},{passive:true});
+  btn.addEventListener("click",function(){var g=$("#mgGal");scrollTo({top:g.getBoundingClientRect().top+scrollY-40,behavior:"smooth"})});
+  $$("#ptabs button").forEach(function(b){b.addEventListener("click",function(){setTimeout(req,30)})});
+  req()})();
 /* ---------- photos: bottega-style albums ---------- */
 /* Thêm ảnh vào từng danh mục: đường dẫn ảnh trong mảng tương ứng. */
 var ALBUMS={family:{bw:[],bg:[],ff:[],det:[]},wed:{bw:[],bg:[],guests:[],det:[],more:[]}};
@@ -1445,7 +1548,12 @@ var G=window.G=(function(){
     /* family ceremony + wedding albums */
     Object.keys(ALBDIR).forEach(function(set){var dir=set==="wed"?"wedding":"family";Object.keys(ALBDIR[set]).forEach(function(c){var l=M[dir+"/"+ALBDIR[set][c]];if(l)ALBUMS[set][c]=l});b53render(set)});
     /* civil ceremony: editorial columns */
-    var cv=M["civil"];if(cv&&cv.length){var g=$("#p-civil .civgrid");g.removeAttribute("aria-hidden");g.className="civgrid has";g.innerHTML="";cv.forEach(function(u,i){var f=document.createElement("figure");f.className="rv";f.innerHTML=img(u);g.appendChild(f)});var s=$("#p-civil .civsoon");if(s)s.remove();lazy(g)}
+    var cv=(M["civil"]||[]).filter(function(u){return !/22-35-13\./.test(u)});
+    if(cv.length&&typeof civRender==="function"){var key=function(u){return u.split("/").pop().replace(/\.[^.]+$/,"").replace(/^photo_2026-10-26_/,"")};
+      var ORDC=["22-35-32","22-35-35","22-35-34","22-35-33","22-35-31","22-35-21","22-35-20","22-35-29","22-35-22","22-35-36","22-35-24","22-35-37","22-34-21","22-35-17"],HEROC=["22-35-20","22-35-36","22-35-31"];
+      var rank=function(u){var k=ORDC.indexOf(key(u));return k<0?999:k};cv=cv.slice().sort(function(a,b){return rank(a)-rank(b)});
+      var hero=HEROC.map(function(k){return cv.filter(function(u){return key(u)===k})[0]}).filter(Boolean);
+      civRender(cv,hero.length===3?hero:null)}
     /* pre-wedding: keep the hand-placed layout, append any new photos at the end */
     var pw=M["prewedding"]||[],have={};$$("#p-pw img").forEach(function(im){var s=im.getAttribute("data-src")||im.getAttribute("src")||"";have[s.split("/").pop().replace(/\.[^.]+$/,"")]=1});
     var extra=pw.filter(function(u){return !have[u.split("/").pop().replace(/\.[^.]+$/,"")]});
