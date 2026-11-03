@@ -165,6 +165,7 @@ html:has(body.dark-top){background:#111}
 .ti-txt h3{font-size:clamp(24px,2.8vw,34px);margin-bottom:10px}
 .ti-txt p{color:#4a4742;max-width:36ch;display:inline-block}
 .ti-img img,.ti-img .ph{width:min(380px,100%);aspect-ratio:4/5;object-fit:cover;display:block;background:var(--soft)}
+.ti-img img.tall{aspect-ratio:auto;height:auto}
 .ti-img .ph{display:grid;place-items:center;font:italic 400 clamp(40px,6vw,72px)/1 var(--serif);color:#dcd7cf}
 .st-end{text-align:center;padding-top:40px}
 @media (max-width:760px){
@@ -267,6 +268,8 @@ html:has(body.dark-top){background:#111}
 .faq summary::after{content:"+";position:absolute;right:4px;top:16px;font:300 24px/1 var(--sans);transition:transform .3s}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq details p{padding:0 0 22px;color:#4a4742;max-width:60ch}
+.faq .faqmap{display:block;margin:0 0 26px;border:1px solid var(--line);background:#fff;cursor:zoom-in}
+.faq .faqmap img{display:block;width:100%;height:auto}
 
 /* pre-wedding (editorial) */
 .pw-hero{position:relative;background:#0e0e0e;color:#f3f1ee;overflow:hidden;min-height:min(92svh,820px)}
@@ -667,14 +670,14 @@ body{font:300 13.1px/1.75 var(--sans)}
   <section class="story" aria-label="Story">
     <div class="sttl"><h2 data-t="st.t">Câu chuyện của chúng mình</h2></div>
     <div class="tline" id="tline"><i class="tl-fill" id="tlfill"></i>
-      <article class="ti"><div class="ti-yr"><span>2010</span></div><div class="ti-txt rv"><h3 data-t="st.2010h"></h3><p data-t="st.2010p"></p></div><figure class="ti-img rv"><img id="tl2010" src="" alt="Lê Hồng Phong"></figure></article>
-      <article class="ti r"><div class="ti-yr"><span>2011</span></div><div class="ti-txt rv"><h3 data-t="st.2011h"></h3><p data-t="st.2011p"></p></div><figure class="ti-img rv"><div class="ph"><span>2011</span></div></figure></article>
-      <article class="ti"><div class="ti-yr"><span>2018</span></div><div class="ti-txt rv"><h3 data-t="st.2018h"></h3><p data-t="st.2018p"></p></div><figure class="ti-img rv"><div class="ph"><span>2018</span></div></figure></article>
-      <article class="ti r"><div class="ti-yr"><span>2020</span></div><div class="ti-txt rv"><h3 data-t="st.2020h"></h3><p data-t="st.2020p"></p></div><figure class="ti-img rv"><div class="ph"><span>2020</span></div></figure></article>
-      <article class="ti"><div class="ti-yr"><span>2022</span></div><div class="ti-txt rv"><h3 data-t="st.2022h"></h3><p data-t="st.2022p"></p></div><figure class="ti-img rv"><div class="ph"><span>2022</span></div></figure></article>
-      <article class="ti r"><div class="ti-yr"><span>2023</span></div><div class="ti-txt rv"><h3 data-t="st.2023h"></h3><p data-t="st.2023p"></p></div><figure class="ti-img rv"><div class="ph"><span>2023</span></div></figure></article>
-      <article class="ti"><div class="ti-yr"><span>26.07.2025</span></div><div class="ti-txt rv"><h3 data-t="st.2025h"></h3><p data-t="st.2025p"></p></div><figure class="ti-img rv"><div class="ph"><span>2025</span></div></figure></article>
-      <article class="ti r"><div class="ti-yr"><span>29.12.2026</span></div><div class="ti-txt rv"><h3 data-t="st.29122026h"></h3><p data-t="st.29122026p"></p></div><figure class="ti-img rv"><div class="ph"><span>2026</span></div></figure></article>
+      <article class="ti"><div class="ti-yr"><span>2010</span></div><div class="ti-txt rv"><h3 data-t="st.2010h"></h3><p data-t="st.2010p"></p></div><figure class="ti-img rv"><img src="assets/photos/journey/story/journey_1.jpg" alt="" loading="lazy" decoding="async"></figure></article>
+      <article class="ti r"><div class="ti-yr"><span>2011</span></div><div class="ti-txt rv"><h3 data-t="st.2011h"></h3><p data-t="st.2011p"></p></div><figure class="ti-img rv"><img src="assets/photos/journey/story/journey_2.jpg" alt="" loading="lazy" decoding="async"></figure></article>
+      <article class="ti"><div class="ti-yr"><span>2018</span></div><div class="ti-txt rv"><h3 data-t="st.2018h"></h3><p data-t="st.2018p"></p></div><figure class="ti-img rv"><img src="assets/photos/journey/story/journey_3.jpg" alt="" loading="lazy" decoding="async"></figure></article>
+      <article class="ti r"><div class="ti-yr"><span>2020</span></div><div class="ti-txt rv"><h3 data-t="st.2020h"></h3><p data-t="st.2020p"></p></div><figure class="ti-img rv"><img class="tall" src="assets/photos/journey/story/journey_4-5.jpg" alt="" loading="lazy" decoding="async"></figure></article>
+      <article class="ti"><div class="ti-yr"><span>2022</span></div><div class="ti-txt rv"><h3 data-t="st.2022h"></h3><p data-t="st.2022p"></p></div><figure class="ti-img rv"><img src="assets/photos/journey/story/journey_6.jpg" alt="" loading="lazy" decoding="async"></figure></article>
+      <article class="ti r"><div class="ti-yr"><span>2023</span></div><div class="ti-txt rv"><h3 data-t="st.2023h"></h3><p data-t="st.2023p"></p></div><figure class="ti-img rv"><img src="assets/photos/journey/story/journey_7.jpg" alt="" loading="lazy" decoding="async"></figure></article>
+      <article class="ti"><div class="ti-yr"><span>26.07.2025</span></div><div class="ti-txt rv"><h3 data-t="st.2025h"></h3><p data-t="st.2025p"></p></div><figure class="ti-img rv"><img src="assets/photos/civil/photo_2026-10-26_22-35-20.jpg" alt="" loading="lazy" decoding="async"></figure></article>
+      <article class="ti r"><div class="ti-yr"><span>29.12.2026</span></div><div class="ti-txt rv"><h3 data-t="st.29122026h"></h3><p data-t="st.29122026p"></p></div><figure class="ti-img rv"><img src="assets/photos/journey/story/journey_8.jpg" alt="" loading="lazy" decoding="async"></figure></article>
       
     </div>
     <div class="st-end"><button class="pill" data-go="wedding"><span data-t="st.go">Đến đám cưới</span> →</button></div>
@@ -966,7 +969,8 @@ body{font:300 13.1px/1.75 var(--sans)}
           <details><summary data-t="q1">Tiệc cưới tổ chức ở đâu?</summary><p data-t="a1">Sân vườn tầng trệt, Khách sạn Lotte Sài Gòn, 2A-4A Tôn Đức Thắng, Phường Sài Gòn, TP. Hồ Chí Minh. Xem bản đồ ở mục Chi tiết.</p></details>
           <details><summary data-t="q2">Mấy giờ mình nên có mặt?</summary><p data-t="a2">Tiệc bắt đầu đón khách lúc 18:00, Thứ Ba 29.12.2026. Bạn đến sớm một chút để kịp chụp ảnh cùng hai đứa nhé.</p></details>
           <details><summary data-t="q3">Nên mặc gì?</summary><p data-t="a3">Tiệc ở sân vườn ngoài trời, buổi tối cuối tháng 12 ở Sài Gòn thường khá mát. Quy định trang phục (nếu có) sẽ được cập nhật tại đây.</p></details>
-          <details><summary data-t="q4">Gửi xe ở đâu?</summary><p data-t="a4">Thông tin gửi xe sẽ được cập nhật sớm.</p></details>
+          <details><summary data-t="q4">Gửi xe ở đâu?</summary><p data-t="a4"></p><a class="faqmap" href="assets/photos/info/bai-giu-xe.jpg" target="_blank" rel="noopener"><img src="assets/photos/info/bai-giu-xe.jpg" alt="" loading="lazy" decoding="async"></a></details>
+          <details><summary data-t="q5"></summary><p data-t="a5"></p><a class="faqmap" href="assets/photos/info/loi-di-tiec-cuoi.jpg" target="_blank" rel="noopener"><img src="assets/photos/info/loi-di-tiec-cuoi.jpg" alt="" loading="lazy" decoding="async"></a></details>
         </div>
       </div>
     </div>
@@ -1096,7 +1100,7 @@ var T={
 "st.go":["Đến đám cưới","To the wedding","Vers le mariage"],
 "st.2010h":["“Nắng” sân trường","High School “Sunshine”","Un rayon de soleil dans la cour"],
 "st.2010p":["Tại trường THPT chuyên Lê Hồng Phong, Huy vừa vào lớp 10 đã tia trúng một cô bạn vừa đánh bóng rổ cực ngầu, vừa biết tỏa sáng trên sân khấu văn nghệ. Hai đứa kịp có với nhau một đoạn “nắng” sân trường rực rỡ và vô tư đúng chuẩn học trò.","At Le Hong Phong High School, fresh-faced 10th grader Huy instantly locked eyes on a girl who was effortlessly cool on the basketball court and knew how to shine on stage during school performances. Together, we shared a bright, carefree period of schoolyard adoration, a sweet, innocent teenage romance.","Au lycée spécialisé Lê Hồng Phong, Huy venait à peine d’entrer en seconde quand il a remarqué une fille aussi impressionnante sur le terrain de basket que rayonnante sur la scène du lycée. Ils ont partagé un « rayon de soleil » lumineux et insouciant, comme on n’en vit qu’au lycée."],
-"st.2011h":["Sài Gòn bỗng... tắt nắng","Saigon Suddenly Lost Its Sunshine","Saïgon… soudain sans soleil"],
+"st.2011h":["Nắng ấm “xa” dần","The Warm Sunshine Drifts “Away”","Le soleil s’en va « au loin »"],
 "st.2011p":["Hè 2011, Trang bay sang Montréal, Canada học cấp 3. Vùng nắng đẹp đẽ năm ấy đột ngột chuyển vùng sang Bắc Mỹ, để lại cho Huy ở Sài Gòn một khoảng lặng hơi bị dài và khó quên.","In the summer of 2011, Trang flew to Montreal, Canada to finish high school. That bright pocket of sunshine suddenly relocated to North America, leaving Huy behind in Saigon with a quiet spell that lasted way longer than expected—and was impossible to forget.","À l’été 2011, Trang s’envole pour Montréal, au Canada, pour finir le secondaire. Ce joli coin de soleil déménage soudain en Amérique du Nord, laissant à Huy, resté à Saïgon, un silence plutôt long et difficile à oublier."],
 "st.2018h":["Ai cũng bận đi xa","Busy Chasing Distant Horizons","Chacun part au loin"],
 "st.2018p":["Huy bay sang Seoul, Hàn Quốc học Thạc sĩ. Hai đứa lại xa nhau thêm một khúc nữa. Lúc này nhìn vào, ai cũng nghĩ hai đường thẳng này chắc sẽ chạy song song luôn.","Huy flew to Seoul, South Korea for his Master’s degree, putting even more miles between us. Looking at us back then, anyone would have thought these two parallel lines were bound to run side by side forever.","Huy part à Séoul, en Corée du Sud, pour sa maîtrise. Les voilà encore un peu plus loin l’un de l’autre. À ce moment-là, tout le monde aurait parié que ces deux lignes resteraient parallèles pour toujours."],
@@ -1208,7 +1212,9 @@ var T={
 "q3":["Nên mặc gì?","What should I wear?","Quelle tenue porter ?"],
 "a3":["Tiệc ở sân vườn ngoài trời, buổi tối cuối tháng 12 ở Sài Gòn thường khá mát. Quy định trang phục (nếu có) sẽ được cập nhật tại đây.","The reception is in an outdoor garden; late-December evenings in Saigon are usually mild. Any dress code will be posted here.","La réception a lieu dans un jardin en plein air ; les soirées de fin décembre à Saïgon sont généralement douces. Un éventuel code vestimentaire sera précisé ici."],
 "q4":["Gửi xe ở đâu?","Where can I park?","Où se garer ?"],
-"a4":["Thông tin gửi xe sẽ được cập nhật sớm.","Parking details coming soon.","Les informations de stationnement arrivent bientôt."],
+"a4":["Khách sạn có bãi giữ xe máy (ô màu đỏ) và bãi giữ xe ô tô (ô màu vàng), đều vào từ đường Tôn Đức Thắng. Bấm vào bản đồ để xem ảnh lớn.","The hotel has motorbike parking (red) and car parking (yellow), both reached from Tôn Đức Thắng Street. Tap the map to see it larger.","L’hôtel dispose d’un parking motos (en rouge) et d’un parking voitures (en jaune), tous deux accessibles par la rue Tôn Đức Thắng. Touchez le plan pour l’agrandir."],
+"q5":["Từ cổng hoặc bãi xe đi vào khu tiệc thế nào?","How do I get from the entrance or car park to the party?","Comment rejoindre la réception depuis l’entrée ou le parking ?"],
+"a5":["Tiệc cưới tổ chức ở sân vườn ngoài trời, cạnh hồ bơi. Từ cổng chính: đi qua sảnh đón khách, vòng qua sảnh chờ rồi ra phía hồ bơi (đường màu đỏ). Từ bãi xe ô tô: đi thẳng dọc hông khách sạn tới khu tiệc (đường màu xanh). Bấm vào sơ đồ để xem ảnh lớn.","The reception is in the outdoor garden next to the pool. From the main entrance: go through the reception lobby, around the waiting lounge and out towards the pool (red route). From the car park: walk straight along the side of the hotel to the party area (blue route). Tap the plan to see it larger.","La réception a lieu dans le jardin extérieur, près de la piscine. Depuis l’entrée principale : traversez le hall d’accueil, contournez le salon d’attente puis sortez vers la piscine (tracé rouge). Depuis le parking voitures : longez le côté de l’hôtel jusqu’à la réception (tracé bleu). Touchez le plan pour l’agrandir."],
 "ha.1":["Ảnh cưới","Wedding photos","Photos du mariage"],
 "ha.2":["Lễ gia tiên","Family ceremony","Cérémonie familiale"],
 "ha.1s":["Ảnh ngày cưới sẽ có ở đây sau 29.12","Wedding day photos will be here after 29.12","Les photos du mariage seront ici après le 29.12"],
@@ -1505,7 +1511,7 @@ function onStory(){if(cur!=="journey")return;var mid=innerHeight*.55,r=tline.get
   var last=-1;tis.forEach(function(el,i){var y=el.querySelector(".ti-yr").getBoundingClientRect().top;var on=y<mid;el.classList.toggle("on",on);if(on)last=i});
   tis.forEach(function(el,i){el.classList.toggle("cur",i===last)})}
 addEventListener("scroll",onStory,{passive:true});
-$("#tl2010").src=$("#iimg").src;
+
 /* intro photo: when the screen is wider than the photo, show it whole and fill the sides with a blurred copy (iOS lock-screen style) */
 /* the intro photo now carries real (AI-extended, blurred) sides, so it simply covers the screen */
 function fitHero(){$("#stage").classList.remove("fit")}
@@ -1731,9 +1737,8 @@ var G=window.G=(function(){
     CITIES.forEach(function(ct){var l=M["journey/"+CITYDIR[ct.k]]||(ct.k==="yyc"&&M["journey/calgary"]);if(l&&l.length)ct.img=l});
     if(M["journey/cats"]&&M["journey/cats"].length&&G.cat)G.cat.img=M["journey/cats"];
     /* story timeline photos: journey/story/journey_1, journey_2 ... in timeline order */
-    var st=(M["journey/story"]||[]).slice(),num=function(u){var m=u.split("/").pop().match(/(\d+)/);return m?+m[1]:999};
-    st.sort(function(a,b){return num(a)-num(b)});var arts=$$("#tline .ti");
-    st.forEach(function(u){var n=num(u)-1,a=arts[n];if(!a)return;var f=a.querySelector(".ti-img");if(f)f.innerHTML='<img src="'+u+'" alt="" loading="lazy" decoding="async">'});
+    var STM={"journey_1":0,"journey_2":1,"journey_3":2,"journey_4-5":3,"journey_6":4,"journey_7":5,"journey_8":7},arts=$$("#tline .ti");
+    (M["journey/story"]||[]).forEach(function(u){var k=u.split("/").pop().replace(/\.[^.]+$/,""),a=arts[STM[k]];if(STM[k]===undefined||!a)return;var f=a.querySelector(".ti-img");if(f)f.innerHTML='<img'+(k==="journey_4-5"?' class="tall"':'')+' src="'+u+'" alt="" loading="lazy" decoding="async">'});
     /* family ceremony + wedding albums */
     Object.keys(ALBDIR).forEach(function(set){var dir=set==="wed"?"wedding":"family";Object.keys(ALBDIR[set]).forEach(function(c){var l=M[dir+"/"+ALBDIR[set][c]];if(l)ALBUMS[set][c]=l});b53render(set)});
     /* civil ceremony: editorial columns */
