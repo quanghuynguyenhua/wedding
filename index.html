@@ -3,15 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Quang Huy & Thanh Trang — A journey of love · 29.12.2026">
-<meta property="og:title" content="Huy & Trang — A journey of love">
-<meta property="og:image" content="https://wedding.huytrang.info/assets/photos/frontpage/HT1779_b.webp?v=02a9dbbf">
+<title>Quang Huy &amp; Thanh Trang</title>
+<meta name="description" content="Báo hỷ Quang Huy &amp; Thanh Trang · Tiệc cưới 17:30, Thứ Ba 29.12.2026 · Khách sạn Lotte Sài Gòn. Wedding of Quang Huy &amp; Thanh Trang · 29.12.2026 · Lotte Hotel Saigon.">
+<meta property="og:title" content="Quang Huy &amp; Thanh Trang · 29.12.2026">
+<meta property="og:description" content="Tụi mình về chung một nhà! Tiệc cưới 17:30, Thứ Ba 29.12.2026 tại Khách sạn Lotte Sài Gòn. We're getting married · Nous nous marions.">
+<meta property="og:image" content="https://wedding.huytrang.info/assets/og-image.jpg?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Quang Huy &amp; Thanh Trang">
 <meta property="og:url" content="https://wedding.huytrang.info/">
+<meta property="og:site_name" content="Huy &amp; Trang">
+<meta property="og:locale" content="vi_VN">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
-<title>Quang Huy &amp; Thanh Trang</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Pinyon+Script&family=Josefin+Sans:wght@200;300;400&family=Quicksand:wght@400;500&family=Be+Vietnam+Pro:wght@300;400;500&family=Patrick+Hand&display=swap">
@@ -190,7 +201,8 @@ html:has(body.dark-top){background:#111}
 .zctl button:hover{border-color:var(--ink)}
 
 /* city gallery */
-#gal{position:fixed;inset:0;z-index:45;background:var(--bg);overflow-y:auto;overflow-x:hidden;opacity:0;pointer-events:none;transition:opacity .7s ease}
+#gal{position:fixed;inset:0;z-index:45;background:var(--bg);overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;opacity:0;pointer-events:none;transition:opacity .7s ease}
+html.galon,html.galon body{overflow:hidden}
 #gal.on{opacity:1;pointer-events:auto}
 .gtop{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) var(--gutR) 14px var(--gut);background:linear-gradient(var(--bg) 55%,rgba(252,252,251,0))}
 .gtop button{display:inline-flex;gap:8px;align-items:center}
@@ -440,7 +452,8 @@ img[data-src]{width:100%;display:block;background:var(--soft);max-width:100%}
 .mapbox .pill{margin-top:18px}
 .mapbtn{text-align:center}
 .maplink{cursor:pointer}.maplink:hover rect{fill:#fff6ef}
-.maptop{margin:0 0 34px}.maptop .pill{margin-top:0}
+.maptop{margin:0 0 34px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}.maptop .pill{margin-top:0}
+.pill svg{width:15px;height:15px;flex:none}
 .mapnext{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:22px}.mapnext .pill{margin-top:0}
 .pinbob{animation:bob 2.2s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
 @keyframes bob{50%{transform:translateY(-6px)}}
@@ -454,6 +467,7 @@ img[data-src]{width:100%;display:block;background:var(--soft);max-width:100%}
   .city small{font-size:6.5px;margin-top:1px;letter-spacing:.1em}
   .fams{grid-template-columns:1fr;gap:18px}.fams .sep{display:none}
   .stabs{justify-content:flex-start}
+  #ptabs{justify-content:center;gap:16px}#ptabs button{letter-spacing:.1em}
   .evs{grid-template-columns:1fr}.ev+.ev{border-left:0;border-top:1px solid var(--line)}
   .venue{grid-template-columns:1fr}.venue>div+div{border-left:0;border-top:1px solid var(--line)}
   .tl li{grid-template-columns:70px 1fr;gap:14px}
@@ -724,7 +738,7 @@ body{font:300 13.1px/1.75 var(--sans)}
         <div class="ev">
           <p class="cap" data-t="bh.rec">Tiệc Cưới</p>
           <h3 class="evd" data-t="bh.recd">Thứ Ba, 29.12.2026</h3>
-          <p class="evt"><span data-t="bh.at">Vào lúc</span> 18:00</p>
+          <p class="evt"><span data-t="bh.at">Vào lúc</span> 17:30</p>
           <p data-t="bh.recp">Sân vườn tầng trệt, Khách sạn Lotte Sài Gòn</p>
           <p>2A-4A Tôn Đức Thắng, Phường Sài Gòn, TP. Hồ Chí Minh</p>
         </div>
@@ -753,10 +767,10 @@ body{font:300 13.1px/1.75 var(--sans)}
             <div><b id="cS">00</b><small data-t="d.se">GIÂY</small></div>
           </div>
           <p class="hdate" data-t="d.date2">Thứ ba, 29 tháng 12 năm 2026</p>
-          <h3 class="htime" data-t="d.h2">Lúc 18:00, Khách sạn Lotte Sài Gòn</h3>
+          <h3 class="htime" data-t="d.h2">Lúc 17:30, Khách sạn Lotte Sài Gòn</h3>
           <p style="color:var(--mute)"><span data-t="d.garden">Sân vườn tầng trệt</span> · 2A-4A Tôn Đức Thắng, Phường Sài Gòn, TP. Hồ Chí Minh</p>
           <div class="mapbox" style="margin-top:34px">
-            <div class="mapbtn maptop"><a class="pill" href="https://www.google.com/maps/search/?api=1&amp;query=Lotte+Hotel+Saigon+2A-4A+Ton+Duc+Thang" target="_blank" rel="noopener"><span data-t="d.gm">Mở Google Maps</span> ↗</a></div>
+            <div class="mapbtn maptop"><a class="pill" id="addcal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;dates=20261229T103000Z%2F20261229T143000Z" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg><span data-t="d.cal">Thêm vào lịch</span></a><a class="pill" href="https://www.google.com/maps/search/?api=1&amp;query=Lotte+Hotel+Saigon+2A-4A+Ton+Duc+Thang" target="_blank" rel="noopener"><span data-t="d.gm">Mở Google Maps</span> ↗</a></div>
             <div class="ilwrap"><svg class="ilmap" viewBox="0 0 1000 666" role="img" aria-label="Lotte Hotel Saigon map" font-family="'Be Vietnam Pro',system-ui,sans-serif">
   <defs>
     <linearGradient id="q-land" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbf4e6"/><stop offset="1" stop-color="#f3e6cf"/></linearGradient>
@@ -917,7 +931,8 @@ body{font:300 13.1px/1.75 var(--sans)}
     <text x="330" y="460" font-size="10.5" data-t="m.opera">Nhà hát Thành phố</text>
     <text x="452" y="590" text-anchor="start" dx="14" font-size="11.5">Bitexco</text>
     <text x="700" y="172" data-t="m.bridge">Cầu Ba Son</text>
-    <text x="580" y="474" text-anchor="start" font-size="10.5" data-t="m.bdp">Công viên Bạch Đằng</text>
+    <text x="557" y="524" font-size="10.5" data-t="m.bdp1">Công viên</text>
+    <text x="557" y="537" font-size="10.5" data-t="m.bdp2">Bạch Đằng</text>
   </g>
   <g font-family="'Playfair Display',Georgia,serif" font-style="italic">
     <text transform="translate(610 560) rotate(-84)" font-size="17" fill="#ffffff" letter-spacing="2" data-t="m.river">Sông Sài Gòn</text>
@@ -948,7 +963,7 @@ body{font:300 13.1px/1.75 var(--sans)}
         <div class="ttl"><h2 data-t="s.lt">Lịch trình</h2><p class="cap" data-t="lt.cap">Giờ dự kiến, sẽ cập nhật thêm</p></div>
         <ol class="tl">
           <li class="day"><p class="cap" data-t="lt.day">Thứ Ba · 29.12.2026 · Lotte Sài Gòn</p></li>
-          <li><time>18:00</time><div><h3 data-t="lt.1h">Đón khách</h3><p data-t="lt.1p">Sân vườn tầng trệt. Chụp ảnh cùng cô dâu chú rể.</p></div></li>
+          <li><time>17:30</time><div><h3 data-t="lt.1h">Đón khách</h3><p data-t="lt.1p">Sân vườn tầng trệt. Chụp ảnh cùng cô dâu chú rể.</p></div></li>
           <li><time>—</time><div><h3 data-t="lt.2h">Nghi lễ</h3><p data-t="lt.tba">Giờ cụ thể sẽ cập nhật.</p></div></li>
           <li><time>—</time><div><h3 data-t="lt.3h">Khai tiệc</h3><p data-t="lt.tba">Giờ cụ thể sẽ cập nhật.</p></div></li>
         </ol>
@@ -967,7 +982,7 @@ body{font:300 13.1px/1.75 var(--sans)}
         <div class="ttl"><h2 data-t="s.hd">Hỏi đáp</h2></div>
         <div class="faq">
           <details><summary data-t="q1">Tiệc cưới tổ chức ở đâu?</summary><p data-t="a1">Sân vườn tầng trệt, Khách sạn Lotte Sài Gòn, 2A-4A Tôn Đức Thắng, Phường Sài Gòn, TP. Hồ Chí Minh. Xem bản đồ ở mục Chi tiết.</p></details>
-          <details><summary data-t="q2">Mấy giờ mình nên có mặt?</summary><p data-t="a2">Tiệc bắt đầu đón khách lúc 18:00, Thứ Ba 29.12.2026. Bạn đến sớm một chút để kịp chụp ảnh cùng hai đứa nhé.</p></details>
+          <details><summary data-t="q2">Mấy giờ mình nên có mặt?</summary><p data-t="a2">Tiệc bắt đầu đón khách lúc 17:30, Thứ Ba 29.12.2026. Bạn đến sớm một chút để kịp chụp ảnh cùng hai đứa nhé.</p></details>
           <details><summary data-t="q3">Nên mặc gì?</summary><p data-t="a3">Tiệc ở sân vườn ngoài trời, buổi tối cuối tháng 12 ở Sài Gòn thường khá mát. Quy định trang phục (nếu có) sẽ được cập nhật tại đây.</p></details>
           <details><summary data-t="q4">Gửi xe ở đâu?</summary><p data-t="a4"></p><a class="faqmap" href="assets/photos/info/bai-giu-xe.jpg?v=b49459c0" target="_blank" rel="noopener"><img src="assets/photos/info/bai-giu-xe.jpg?v=b49459c0" alt="" loading="lazy" decoding="async"></a></details>
           <details><summary data-t="q5"></summary><p data-t="a5"></p><a class="faqmap" href="assets/photos/info/loi-di-tiec-cuoi.jpg?v=6777578d" target="_blank" rel="noopener"><img src="assets/photos/info/loi-di-tiec-cuoi.jpg?v=6777578d" alt="" loading="lazy" decoding="async"></a></details>
@@ -987,7 +1002,7 @@ body{font:300 13.1px/1.75 var(--sans)}
     <!-- PRE-WEDDING -->
     <div class="pp on" id="p-pw" style="margin-top:14px">
       <div class="pw-hero">
-        <img src="assets/photos/prewedding/HT0421b.webp" alt="Pre-wedding">
+        <img src="assets/photos/prewedding/HT0421b.webp" alt="Pre-wedding" loading="lazy" decoding="async">
         <h2><span data-t="pw.h1">Trước</span><span data-t="pw.h2">ngày cưới &amp;</span><span data-t="pw.h3">mãi về sau</span></h2>
         <div class="badge" aria-hidden="true">
           <svg class="ring" viewBox="0 0 132 132"><defs><path id="c2" d="M66,66 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs><text><textPath href="#c2">Pre-wedding · Quang Huy &amp; Thanh Trang ·</textPath></text></svg>
@@ -1134,6 +1149,8 @@ var T={
 "civ.end":["Và rồi, một chương mới bắt đầu.","And so, a new chapter begins.","Et ainsi commence un nouveau chapitre."],
 "civ.next":["Tiếp theo: Lễ gia tiên","Next: Family Ceremony","Suivant : Cérémonie familiale"],
 "p.civ":["Lễ đăng ký kết hôn","Civil Ceremony","Mariage civil"],
+"p.civm":["Đăng ký","Civil","Civil"],
+"p.famm":["Gia tiên","Family","Famille"],
 "civ.soon":["Ảnh sẽ được cập nhật sớm","Photos coming soon","Photos à venir"],
 "p.fam":["Lễ gia tiên","Family Ceremony","Cérémonie familiale"],
 "p.wed":["Tiệc cưới","Wedding","Mariage"],
@@ -1173,11 +1190,14 @@ var T={
 "pw.next":["Tiếp theo: Lễ đăng ký kết hôn","Next: Civil Ceremony","Suivant : Mariage civil"],
 "pw.btn":["Xem thông tin tiệc cưới","Reception details","Détails de la réception"],
 "d.date2":["Thứ ba, 29 tháng 12 năm 2026","Tuesday, December 29, 2026","mardi 29 décembre 2026"],
-"d.h2":["Lúc 18:00, Khách sạn Lotte Sài Gòn","At 6:00 PM, Lotte Hotel Saigon","À 18h00, hôtel Lotte Saïgon"],
+"d.h2":["Lúc 17:30, Khách sạn Lotte Sài Gòn","At 5:30 PM, Lotte Hotel Saigon","À 17h30, hôtel Lotte Saïgon"],
+"d.cal":["Thêm vào lịch","Add to Calendar","Ajouter au calendrier"],
+"cal.t":["Tiệc cưới Huy & Trang","Huy & Trang's Wedding Reception","Réception de mariage de Huy & Trang"],
+"cal.d":["Tụi mình rất mong được gặp bạn! Sân vườn tầng trệt, Khách sạn Lotte Sài Gòn. Chi tiết: https://wedding.huytrang.info","We can't wait to see you! Ground-floor garden, Lotte Hotel Saigon. Details: https://wedding.huytrang.info","Nous avons hâte de vous voir ! Jardin du rez-de-chaussée, hôtel Lotte Saïgon. Détails : https://wedding.huytrang.info"],
 "d.date":["29 tháng 12, 2026","December 29, 2026","29 décembre 2026"],
 "d.mo":["THÁNG","MONTHS","MOIS"],"d.da":["NGÀY","DAYS","JOURS"],"d.ho":["GIỜ","HOURS","HEURES"],"d.mi":["PHÚT","MINS","MIN"],"d.se":["GIÂY","SECS","SEC"],
 "d.cap":["Tiệc cưới · Thứ Ba 29.12","Reception · Tuesday 29.12","Réception · mardi 29.12"],
-"d.h":["18:00, Khách sạn Lotte Sài Gòn","6:00 PM, Lotte Hotel Saigon","18h00, hôtel Lotte Saïgon"],
+"d.h":["17:30, Khách sạn Lotte Sài Gòn","5:30 PM, Lotte Hotel Saigon","17h30, hôtel Lotte Saïgon"],
 "d.garden":["Sân vườn tầng trệt","Ground-floor garden","Jardin du rez-de-chaussée"],
 "d.tolt":["Tới Lịch Trình","See the schedule","Voir le programme"],
 "d.tohd":["Tới Hỏi Đáp","Go to the FAQ","Voir la FAQ"],
@@ -1187,6 +1207,8 @@ var T={
 "m.tt":["Thủ Thiêm","Thu Thiem","Thủ Thiêm"],
 "m.bridge":["Cầu Ba Son","Ba Son Bridge","Pont Ba Son"],
 "m.bd":["Bến Bạch Đằng","Bach Dang Wharf","Quai Bạch Đằng"],
+"m.bdp1":["Công viên","Bach Dang","Parc"],
+"m.bdp2":["Bạch Đằng","Park","Bạch Đằng"],
 "m.opera":["Nhà hát Thành phố","Opera House","Opéra de Saïgon"],
 "m.metro":["Ga Ba Son","Ba Son Station","Station Ba Son"],
 "m.here2":["Tiệc cưới ở đây!","The party is here!","La fête est ici !"],
@@ -1208,7 +1230,7 @@ var T={
 "q1":["Tiệc cưới tổ chức ở đâu?","Where is the reception?","Où a lieu la réception ?"],
 "a1":["Sân vườn tầng trệt, Khách sạn Lotte Sài Gòn, 2A-4A Tôn Đức Thắng, Phường Sài Gòn, TP. Hồ Chí Minh. Xem bản đồ ở mục Chi tiết.","In the ground-floor garden of Lotte Hotel Saigon, 2A-4A Tôn Đức Thắng, Saigon Ward, Ho Chi Minh City. See the map under Details.","Dans le jardin du rez-de-chaussée de l'hôtel Lotte Saïgon, 2A-4A Tôn Đức Thắng, quartier de Saïgon, Hô Chi Minh-Ville. Voir la carte dans Détails."],
 "q2":["Mấy giờ mình nên có mặt?","What time should I arrive?","À quelle heure arriver ?"],
-"a2":["Tiệc bắt đầu đón khách lúc 18:00, Thứ Ba 29.12.2026. Bạn đến sớm một chút để kịp chụp ảnh cùng hai đứa nhé.","Guests are welcomed from 6:00 PM on Tuesday, 29 December 2026. Come a little early to take photos with us.","L'accueil commence à 18h00, le mardi 29 décembre 2026. Venez un peu en avance pour prendre des photos avec nous."],
+"a2":["Tiệc bắt đầu đón khách lúc 17:30, Thứ Ba 29.12.2026. Bạn đến sớm một chút để kịp chụp ảnh cùng hai đứa nhé.","Guests are welcomed from 5:30 PM on Tuesday, 29 December 2026. Come a little early to take photos with us.","L'accueil commence à 17h30, le mardi 29 décembre 2026. Venez un peu en avance pour prendre des photos avec nous."],
 "q3":["Nên mặc gì?","What should I wear?","Quelle tenue porter ?"],
 "a3":["Tiệc ở sân vườn ngoài trời, buổi tối cuối tháng 12 ở Sài Gòn thường khá mát. Quy định trang phục (nếu có) sẽ được cập nhật tại đây.","The reception is in an outdoor garden; late-December evenings in Saigon are usually mild. Any dress code will be posted here.","La réception a lieu dans un jardin en plein air ; les soirées de fin décembre à Saïgon sont généralement douces. Un éventuel code vestimentaire sera précisé ici."],
 "q4":["Gửi xe ở đâu?","Where can I park?","Où se garer ?"],
@@ -1239,6 +1261,7 @@ function applyLang(l){
   if(typeof ALBUMS!=="undefined"&&ALBUMS)$$(".b53").forEach(function(b){b53render(b.dataset.set)});
   if(typeof mgLang==="function")mgLang();
   if(typeof asPaint==="function")asPaint();
+  calLink();
   try{localStorage.setItem("qhtt-lang",l)}catch(e){}
   fitPW();
 }
@@ -1260,7 +1283,10 @@ function applyNav(st){
     if(st.v==="journey"){if(st.c&&st.c!==NS.c)G.open(st.c);else if(!st.c&&NS.c)G.close()}
   }finally{NAV_LOCK=false}
 }
-addEventListener("popstate",function(e){applyNav(e.state)});
+/* an entry without saved state (hash typed or linked by hand) is read from the #hash, so the screen always follows the URL */
+function hashNav(){var h=(location.hash||"").slice(1),st=navState();st.c=null;
+  if(ORDER.indexOf(h)>=0)st.v=h;else if(["baohy","damcuoi","photos"].indexOf(h)>=0){st.v="wedding";st.w=h}else st.v="intro";return st}
+addEventListener("popstate",function(e){applyNav(e.state||hashNav())});
 function show(v){
   if(!document.getElementById(v))return;
   $$(".view").forEach(function(e){e.classList.toggle("on",e.id===v)});
@@ -1324,7 +1350,10 @@ function civRender(list,hero){var fl=$("#mgFlow");if(!fl)return;fl.innerHTML="";
     fl.appendChild(blk);i+=n;k++}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.15});
   $$(".mg-ph",fl).forEach(function(f){io.observe(f)})}
-civRender(CIVIL,CIVHERO);
+/* the civil album only loads when its tab is opened (saves ~8 MB for visitors who never open it) */
+var CIVD={list:CIVIL,hero:CIVHERO,done:false};
+function civSet(list,hero){CIVD.list=list;CIVD.hero=hero;if(CIVD.done)civRender(list,hero)}
+function civEnsure(){if(CIVD.done)return;CIVD.done=true;civRender(CIVD.list,CIVD.hero)}
 function mgLang(){}
 (function(){var hero=$("#mgHero"),pols=$$("#mgHero .mg-pol"),tt=$("#mgHero .mg-title"),arc=$("#mgHero .mg-arc"),btn=$("#mgSee"),circ=$("#mgCircle"),mx=0,my=0,tk=0;
   var BASE=[[-8,0,0],[2,0,0],[9,0,0]];
@@ -1404,7 +1433,7 @@ function wtab(k){if(typeof asTab==="function")setTimeout(asTab,0);
   var t=$("#wedding").offsetTop;if(scrollY>t)window.scrollTo(0,t);
 }
 function ptab(k){
-  NS.p=k;if((k==="family"||k==="wed")&&typeof B53!=="undefined"&&B53[k]&&B53[k].c){B53[k].c=null;b53render(k)}if(typeof asTab==="function")setTimeout(asTab,0);
+  NS.p=k;if(k==="civil")civEnsure();if((k==="family"||k==="wed")&&typeof B53!=="undefined"&&B53[k]&&B53[k].c){B53[k].c=null;b53render(k)}if(typeof asTab==="function")setTimeout(asTab,0);
   $$("#ptabs button").forEach(function(b){b.classList.toggle("on",b.dataset.p===k)});
   $$(".pp").forEach(function(p){p.classList.toggle("on",p.id==="p-"+k)});
   var t=$("#wedding").offsetTop;if(scrollY>t)window.scrollTo(0,t);
@@ -1419,7 +1448,13 @@ function stab(k){
 }
 
 /* ---------- countdown ---------- */
-var END=new Date("2026-12-29T18:00:00+07:00");
+var END=new Date("2026-12-29T17:30:00+07:00");
+/* "Thêm vào lịch": iPhone/iPad/Mac open the .ics file (Calendar asks to add it), everything else opens Google Calendar */
+var APPLE=/iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent);
+function calLink(){var a=$("#addcal");if(!a)return;
+  if(APPLE){a.href="assets/calendar/huy-trang-"+lang+".ics";a.removeAttribute("target");return}
+  a.target="_blank";
+  a.href="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(tr("cal.t"))+"&dates=20261229T103000Z%2F20261229T143000Z&ctz=Asia%2FHo_Chi_Minh&details="+encodeURIComponent(tr("cal.d"))+"&location="+encodeURIComponent("Lotte Hotel Saigon, 2A-4A Tôn Đức Thắng, Phường Sài Gòn, TP. Hồ Chí Minh")}
 function tick(){
   var r=Math.max(0,END-new Date()),d=Math.floor(r/864e5);r-=d*864e5;var h=Math.floor(r/36e5);r-=h*36e5;var mi=Math.floor(r/6e4);r-=mi*6e4;
   $("#cD").textContent=pad(d);$("#cH").textContent=pad(h);$("#cMi").textContent=pad(mi);$("#cS").textContent=pad(Math.floor(r/1e3));
@@ -1430,7 +1465,7 @@ tick();setInterval(tick,1000);
 var iimg=$("#iimg"),lines=$$("#lines p"),fin=$("#fin"),ihint=$("#ihint"),intro=$("#intro");
 addEventListener("resize",function(){G.resize()});
 function loadFP(){if(finbg.childElementCount)return;FP.forEach(function(u){var im=new Image();im.alt="";im.decoding="async";im.src=u;if(im.decode)im.decode().catch(function(){});finbg.appendChild(im)})}
-setTimeout(loadFP,2500);
+/* the 27 slideshow photos (~2.8 MB) load only once the visitor has scrolled into the intro (see frame: p>.15) */
 var fpShown=null,FP=["assets/photos/frontpage/HT1174.webp?v=c6ce6f96", "assets/photos/frontpage/HT1175.webp?v=275f306c", "assets/photos/frontpage/HT1176.webp?v=06a1b4ca", "assets/photos/frontpage/HT1177.webp?v=40291a25", "assets/photos/frontpage/HT1178.webp?v=c31b2564", "assets/photos/frontpage/HT1179.webp?v=d4e3735a", "assets/photos/frontpage/HT1180.webp?v=9d2e8111", "assets/photos/frontpage/HT1181.webp?v=818ac9df", "assets/photos/frontpage/HT1182.webp?v=731bc7e6", "assets/photos/frontpage/HT1183.webp?v=2bdfeb55", "assets/photos/frontpage/HT1184.webp?v=22a35c83", "assets/photos/frontpage/HT1185.webp?v=bf6f9801", "assets/photos/frontpage/HT1186.webp?v=42d656c5", "assets/photos/frontpage/HT1187.webp?v=3261e369", "assets/photos/frontpage/HT1188.webp?v=3f998f72", "assets/photos/frontpage/HT1189.webp?v=c02ef060", "assets/photos/frontpage/HT1190.webp?v=51970fb3", "assets/photos/frontpage/HT1191.webp?v=19d7d32a", "assets/photos/frontpage/HT1192.webp?v=347bc13a", "assets/photos/frontpage/HT1193.webp?v=cef066d9", "assets/photos/frontpage/HT1194.webp?v=d98cad68", "assets/photos/frontpage/HT1195.webp?v=a0453352", "assets/photos/frontpage/HT1196.webp?v=82ff7076", "assets/photos/frontpage/HT1197.webp?v=72070ab7", "assets/photos/frontpage/HT1198.webp?v=2e5ef4ce", "assets/photos/frontpage/HT1199.webp?v=9b40750d", "assets/photos/frontpage/HT1200.webp?v=65b9e55b"],finbg=$("#finbg"),fpT=0,fpI=0;
 var iimgbg=$("#iimgbg"),prog=0,t0=performance.now(),REST=null,tagline=$("#tagline");
 var BIG=null;
@@ -1462,7 +1497,7 @@ function frame(now){
     ihint.style.opacity=nIn*Math.max(0,.85-p*12);
     var f=Math.max(0,Math.min(1,(p-.82)/.1));fin.style.opacity=f;fin.style.pointerEvents=f>.6?"auto":"none";
     document.body.classList.add("dark-top");
-    if(p>.3)loadFP();
+    if(p>.15)loadFP();
     if(f>0&&finbg.childElementCount){var ims=finbg.children;if(!fpShown){for(var q=0;q<ims.length;q++)if(ims[q].complete&&ims[q].naturalWidth){fpI=q;ims[q].classList.add("on");fpShown=ims[q];fpT=now;break}}
       else if(!RM&&now-fpT>300){for(var s2=1;s2<=ims.length;s2++){var nx=ims[(fpI+s2)%ims.length];if(nx.complete&&nx.naturalWidth){nx.classList.add("on");fpShown.classList.remove("on");fpShown=nx;fpI=(fpI+s2)%ims.length;break}}fpT=now}}
   }else if(mb.style.transform){mb.style.transform="";mb.style.opacity="";ms.style.opacity="";if(BIG)BIG.style.opacity=0}
@@ -1527,8 +1562,8 @@ var CITIES=[
   {k:"yyz",y:"",n:["Toronto","Toronto","Toronto"],lat:43.65,lon:-79.38,s:"L",img:[]},
   {k:"bel",y:"2026",n:["Bỉ","Belgium","Belgique"],lat:50.85,lon:4.35,s:"L",img:["assets/photos/journey/belgium/belgium-1.webp", "assets/photos/journey/belgium/belgium-2.webp", "assets/photos/journey/belgium/belgium-3.webp", "assets/photos/journey/belgium/belgium-4.webp", "assets/photos/journey/belgium/belgium-5.webp", "assets/photos/journey/belgium/belgium-6.webp"]},
   {k:"kor",y:"2023 · 2024",n:["Hàn Quốc","Korea","Corée"],lat:37.57,lon:126.98,s:"R",img:[]},
-  {k:"twn",y:"2024",n:["Đài Loan","Taiwan","Taïwan"],lat:25.03,lon:121.56,s:"R",img:[]},
-  {k:"phl",y:"2024",n:["Philippines","Philippines","Philippines"],lat:14.6,lon:121,s:"R",img:[]},
+  {k:"twn",y:"2023",n:["Đài Loan","Taiwan","Taïwan"],lat:25.03,lon:121.56,s:"R",img:[]},
+  {k:"phl",y:"2023",n:["Philippines","Philippines","Philippines"],lat:14.6,lon:121,s:"R",img:[]},
   {k:"tha",y:"2024 · 2025",n:["Thái Lan","Thailand","Thaïlande"],lat:13.75,lon:100.5,s:"R",img:[]},
   {k:"vnm",y:"",n:["Việt Nam","Vietnam","Viêt Nam"],lat:10.78,lon:106.69,s:"R",img:[]},
   {k:"sgp",y:"2025",n:["Singapore","Singapore","Singapour"],lat:1.35,lon:103.82,s:"R",img:["assets/photos/journey/singapore/photo_2026-10-20_22-35-39.jpg", "assets/photos/journey/singapore/photo_2026-10-20_22-35-47.jpg", "assets/photos/journey/singapore/photo_2026-10-20_22-35-48.jpg", "assets/photos/journey/singapore/photo_2026-10-20_22-35-49.jpg", "assets/photos/journey/singapore/photo_2026-10-20_22-35-51.jpg"]}
@@ -1697,7 +1732,7 @@ var G=window.G=(function(){
     if(!list.length){for(j=0;j<6;j++){var f=document.createElement("figure");f.className="gph empty";f.style.aspectRatio=ratios[j];f.textContent=j===1?tr("g.empty").replace("{c}",cname(ct)):"";cols[j%ncol].appendChild(f)}}
     else list.forEach(function(u,j){var f=document.createElement("figure");f.className="gph";if(/\.(mp4|webm|mov|m4v)(\?|$)/i.test(u)){f.classList.add("vid");var v=document.createElement("video");v.muted=true;v.loop=true;v.playsInline=true;v.setAttribute("playsinline","");v.setAttribute("muted","");v.preload="metadata";v.src=u;f.appendChild(v);vidIO.observe(v)}
       else f.innerHTML='<img src="'+u+'" alt="'+cname(ct)+' '+(j+1)+'" loading="lazy" decoding="async">';cols[j%ncol].appendChild(f)});
-    gal.scrollTop=0;gal.classList.add("on");if(typeof asTab==="function")setTimeout(asTab,0);
+    gal.scrollTop=0;gal.classList.add("on");document.documentElement.classList.add("galon");if(typeof asTab==="function")setTimeout(asTab,0);
     if(io)io.disconnect();
     io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{root:gal,threshold:.1});
     $$(".gph",gcols).forEach(function(f){io.observe(f)});
@@ -1705,16 +1740,19 @@ var G=window.G=(function(){
   }
   gal.addEventListener("scroll",function(){var st=gal.scrollTop,sp=[0,-.16,-.07];$$(".gcol",gcols).forEach(function(col,j){col.style.transform="translateY("+(st*sp[j%3])+"px)"})},{passive:true});
   function select(ct){
-    if(busy)return;busy=true;vl=0;NS.c=ct.k;pushNav();
+    if(busy)return;busy=true;vl=0;NS.c=ct.k;keepY=scrollY;pushNav();
     if(ct===CAT){tween({zoom:14,fade:0},.9,function(){openGal(ct)});return}
     tween({rl:ct.lon,rp:Math.max(-50,Math.min(60,ct.lat)),zoom:Math.max(zoom,1.5)},1,function(){tween({zoom:14,fade:0},.9,function(){openGal(ct)})});
   }
-  function back(cb2){peekStop();NS.c=null;gal.classList.remove("on");if(typeof asTab==="function")setTimeout(asTab,0);zoom=14;fade=0;tween({zoom:1.15,fade:1},1.1,function(){busy=false;if(cb2)cb2()})}
+  /* closing a place returns to the exact spot on the globe (place labels showing), even if the phone moved the page meanwhile */
+  var keepY=null;
+  function keepSpot(){if(keepY==null||cur!=="journey")return;if(Math.abs(scrollY-keepY)>2)window.scrollTo(0,keepY)}
+  function back(cb2){peekStop();NS.c=null;gal.classList.remove("on");document.documentElement.classList.remove("galon");keepSpot();setTimeout(keepSpot,80);setTimeout(keepSpot,300);if(typeof asTab==="function")setTimeout(asTab,0);zoom=14;fade=0;tween({zoom:1.15,fade:1},1.1,function(){busy=false;if(cb2)cb2()})}
   function closeStep(){if(history.state&&history.state.c)history.back();else back()}
   $("#gback").addEventListener("click",closeStep);
   addEventListener("keydown",function(e){if(e.key==="Escape"&&gal.classList.contains("on"))closeStep()});
   return{cat:CAT,start:function(){if(run)return;run=true;relabel();requestAnimationFrame(resize);last=performance.now();raf=requestAnimationFrame(draw)},
-    stop:function(){run=false;cancelAnimationFrame(raf);NS.c=null;if(gal.classList.contains("on")){gal.classList.remove("on");zoom=1;fade=1;busy=false}},resize:resize,relabel:relabel,
+    stop:function(){run=false;cancelAnimationFrame(raf);NS.c=null;if(gal.classList.contains("on")){gal.classList.remove("on");zoom=1;fade=1;busy=false}document.documentElement.classList.remove("galon");keepY=null},resize:resize,relabel:relabel,
     open:function(k){var ct=k==="cats"?CAT:CITIES.filter(function(x){return x.k===k})[0];if(!ct)return;if(gal.classList.contains("on")){NS.c=k;openGal(ct)}else{busy=false;select(ct)}},
     close:function(){if(gal.classList.contains("on"))back();else NS.c=null},rk:function(){return RK}};
 })();
@@ -1743,11 +1781,11 @@ var G=window.G=(function(){
     Object.keys(ALBDIR).forEach(function(set){var dir=set==="wed"?"wedding":"family";Object.keys(ALBDIR[set]).forEach(function(c){var l=M[dir+"/"+ALBDIR[set][c]];if(l)ALBUMS[set][c]=l});b53render(set)});
     /* civil ceremony: editorial columns */
     var cv=(M["civil"]||[]).filter(function(u){return !/22-35-13\./.test(u)});
-    if(cv.length&&typeof civRender==="function"){var key=function(u){return u.split("/").pop().replace(/\.[^.]+$/,"").replace(/^photo_2026-10-26_/,"")};
+    if(cv.length&&typeof civSet==="function"){var key=function(u){return u.split("/").pop().replace(/\.[^.]+$/,"").replace(/^photo_2026-10-26_/,"")};
       var ORDC=["22-35-32","22-35-35","22-35-34","22-35-33","22-35-31","22-35-21","22-35-20","22-35-29","22-35-22","22-35-36","22-35-24","22-35-37","22-34-21","22-35-17"],HEROC=["22-35-20","22-35-36","22-35-31"];
       var rank=function(u){var k=ORDC.indexOf(key(u));return k<0?999:k};cv=cv.slice().sort(function(a,b){return rank(a)-rank(b)});
       var hero=HEROC.map(function(k){return cv.filter(function(u){return key(u)===k})[0]}).filter(Boolean);
-      civRender(cv,hero.length===3?hero:null)}
+      civSet(cv,hero.length===3?hero:null)}
     /* pre-wedding: keep the hand-placed layout, append any new photos at the end */
     var pw=M["prewedding"]||[],have={};$$("#p-pw img").forEach(function(im){var s=im.getAttribute("data-src")||im.getAttribute("src")||"";have[s.split("/").pop().replace(/\.[^.]+$/,"")]=1});
     var extra=pw.filter(function(u){return !have[u.split("/").pop().replace(/\.[^.]+$/,"")]});

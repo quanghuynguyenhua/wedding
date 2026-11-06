@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//huytrang.info//wedding//VI
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:huy-trang-wedding-20261229@huytrang.info
+DTSTAMP:20261105T000000Z
+DTSTART:20261229T103000Z
+DTEND:20261229T143000Z
+SUMMARY:Tiệc cưới Huy & Trang
+DESCRIPTION:Tụi mình rất mong được gặp bạn! Sân vườn tần
+ g trệt\, Khách sạn Lotte Sài Gòn. Chi tiết: https://wedding.huytr
+ ang.info
+LOCATION:Lotte Hotel Saigon\, 2A-4A Tôn Đức Thắng\, Phường Sài G
+ òn\, TP. Hồ Chí Minh
+URL:https://wedding.huytrang.info/
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Ngày mai là tiệc cưới Huy & Trang!
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+END:VCALENDAR

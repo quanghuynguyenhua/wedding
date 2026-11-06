@@ -1,0 +1,24 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//huytrang.info//wedding//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:huy-trang-wedding-20261229@huytrang.info
+DTSTAMP:20261105T000000Z
+DTSTART:20261229T103000Z
+DTEND:20261229T143000Z
+SUMMARY:Réception de mariage de Huy & Trang
+DESCRIPTION:Nous avons hâte de vous voir ! Jardin du rez-de-chaussée\, h
+ ôtel Lotte Saïgon. Détails : https://wedding.huytrang.info
+LOCATION:Lotte Hotel Saigon\, 2A-4A Tôn Đức Thắng\, Phường Sài G
+ òn\, TP. Hồ Chí Minh
+URL:https://wedding.huytrang.info/
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Le mariage de Huy & Trang, c’est demain !
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+END:VCALENDAR
