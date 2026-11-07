@@ -7,7 +7,9 @@
 <meta name="description" content="Báo hỷ Quang Huy &amp; Thanh Trang · Tiệc cưới 17:30, Thứ Ba 29.12.2026 · Khách sạn Lotte Sài Gòn. Wedding of Quang Huy &amp; Thanh Trang · 29.12.2026 · Lotte Hotel Saigon.">
 <meta property="og:title" content="Quang Huy &amp; Thanh Trang · 29.12.2026">
 <meta property="og:description" content="Tụi mình về chung một nhà! Tiệc cưới 17:30, Thứ Ba 29.12.2026 tại Khách sạn Lotte Sài Gòn. We're getting married · Nous nous marions.">
-<meta property="og:image" content="https://wedding.huytrang.info/assets/og-image.jpg?v=1">
+<meta property="og:image" content="https://wedding.huytrang.info/assets/og-image.jpg?v=2">
+<meta property="og:image:secure_url" content="https://wedding.huytrang.info/assets/og-image.jpg?v=2">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Quang Huy &amp; Thanh Trang">
@@ -523,6 +525,8 @@ img[data-src]{width:100%;display:block;background:var(--soft);max-width:100%}
 .mapbox .mnote{font-size:12px;color:var(--mute);margin-top:10px;text-align:center}
 .mapbox .pill{margin-top:18px}
 .mapbtn{text-align:center}
+.dfaq{margin-top:80px;text-align:left}
+@media (max-width:760px){.mapbtn .pill{width:min(290px,100%);justify-content:center;box-sizing:border-box}}
 .maplink{cursor:pointer}.maplink:hover rect{fill:#fff6ef}
 .maptop{margin:0 0 34px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}.maptop .pill{margin-top:0}
 .pill svg{width:15px;height:15px;flex:none}
@@ -569,6 +573,14 @@ img[data-src]{width:100%;display:block;background:var(--soft);max-width:100%}
 
 /* civil ceremony: marieguillaume-style polaroids on peach */
 #p-civil{--mgbg:#fde8d8;--mgink:#e0643a;--mgbg2:#f3d3bf;--mgdot:#e9bda1}
+@media (min-width:761px){
+  #p-civil{--mgbg:#ffffff;--mgbg2:#ffffff;--mgdot:#f7d7df}
+  #p-civil .mg-fr,#p-civil .mg-ph{background:none;padding:0}
+  #p-civil .mg-ph{transform:translateY(80px)}#p-civil .mg-ph.in{transform:none}
+  #p-civil .mg-circle path{fill:#f9dfe5}
+  #p-civil .mg-arc{color:#efb9c6}
+  #p-civil .mg-btn,#p-civil .mg-btn2{border:1px solid var(--mgink)}
+}
 .mg{background:var(--mgbg);color:var(--mgink);position:relative;overflow:clip}
 .mg-hero{height:220vh;position:relative}
 .mg-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
@@ -741,7 +753,10 @@ body{font:400 15.5px/1.75 var(--sans)}
 .upbtns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
 .upreq{margin:-6px 0 0;font-size:13px;color:var(--mute)}
 .upsee{font-size:17px;padding:15px 28px}
-.upring{position:relative;width:132px;height:132px;margin:6px auto 0;animation:floatin .5s ease backwards}
+.upov{position:fixed;inset:0;z-index:96;background:rgba(40,38,36,.38);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);display:grid;place-items:center;transition:opacity .6s ease}
+.upov.out{opacity:0}
+.upring{position:relative;width:150px;height:150px;border-radius:50%;background:var(--bg);box-shadow:0 20px 50px -20px rgba(0,0,0,.45);animation:floatin .5s ease backwards}
+.upring svg{padding:9px;box-sizing:border-box}
 .upring svg{width:100%;height:100%;transform:rotate(-90deg)}
 .upring circle{fill:none;stroke-width:5}
 .upring .trk{stroke:var(--line)}
@@ -901,7 +916,6 @@ body{font:400 15.5px/1.75 var(--sans)}
       <button class="cap on" data-s="chitiet" data-t="s.ct">Chi tiết</button>
       <button class="cap" data-s="lichtrinh" data-t="s.lt">Lịch trình</button>
       <button class="cap" data-s="thucdon" data-t="s.td">Thực đơn</button>
-      <button class="cap" data-s="hoidap" data-t="s.hd">Hỏi đáp</button>
     </div>
 
     <div class="inner">
@@ -1104,7 +1118,15 @@ body{font:400 15.5px/1.75 var(--sans)}
   <g transform="translate(956 620)"><circle r="20" fill="#ffffff" filter="url(#q-sh)"/><path d="M0 -13 L5.5 5 L0 1.5 L-5.5 5 Z" fill="#b3261e"/><text y="16" text-anchor="middle" font-size="8" font-weight="500" fill="#5a3e22">N</text></g>
 </svg></div>
             
-            <div class="mapbtn mapnext"><button class="pill" data-w="damcuoi" data-sub="lichtrinh"><span data-t="d.tolt">Tới Lịch Trình</span> →</button><button class="pill" data-w="damcuoi" data-sub="hoidap"><span data-t="d.tohd">Tới Hỏi Đáp</span> →</button></div>
+            <div class="mapbtn mapnext"><button class="pill" data-w="damcuoi" data-sub="lichtrinh"><span data-t="d.tolt">Lịch Trình</span> →</button></div>
+            <div class="dfaq"><div class="ttl"><h2 data-t="s.hd">Hỏi đáp</h2></div>
+            <div class="faq">
+          <details><summary data-t="q4">Gửi xe ở đâu?</summary><p data-t="a4"></p><a class="faqmap" href="assets/photos/info/bai-giu-xe.jpg?v=b49459c0" target="_blank" rel="noopener"><img src="assets/photos/info/bai-giu-xe.jpg?v=b49459c0" alt="" loading="lazy" decoding="async"></a><p class="maplegend" data-t="a4l"></p></details>
+            <details><summary data-t="q5"></summary><p data-t="a5"></p><a class="faqmap" href="assets/photos/info/loi-di-tiec-cuoi.jpg?v=6777578d" target="_blank" rel="noopener"><img src="assets/photos/info/loi-di-tiec-cuoi.jpg?v=6777578d" alt="" loading="lazy" decoding="async"></a><p class="maplegend" data-t="a5l"></p></details>
+            <details><summary data-t="q2">Mấy giờ nên có mặt?</summary><p data-t="a2">Tiệc bắt đầu đón khách lúc 17:30, Thứ Ba 29.12.2026. Quý khách đến sớm một chút để trò chuyện, “thưởng” hoa, nhâm nhi cocktails và chụp hình cùng cô dâu chú rể nhé.</p></details>
+            <details><summary data-t="q3">Nên mặc gì?</summary><p data-t="a3">Tiệc ở sân vườn ngoài trời, buổi tối cuối tháng 12 ở Sài Gòn thường khá mát. Quy định trang phục (nếu có) sẽ được cập nhật tại đây.</p></details>
+            <details><summary data-t="q6">Nếu trời mưa thì sao?</summary><p data-t="a6">Quý khách đừng lo! Khu vực tổ chức tiệc có bạt che mưa nắng. Nếu trời mưa, nhân viên khách sạn Lotte sẽ che ô đưa quý khách từ sảnh khách sạn vào khu vực tiệc cưới. Nếu mưa đúng lúc đang phục vụ món ăn, khách sạn sẽ tạm dừng một chút để đảm bảo chất lượng phục vụ.</p></details>
+            </div></div>
           </div>
         </div>
       </div>
@@ -1126,18 +1148,6 @@ body{font:400 15.5px/1.75 var(--sans)}
           <h3 data-t="td.1">Khai vị</h3><p data-t="td.soon">Sẽ cập nhật</p>
           <h3 data-t="td.2">Món chính</h3><p data-t="td.soon">Sẽ cập nhật</p>
           <h3 data-t="td.3">Tráng miệng</h3><p data-t="td.soon">Sẽ cập nhật</p>
-        </div>
-      </div>
-      <!-- HỎI ĐÁP -->
-      <div class="sp pane" id="s-hoidap">
-        <div class="ttl"><h2 data-t="s.hd">Hỏi đáp</h2></div>
-        <div class="faq">
-          <details><summary data-t="q1">Tiệc cưới tổ chức ở đâu?</summary><p data-t="a1">Sân vườn tầng trệt, Khách sạn Lotte Sài Gòn, 2A-4A Tôn Đức Thắng, Phường Sài Gòn, TP. Hồ Chí Minh. Xem bản đồ ở mục Chi tiết.</p></details>
-          <details><summary data-t="q2">Mấy giờ nên có mặt?</summary><p data-t="a2">Tiệc bắt đầu đón khách lúc 17:30, Thứ Ba 29.12.2026. Quý khách đến sớm một chút để trò chuyện, “thưởng” hoa, nhâm nhi cocktails và chụp hình cùng cô dâu chú rể nhé.</p></details>
-          <details><summary data-t="q3">Nên mặc gì?</summary><p data-t="a3">Tiệc ở sân vườn ngoài trời, buổi tối cuối tháng 12 ở Sài Gòn thường khá mát. Quy định trang phục (nếu có) sẽ được cập nhật tại đây.</p></details>
-          <details><summary data-t="q6">Nếu trời mưa thì sao?</summary><p data-t="a6">Quý khách đừng lo! Khu vực tổ chức tiệc có bạt che mưa nắng. Nếu trời mưa, nhân viên khách sạn Lotte sẽ che ô đưa quý khách từ sảnh khách sạn vào khu vực tiệc cưới. Nếu mưa đúng lúc đang phục vụ món ăn, khách sạn sẽ tạm dừng một chút để đảm bảo chất lượng phục vụ.</p></details>
-          <details><summary data-t="q4">Gửi xe ở đâu?</summary><p data-t="a4"></p><a class="faqmap" href="assets/photos/info/bai-giu-xe.jpg?v=b49459c0" target="_blank" rel="noopener"><img src="assets/photos/info/bai-giu-xe.jpg?v=b49459c0" alt="" loading="lazy" decoding="async"></a><p class="maplegend" data-t="a4l"></p></details>
-          <details><summary data-t="q5"></summary><p data-t="a5"></p><a class="faqmap" href="assets/photos/info/loi-di-tiec-cuoi.jpg?v=6777578d" target="_blank" rel="noopener"><img src="assets/photos/info/loi-di-tiec-cuoi.jpg?v=6777578d" alt="" loading="lazy" decoding="async"></a><p class="maplegend" data-t="a5l"></p></details>
         </div>
       </div>
     </div>
@@ -1215,7 +1225,7 @@ body{font:400 15.5px/1.75 var(--sans)}
   <!-- GỬI ẢNH (khách tải ảnh lên, Huy duyệt trong Google Sheet) -->
   <div class="pane" id="w-upload">
     <div class="inner up">
-      <div class="ttl"><h2 data-t="up.t">Chia sẻ ảnh và clip từ quý khách</h2></div>
+      <div class="ttl"><h2 data-t="up.t">Chia sẻ ảnh từ quý khách</h2></div>
       <p class="upintro" data-t="up.intro"></p>
       <form id="upform" novalidate>
         <label class="uf"><span data-t="up.name">Họ tên *</span><input name="name" required autocomplete="name" maxlength="80"></label>
@@ -1223,11 +1233,11 @@ body{font:400 15.5px/1.75 var(--sans)}
         <label class="uf"><span data-t="up.msg">Lời nhắn</span><textarea name="msg" rows="3" maxlength="500"></textarea></label>
         <p class="upreq" data-t="up.req">* Bắt buộc</p>
         <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="upfile"><input type="file" id="upfiles" accept="image/*,video/*" multiple><span class="upbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M21 16l-5.2-5.2a1 1 0 0 0-1.4 0L5 20"/></svg><span data-t="up.pick">Chọn ảnh hoặc clip</span></span><span class="upsel" id="upsel"></span></label>
+        <label class="upfile"><input type="file" id="upfiles" accept="image/*" multiple><span class="upbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M21 16l-5.2-5.2a1 1 0 0 0-1.4 0L5 20"/></svg><span data-t="up.pick">Chọn ảnh</span></span><span class="upsel" id="upsel"></span></label>
         <p class="uplim" data-t="up.lim"></p>
         <label class="upok"><input type="checkbox" name="ok"><span data-t="up.ok"></span></label>
         <div class="upbtns"><button class="pill upgo" type="submit"><span data-t="up.go">Gửi ảnh</span> →</button><button class="pill upsee" type="button" data-w="photos" data-ptab="wed"><span data-t="up.see">Xem Ảnh từ khách</span> →</button></div>
-        <div class="upring" id="upring" hidden><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="trk" cx="60" cy="60" r="52"/><circle class="bar" id="upbar" cx="60" cy="60" r="52"/></svg><div class="upnum"><b id="uppct">0%</b><small id="upcnt"></small></div></div>
+        <div class="upov" id="upov" hidden><div class="upring" id="upring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="trk" cx="60" cy="60" r="52"/><circle class="bar" id="upbar" cx="60" cy="60" r="52"/></svg><div class="upnum"><b id="uppct">0%</b><small id="upcnt"></small></div></div></div>
         <p class="upmsg" id="upmsg" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -1383,8 +1393,7 @@ var T={
 "d.cap":["Tiệc cưới · Thứ Ba 29.12","Reception · Tuesday 29.12","Réception · mardi 29.12"],
 "d.h":["17:30, Khách sạn Lotte Sài Gòn","5:30 PM, Lotte Hotel Saigon","17h30, hôtel Lotte Saïgon"],
 "d.garden":["Sân vườn tầng trệt","Ground-floor garden","Jardin du rez-de-chaussée"],
-"d.tolt":["Tới Lịch Trình","See the schedule","Voir le programme"],
-"d.tohd":["Tới Hỏi Đáp","Go to the FAQ","Voir la FAQ"],
+"d.tolt":["Lịch Trình","Schedule","Programme"],
 "d.note":["Bản đồ minh họa","Illustrated map","Carte illustrée"],
 "d.gm":["Mở Google Maps","Open in Google Maps","Ouvrir dans Google Maps"],
 "m.river":["Sông Sài Gòn","Saigon River","Rivière de Saïgon"],
@@ -1410,8 +1419,6 @@ var T={
 "td.cap":["Đang hoàn thiện cùng khách sạn","Being finalised with the hotel","En cours de finalisation avec l’hôtel"],
 "td.1":["Khai vị","Starters","Entrées"],"td.2":["Món chính","Main course","Plat principal"],"td.3":["Tráng miệng","Dessert","Dessert"],
 "td.soon":["Sẽ cập nhật","Coming soon","À venir"],
-"q1":["Tiệc cưới tổ chức ở đâu?","Where is the reception?","Où a lieu la réception ?"],
-"a1":["Sân vườn tầng trệt, Khách sạn Lotte Sài Gòn, 2A-4A Tôn Đức Thắng, Phường Sài Gòn, TP. Hồ Chí Minh. Xem bản đồ ở mục Chi tiết.","In the ground-floor garden of Lotte Hotel Saigon, 2A-4A Tôn Đức Thắng, Saigon Ward, Ho Chi Minh City. See the map under Details.","Dans le jardin du rez-de-chaussée de l’hôtel Lotte Saïgon, 2A-4A Tôn Đức Thắng, quartier de Saïgon, Hô Chi Minh-Ville. Voir la carte dans Détails."],
 "q2":["Mấy giờ nên có mặt?","What time should I arrive?","À quelle heure arriver ?"],
 "a2":["Tiệc bắt đầu đón khách lúc 17:30, Thứ Ba 29.12.2026. Quý khách đến sớm một chút để trò chuyện, “thưởng” hoa, nhâm nhi cocktails và chụp hình cùng cô dâu chú rể nhé.","Guests are welcomed from 5:30 PM on Tuesday, 29 December 2026. Come a little early to chat, admire the flowers, sip a cocktail and take photos with the bride and groom.","L’accueil commence à 17h30, le mardi 29 décembre 2026. Venez un peu en avance pour discuter, admirer les fleurs, siroter un cocktail et prendre des photos avec les mariés."],
 "q3":["Nên mặc gì?","What should I wear?","Quelle tenue porter ?"],
@@ -1436,29 +1443,30 @@ var T={
 "lb.map":["Kéo để xem các phần khác của bản đồ","Drag to explore the map","Faites glisser pour explorer la carte"],
 "b.close":["Đóng","Close","Fermer"],
 "a4l":["Chú thích sơ đồ: Motorbike parking = bãi giữ xe máy · Car parking = bãi giữ xe ô tô · Main Entrance = cổng chính · City Entrance = lối vào phía trung tâm thành phố.","","Légende : Motorbike parking = parking motos · Car parking = parking voitures · Main Entrance = entrée principale · City Entrance = entrée côté centre-ville."],
-"up.t":["Chia sẻ ảnh và clip từ quý khách","Share Your Photos & Clips","Partagez vos photos et vidéos"],
-"up.intro":["Quý khách có ảnh hay clip đẹp trong đám cưới, hãy gửi cho Huy & Trang nhé. Khi được chọn, ảnh sẽ hiện trong mục Ảnh từ khách của album Tiệc cưới và quý khách sẽ nhận được email thông báo.","Have lovely photos or clips from the wedding? Please send them to Huy & Trang. Once selected, they’ll appear under From our guests in the Wedding album and you’ll receive an email.","Vous avez de belles photos ou vidéos du mariage ? Envoyez-les à Huy & Trang. Une fois sélectionnées, elles apparaîtront dans la rubrique Photos de nos invités de l’album Mariage et vous recevrez un e-mail."],
+"up.t":["Chia sẻ ảnh từ quý khách","Share Your Photos","Partagez vos photos"],
+"up.intro":["Quý khách có ảnh đẹp trong đám cưới, hãy gửi cho Huy & Trang nhé. Khi được chọn, ảnh sẽ hiện trong mục Ảnh từ khách của album Tiệc cưới và quý khách sẽ nhận được email thông báo.","Have lovely photos from the wedding? Please send them to Huy & Trang. Once selected, they’ll appear under From our guests in the Wedding album and you’ll receive an email.","Vous avez de belles photos du mariage ? Envoyez-les à Huy & Trang. Une fois sélectionnées, elles apparaîtront dans la rubrique Photos de nos invités de l’album Mariage et vous recevrez un e-mail."],
 "up.name":["Họ tên *","Your name *","Votre nom *"],
 "up.req":["* Bắt buộc","* Required","* Obligatoire"],
 "up.eName":["Quý khách vui lòng nhập họ tên.","Please enter your name.","Veuillez saisir votre nom."],
 "up.see":["Xem Ảnh từ khách","See guests’ photos","Voir les photos des invités"],
+"up.seem":["Ảnh từ khách","Guests’ photos","Photos des invités"],
 "up.email":["Email *","Email *","E-mail *"],
 "up.msg":["Lời nhắn","Message","Message"],
-"up.pick":["Chọn ảnh hoặc clip","Choose photos or clips","Choisir photos ou vidéos"],
-"up.none":["Chưa chọn tệp nào","No files chosen","Aucun fichier choisi"],
-"up.sel":["Đã chọn {n} tệp","{n} file(s) chosen","{n} fichier(s) choisi(s)"],
-"up.lim":["Tối đa 20 tệp mỗi lần · mỗi clip tối đa 35 MB","Up to 20 files at a time · clips up to 35 MB each","Jusqu’à 20 fichiers à la fois · vidéos de 35 Mo maximum"],
-"up.ok":["Tôi đồng ý để Huy & Trang đăng ảnh/clip này lên website sau khi duyệt.","I agree that Huy & Trang may post these photos/clips on the website after review.","J’accepte que Huy & Trang publient ces photos/vidéos sur le site après validation."],
+"up.pick":["Chọn ảnh","Choose photos","Choisir des photos"],
+"up.none":["Chưa chọn ảnh nào","No photos chosen","Aucune photo choisie"],
+"up.sel":["Đã chọn {n} ảnh","{n} photo(s) chosen","{n} photo(s) choisie(s)"],
+"up.lim":["Tối đa 20 ảnh mỗi lần","Up to 20 photos at a time","Jusqu’à 20 photos à la fois"],
+"up.ok":["Tôi đồng ý để Huy & Trang đăng ảnh này lên website sau khi duyệt.","I agree that Huy & Trang may post these photos on the website after review.","J’accepte que Huy & Trang publient ces photos sur le site après validation."],
 "up.go":["Gửi ảnh","Send","Envoyer"],
 "up.eEmail":["Quý khách vui lòng nhập email hợp lệ.","Please enter a valid email address.","Veuillez saisir une adresse e-mail valide."],
-"up.eFiles":["Quý khách chưa chọn ảnh hoặc clip nào.","Please choose at least one photo or clip.","Veuillez choisir au moins une photo ou vidéo."],
-"up.eMany":["Mỗi lần gửi tối đa 20 tệp.","You can send up to 20 files at a time.","Vous pouvez envoyer 20 fichiers maximum à la fois."],
+"up.eFiles":["Quý khách chưa chọn ảnh nào.","Please choose at least one photo.","Veuillez choisir au moins une photo."],
+"up.eMany":["Mỗi lần gửi tối đa 20 ảnh.","You can send up to 20 photos at a time.","Vous pouvez envoyer 20 photos maximum à la fois."],
 "up.eOk":["Quý khách vui lòng tick vào ô đồng ý.","Please tick the consent box.","Veuillez cocher la case d’accord."],
-"up.eBig":["{f}: clip lớn hơn 35 MB, quý khách gửi clip ngắn hơn nhé.","{f}: larger than 35 MB, please send a shorter clip.","{f} : plus de 35 Mo, merci d’envoyer une vidéo plus courte."],
-"up.eType":["{f}: không phải ảnh hoặc clip.","{f}: not a photo or video.","{f} : ni une photo ni une vidéo."],
+"up.eBig":["{f}: ảnh lớn hơn 35 MB, quý khách chọn ảnh khác nhé.","{f}: larger than 35 MB, please choose another photo.","{f} : plus de 35 Mo, merci de choisir une autre photo."],
+"up.eType":["{f}: không phải ảnh. Hiện tại chỉ nhận ảnh thôi nhé.","{f}: not a photo. Only photos can be shared.","{f} : ce n’est pas une photo. Seules les photos sont acceptées."],
 "up.sending":["Đang gửi {i}/{n}…","Sending {i} of {n}…","Envoi {i} sur {n}…"],
-"up.done":["Cảm ơn quý khách! Tụi mình đã nhận {n} tệp. Khi ảnh được duyệt, quý khách sẽ nhận được email báo.","Thank you! We’ve received {n} file(s). You’ll get an email once they’re approved.","Merci ! Nous avons bien reçu {n} fichier(s). Vous recevrez un e-mail dès leur validation."],
-"up.part":["Đã gửi {ok}/{n} tệp. Những tệp bị lỗi, quý khách thử gửi lại sau nhé.","{ok} of {n} files sent. Please try the failed ones again later.","{ok} fichier(s) sur {n} envoyé(s). Réessayez plus tard pour les autres."],
+"up.done":["Cảm ơn quý khách! Tụi mình đã nhận {n} ảnh. Khi ảnh được duyệt, quý khách sẽ nhận được email báo.","Thank you! We’ve received {n} photo(s). You’ll get an email once they’re approved.","Merci ! Nous avons bien reçu {n} photo(s). Vous recevrez un e-mail dès leur validation."],
+"up.part":["Đã gửi {ok}/{n} ảnh. Những ảnh bị lỗi, quý khách thử gửi lại sau nhé.","{ok} of {n} photos sent. Please try the failed ones again later.","{ok} photo(s) sur {n} envoyée(s). Réessayez plus tard pour les autres."],
 "up.fail":["Chưa gửi được. Quý khách kiểm tra mạng rồi thử lại nhé.","Couldn’t send. Please check your connection and try again.","Échec de l’envoi. Vérifiez votre connexion et réessayez."],
 "a5l":["","Map key: KHU VỰC TỔ CHỨC TIỆC CƯỚI NGOÀI TRỜI = outdoor reception area · KHU VỰC HỒ BƠI = pool · Sảnh chờ = waiting lounge · Sảnh đón khách = reception lobby · Cầu thang = stairs.","Légende : KHU VỰC TỔ CHỨC TIỆC CƯỚI NGOÀI TRỜI = espace de réception extérieur · KHU VỰC HỒ BƠI = piscine · Sảnh chờ = salon d’attente · Sảnh đón khách = hall d’accueil · Cầu thang = escalier."]
 };
@@ -1566,6 +1574,15 @@ var LB=(function(){
     stage.classList.add("zoom");img.style.width=w+"px";var h=w*r.height/r.width;
     stage.scrollLeft=fx*w-stage.clientWidth/2;stage.scrollTop=fy*h-stage.clientHeight/2}
   addEventListener("popstate",function(){if(isOpen)close(true)});
+  var sw=null;
+  stage.addEventListener("touchstart",function(e){if(e.touches.length!==1||stage.classList.contains("zoom")||items[i].t==="node"){sw=null;return}sw={x:e.touches[0].clientX,y:e.touches[0].clientY,dy:0,on:false}},{passive:true});
+  stage.addEventListener("touchmove",function(e){if(!sw)return;var dx=e.touches[0].clientX-sw.x,dy=e.touches[0].clientY-sw.y;
+    if(!sw.on){if(dy>12&&dy>Math.abs(dx)*1.2)sw.on=true;else if(Math.abs(dx)>12){sw=null;return}else return}
+    e.preventDefault();sw.dy=Math.max(0,dy);var k=Math.min(1,sw.dy/320),ch=stage.firstElementChild;
+    if(ch){ch.style.transition="none";ch.style.transform="translateY("+sw.dy+"px) scale("+(1-k*.25)+")"}box.style.background="rgba(12,11,10,"+(1-k*.85)+")"},{passive:false});
+  stage.addEventListener("touchend",function(){if(!sw||!sw.on){sw=null;return}var ch=stage.firstElementChild,dy=sw.dy;sw=null;moved=true;
+    if(dy>110){if(ch){ch.style.transition="transform .2s ease,opacity .2s ease";ch.style.transform="translateY("+(dy+160)+"px) scale(.7)";ch.style.opacity="0"}setTimeout(function(){box.style.background="";close()},180)}
+    else{if(ch){ch.style.transition="transform .25s ease";ch.style.transform=""}box.style.transition="background .25s";box.style.background="";setTimeout(function(){box.style.transition=""},260)}});
   $("#lbx").addEventListener("click",function(){close()});
   $("#lbprev").addEventListener("click",function(){go(-1)});$("#lbnext").addEventListener("click",function(){go(1)});
   stage.addEventListener("pointerdown",function(e){down={x:e.clientX,y:e.clientY};moved=false});
@@ -1644,7 +1661,7 @@ function mgLang(){}
     var r=hero.getBoundingClientRect(),p=cl(-r.top/Math.max(1,r.height-innerHeight)),e=p*p*(3-2*p),W=innerWidth,H=innerHeight;
     var mv=[[-.42*W,-.35*H,-26],[0,-.55*H,8],[.42*W,.35*H,24]];
     pols.forEach(function(el,i){var b=BASE[i],m=mv[i],px=mx*(i===1?8:16)*(i===0?-1:1),py=my*(i===1?6:12);
-      el.style.transform="translate("+(m[0]*e+px)+"px,"+(m[1]*e+py)+"px) rotate("+(b[0]+m[2]*e)+"deg)";el.style.opacity=1-cl((p-.45)/.4)});
+      el.style.transform="translate("+(m[0]*e+px)+"px,"+(m[1]*e+py)+"px) rotate("+(W>760?0:b[0]+m[2]*e)+"deg)";el.style.opacity=1-cl((p-.45)/.4)});
     tt.style.transform="translateY(-46%) scale("+(1+e*.25)+")";tt.style.opacity=1-cl(p*1.6);
     arc.style.transform="rotate("+(p*140)+"deg)";arc.style.opacity=1-cl(p*1.4);
     btn.style.opacity=1-cl(p*5);btn.style.pointerEvents=p>.15?"none":"auto";
@@ -1736,7 +1753,7 @@ function ptab(k){
   var t=$("#wedding").offsetTop;if(scrollY>t)window.scrollTo(0,t);
   sizeStrips();onScroll();
 }
-function stab(k){
+function stab(k){if(k==="hoidap")k="chitiet";
   NS.s=k;setTimeout(upPlace,0);
   $$("#stabs button").forEach(function(b){b.classList.toggle("on",b.dataset.s===k)});
   $$(".sp").forEach(function(p){p.classList.toggle("on",p.id==="s-"+k)});
@@ -2149,7 +2166,7 @@ var G=window.G=(function(){
     wtab(b.w||"photos");if(b.w==="photos"&&b.p)ptab(b.p);else if(b.w==="damcuoi"&&b.s)stab(b.s);pushNav();setTimeout(function(){window.scrollTo(0,b.y)},60)});
   upTip=function(){if(tab.classList.contains("on"))return;tab.classList.add("tip");clearTimeout(tipT);tipT=setTimeout(tipOff,5000);setTimeout(function(){addEventListener("scroll",tipOff,{passive:true,once:true})},400)};
   tab.hidden=false;
-  var form=$("#upform"),inp=$("#upfiles"),sel=$("#upsel"),msg=$("#upmsg"),ring=$("#upring"),bar=$("#upbar"),pct=$("#uppct"),cnt=$("#upcnt"),go=$(".upgo",form);
+  var form=$("#upform"),inp=$("#upfiles"),sel=$("#upsel"),msg=$("#upmsg"),ring=$("#upring"),ov=$("#upov"),bar=$("#upbar"),pct=$("#uppct"),cnt=$("#upcnt"),go=$(".upgo",form);
   var RG={done:0,n:1,t0:0,shown:0,raf:0};
   function ringDraw(){var cur=RG.done<RG.n?.9*(1-Math.exp(-(performance.now()-RG.t0)/5000)):0,target=Math.min(1,(RG.done+cur)/RG.n);
     RG.shown+=(target-RG.shown)*.12;if(target>=1&&RG.shown>.995)RG.shown=1;bar.style.strokeDashoffset=(326.7*(1-RG.shown)).toFixed(1);pct.textContent=Math.round(RG.shown*100)+"%";
@@ -2162,7 +2179,12 @@ var G=window.G=(function(){
   function selText(){var n=PICK.length;sel.textContent=n?fmt("up.sel",{n:n}):tr("up.none")}
   upLang=function(){selText();if(last)say(fmt(last[0],last[1]),last[2])};
   selText();
-  inp.addEventListener("change",function(){[].slice.call(inp.files).forEach(function(f){if(!PICK.some(function(g){return g.name===f.name&&g.size===f.size&&g.lastModified===f.lastModified}))PICK.push(f)});inp.value="";selText();last=null;say("")});
+  function isImg(f){return /^image\//.test(f.type)||/\.(heic|heif|jpe?g|png|webp|gif)$/i.test(f.name)}
+  inp.addEventListener("change",function(){var big=null,many=false,bad=null;last=null;say("");
+    [].slice.call(inp.files).forEach(function(f){if(PICK.some(function(g){return g.name===f.name&&g.size===f.size&&g.lastModified===f.lastModified}))return;
+      if(!isImg(f)){bad=bad||f.name;return}if(f.size>MAXV){big=big||f.name;return}if(PICK.length>=MAXN){many=true;return}PICK.push(f)});
+    inp.value="";selText();
+    if(bad){last=["up.eType",{f:bad},"err"];say(fmt("up.eType",{f:bad}),"err")}else if(big){last=["up.eBig",{f:big},"err"];say(fmt("up.eBig",{f:big}),"err")}else if(many){last=["up.eMany",{},"err"];say(tr("up.eMany"),"err")}});
   /* photos are re-drawn at max 2560 px as JPEG: smaller uploads, and the GPS location stored inside the photo is dropped */
   function shrink(f){return new Promise(function(res){
     if(!/^image\//.test(f.type)||/gif|svg/.test(f.type)){res(f);return}
@@ -2186,19 +2208,20 @@ var G=window.G=(function(){
     if(files.length>MAXN)return err("up.eMany");
     if(!form.ok.checked)return err("up.eOk");
     for(var j=0;j<files.length;j++){var f=files[j];
-      if(!/^(image|video)\//.test(f.type)&&!/\.(heic|heif|jpe?g|png|webp|mp4|mov|m4v)$/i.test(f.name))return err("up.eType",{f:f.name});
-      if(!/^image\//.test(f.type)&&f.size>MAXV)return err("up.eBig",{f:f.name})}
+      if(!isImg(f))return err("up.eType",{f:f.name});
+      if(f.size>MAXV)return err("up.eBig",{f:f.name})}
     go.disabled=true;var ok=0,n=files.length;
-    cancelAnimationFrame(RG.raf);RG.done=0;RG.n=n;RG.t0=performance.now();RG.shown=0;ring.className="upring";ring.hidden=false;cnt.textContent="0/"+n;RG.raf=requestAnimationFrame(ringDraw);
+    cancelAnimationFrame(RG.raf);RG.done=0;RG.n=n;RG.t0=performance.now();RG.shown=0;ring.className="upring";ov.classList.remove("out");ov.hidden=false;cnt.textContent="0/"+n;RG.raf=requestAnimationFrame(ringDraw);
     var base={name:String(fd.get("name")||"").trim(),email:email,msg:String(fd.get("msg")||"").trim(),lang:lang,ok:true,website:String(fd.get("website")||""),batch:Date.now().toString(36)+Math.random().toString(36).slice(2,8),n:n};
     var chain=Promise.resolve();
     files.forEach(function(f,j){chain=chain.then(function(){last=["up.sending",{i:j+1,n:n},""];say(fmt("up.sending",{i:j+1,n:n}));
       return shrink(f).then(function(g){if(g.size>MAXV*1.1)throw 0;return b64(g).then(function(d){var o={};for(var k in base)o[k]=base[k];
-          o.fileName=g.name;o.i=j+1;o.mime=g.type||(/\.(mov|mp4|m4v)$/i.test(g.name)?"video/mp4":"image/jpeg");o.data=d;return post(o)})})
+          o.fileName=g.name;o.i=j+1;o.mime=g.type||"image/jpeg";o.data=d;return post(o)})})
         .then(function(r){if(r&&r.ok)ok++;else throw 0})
         .catch(function(){})
         .then(function(){RG.done=j+1;RG.t0=performance.now();cnt.textContent=(j+1)+"/"+n;cancelAnimationFrame(RG.raf);RG.raf=requestAnimationFrame(ringDraw)})})});
     chain.then(function(){go.disabled=false;ring.classList.add(ok===n?"ok":"bad");cnt.textContent=ok+"/"+n;
+      (function wait(){if(RG.shown<1){setTimeout(wait,100);return}setTimeout(function(){ov.classList.add("out");setTimeout(function(){ov.hidden=true},620)},1000)})();
       if(ok===n){last=["up.done",{n:n},"ok"];form.reset();PICK=[];selText()}else if(ok)last=["up.part",{ok:ok,n:n},"err"];else last=["up.fail",{},"err"];
       say(fmt(last[0],last[1]),last[2])})});
 })();
