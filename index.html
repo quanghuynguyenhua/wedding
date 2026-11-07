@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Quang Huy &amp; Thanh Trang</title>
-<meta name="description" content="Báo hỷ Quang Huy &amp; Thanh Trang · Tiệc cưới 17:30, Thứ Ba 29.12.2026 · Khách sạn Lotte Sài Gòn. Wedding of Quang Huy &amp; Thanh Trang · 29.12.2026 · Lotte Hotel Saigon.">
+<meta name="description" content="&#8203;">
 <meta property="og:title" content="Quang Huy &amp; Thanh Trang · A journey of love">
 <meta property="og:description" content="&#8203;">
 <meta property="og:image" content="https://wedding.huytrang.info/assets/og-image.jpg?v=2">
@@ -387,7 +387,7 @@ img[data-src]{width:100%;display:block;background:var(--soft);max-width:100%}
 .chap{padding:140px var(--gutR) 40px var(--gut);text-align:center}
 .chap h2{font-size:clamp(54px,12vw,170px);text-transform:uppercase;line-height:.9;color:transparent;-webkit-text-stroke:1px var(--ink)}
 .chap p{color:var(--mute);margin-top:18px}
-.pw-end{text-align:center;padding:140px var(--gutR) 60px var(--gut);display:flex;flex-direction:column;align-items:center;gap:22px}
+.pw-end{text-align:center;padding:44px var(--gutR) 60px var(--gut);display:flex;flex-direction:column;align-items:center;gap:22px}
 .pw-end p{font:italic 400 clamp(30px,5vw,56px)/1.15 var(--serif);max-width:16ch}
 .bw{filter:grayscale(1)}
 
@@ -526,6 +526,8 @@ img[data-src]{width:100%;display:block;background:var(--soft);max-width:100%}
 .mapbox .pill{margin-top:18px}
 .mapbtn{text-align:center}
 .dfaq{margin-top:12px;text-align:left}.dfaq .ttl{padding-block:28px 18px}
+.dfaq .ttl h2{font-size:clamp(18px,3.2vw,28px);letter-spacing:.14em}
+@media (min-width:761px){.dfaq .ttl h2{font-size:clamp(18px,1.8vw,24px)}}
 @media (max-width:760px){.mapbtn .pill{width:min(290px,100%);justify-content:center;box-sizing:border-box}}
 .maplink{cursor:pointer}.maplink:hover rect{fill:#fff6ef}
 .maptop{margin:0 0 34px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}.maptop .pill{margin-top:0}
@@ -586,9 +588,13 @@ img[data-src]{width:100%;display:block;background:var(--soft);max-width:100%}
 .mg-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 .mg-title{position:absolute;left:0;right:0;top:50%;margin:0;text-align:center;font:400 clamp(60px,13.5vw,230px)/.9 "Quicksand",var(--sans);letter-spacing:-.02em;color:var(--mgink);z-index:4;pointer-events:none;white-space:nowrap;transform:translateY(-46%)}
 .mg-title span{font-weight:400}
-.mg-br,.mg-capm{display:none}
-.mg-capm{font:500 12px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;margin-top:16px}
-@media (max-width:760px){.mg-br{display:inline}.mg-capm{display:block}.mg-arc text{display:none}.mg-arc{top:40%}.mg-title{font-size:23vw;line-height:1.02;white-space:normal}}
+.mg-rev{position:absolute;inset:0;z-index:6;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none}
+.mg-rev .mg-head{padding:0 16px}
+/* the photos slide up over the end of the heart, so there is no empty screen after the date */
+.mg-gal{margin-top:-35vh;background:transparent!important;z-index:7}
+.mg-capm{display:none}
+.mg-capm{font:500 12px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;margin-top:10px}
+@media (max-width:760px){.mg-capm{display:block}.mg-arc text{display:none}.mg-arc{top:40%}.mg-title{font-size:14.5vw;line-height:1.08;white-space:normal}}
 .mg-arc{position:absolute;left:50%;top:50%;width:min(86vh,92vw);height:min(86vh,92vw);margin:calc(min(86vh,92vw)/-2) 0 0 calc(min(86vh,92vw)/-2);color:var(--mgink);z-index:0;overflow:visible}
 .mg-arc text{font:500 26px/1 var(--sans);letter-spacing:.18em;fill:currentColor}
 .mg-pol{position:absolute;margin:0;will-change:transform}
@@ -626,7 +632,7 @@ img[data-src]{width:100%;display:block;background:var(--soft);max-width:100%}
 .mg-end p{font:italic 400 clamp(26px,4vw,46px)/1.2 var(--serif);color:#a9583a;max-width:18ch}
 @media (max-width:760px){
   .mg-hero{height:200vh}
-  .mg-title{top:40%}
+  .mg-title{top:38%}
   .mg-pol.p1{left:5%;top:9%}.mg-pol.p3{right:5%;top:13%;bottom:auto}.mg-pol.p2{top:64%}
   .mg-blk{flex-wrap:wrap;padding:5vh 12px;gap:12px}
   .mg-trio .mg-ph,.mg-pair .mg-ph,.mg-pair .mg-ph:nth-child(3),.mg-scat .mg-ph{width:46%;margin:0}
@@ -722,7 +728,7 @@ body{font:400 15.5px/1.75 var(--sans)}
 .civ h2{font-size:clamp(28px,4.9vw,64.4px)}
 .civsoon{font:italic 400 clamp(12.6px,1.54vw,16.8px)/1.4 var(--serif)}
 .mapbox .mnote{font-size:12.5px}
-.mg-title{font:400 clamp(42px,9.45vw,161px)/.9 "Quicksand",var(--sans)}
+.mg-title{font:400 clamp(40px,6.2vw,120px)/1.05 "Quicksand",var(--sans)}
 .mg-capm{font:500 10.6px/1 var(--sans)}
 .mg-arc text{font:500 18.2px/1 var(--sans)}
 .mg-btn,.mg-btn2{font:500 13px/1 var(--sans)}
@@ -1176,7 +1182,7 @@ body{font:400 15.5px/1.75 var(--sans)}
       <div class="feat"><div class="side l rv"><img class="bw" data-src="assets/photos/prewedding/HT0513.webp" alt="" style="aspect-ratio:0.6669"></div><div class="mid"><img data-src="assets/photos/prewedding/HT0083.webp" alt="" style="aspect-ratio:1.4995"></div><div class="side r rv"><img class="bw" data-src="assets/photos/prewedding/HT0595.webp" alt="" style="aspect-ratio:0.6669"></div></div><div class="pst flip"><figure class="a rv"><img data-src="assets/photos/prewedding/HT0660.webp" alt="" style="aspect-ratio:0.6669"></figure><figure class="b rv"><img data-src="assets/photos/prewedding/HT0321.webp" alt="" style="aspect-ratio:0.6669"></figure></div><section class="hs"><div class="hs-pin"><div class="hs-track"><figure><img data-src="assets/photos/prewedding/HT0694.webp" alt="" style="aspect-ratio:1.4995"></figure><figure><img data-src="assets/photos/prewedding/HT0710.webp" alt="" style="aspect-ratio:0.6669"></figure><figure><img data-src="assets/photos/prewedding/HT0725.webp" alt="" style="aspect-ratio:1.4995"></figure><figure><img data-src="assets/photos/prewedding/HT0923.webp" alt="" style="aspect-ratio:0.6669"></figure><figure><img data-src="assets/photos/prewedding/HT0958.webp" alt="" style="aspect-ratio:0.6669"></figure><figure><img data-src="assets/photos/prewedding/HT1061.webp" alt="" style="aspect-ratio:0.6669"></figure><figure><img data-src="assets/photos/prewedding/HT1122.webp" alt="" style="aspect-ratio:0.6669"></figure></div></div></section><p class="pline rv" data-t="pw.l1"></p><div class="feat"><div class="side l rv"><img class="bw" data-src="assets/photos/prewedding/HT1613.webp" alt="" style="aspect-ratio:0.6669"></div><div class="mid"><img data-src="assets/photos/prewedding/HT0737.webp" alt="" style="aspect-ratio:1.4995"></div><div class="side r rv"><img class="bw" data-src="assets/photos/prewedding/HT1567.webp" alt="" style="aspect-ratio:0.6669"></div></div><div class="pst"><figure class="a rv"><img data-src="assets/photos/prewedding/HT1329.webp" alt="" style="aspect-ratio:0.6669"></figure><figure class="b rv"><img data-src="assets/photos/prewedding/HT1784.webp" alt="" style="aspect-ratio:1.4995"></figure></div><div class="ptrio"><figure class="rv"><img data-src="assets/photos/prewedding/HT1259.webp" alt="" style="aspect-ratio:0.6669"></figure><figure class="rv"><img data-src="assets/photos/prewedding/HT1372.webp" alt="" style="aspect-ratio:0.6669"></figure><figure class="rv"><img data-src="assets/photos/prewedding/HT1631.webp" alt="" style="aspect-ratio:0.6669"></figure></div><div class="feat"><div class="side l rv"><img class="bw" data-src="assets/photos/prewedding/HT1585.webp" alt="" style="aspect-ratio:0.6669"></div><div class="mid"><img data-src="assets/photos/prewedding/HT1152.webp" alt="" style="aspect-ratio:1.4995"></div><div class="side r rv"><img class="bw" data-src="assets/photos/prewedding/HT1694.webp" alt="" style="aspect-ratio:0.6669"></div></div><div class="pst flip"><figure class="a rv"><img data-src="assets/photos/prewedding/HT1745.webp" alt="" style="aspect-ratio:0.6669"></figure><figure class="b rv"><img data-src="assets/photos/prewedding/HT1680.webp" alt="" style="aspect-ratio:1.4995"></figure></div><figure class="pfull rv"><img data-src="assets/photos/prewedding/HT1779_b.webp" alt="" style="aspect-ratio:1.4981"></figure><section class="hs"><div class="hs-pin"><div class="hs-track"><figure><img data-src="assets/photos/prewedding/HT1095.webp" alt="" style="aspect-ratio:1.4995"></figure><figure><img data-src="assets/photos/prewedding/HT1411.webp" alt="" style="aspect-ratio:1.4995"></figure><figure><img data-src="assets/photos/prewedding/HT1638.webp" alt="" style="aspect-ratio:1.4995"></figure></div></div></section><p class="pline rv" data-t="pw.chapp"></p><div class="tennis" id="tennis"><div class="score" id="score"><div class="pl"><small>HUY</small><b id="sc1">0</b></div><div class="mid"><span class="ball" id="ball"></span><b id="scw" class="win">WIN</b></div><div class="pl"><small>TRANG</small><b id="sc2">0</b></div><p id="scl"></p></div><div class="pst"><figure class="a rv"><img data-src="assets/photos/prewedding/HT1891.webp" alt="" style="aspect-ratio:1.4995"></figure><figure class="b rv"><img data-src="assets/photos/prewedding/HT2025.webp" alt="" style="aspect-ratio:0.6669"></figure></div><div class="feat"><div class="side l rv"><img class="bw" data-src="assets/photos/prewedding/HT2297.webp" alt="" style="aspect-ratio:0.6669"></div><div class="mid"><img data-src="assets/photos/prewedding/HT1976.webp" alt="" style="aspect-ratio:1.4995"></div><div class="side r rv"><img class="bw" data-src="assets/photos/prewedding/HT2323.webp" alt="" style="aspect-ratio:0.6669"></div></div><div class="pst flip"><figure class="a rv"><img data-src="assets/photos/prewedding/HT2225.webp" alt="" style="aspect-ratio:0.6669"></figure><figure class="b rv"><img data-src="assets/photos/prewedding/HT2201.webp" alt="" style="aspect-ratio:1.4995"></figure></div><div class="feat"><div class="side l rv"><img class="bw" data-src="assets/photos/prewedding/HT2357.webp" alt="" style="aspect-ratio:0.6669"></div><div class="mid"><img data-src="assets/photos/prewedding/HT2167.webp" alt="" style="aspect-ratio:1.4995"></div><div class="side r rv"><img class="bw" data-src="assets/photos/prewedding/HT2334.webp" alt="" style="aspect-ratio:1.4995"></div></div><section class="hs"><div class="hs-pin"><div class="hs-track"><figure><img data-src="assets/photos/prewedding/HT2415.webp" alt="" style="aspect-ratio:1.4995"></figure><figure><img data-src="assets/photos/prewedding/HT2472.webp" alt="" style="aspect-ratio:1.4995"></figure><figure><img data-src="assets/photos/prewedding/HT2552.webp" alt="" style="aspect-ratio:1.4995"></figure><figure><img data-src="assets/photos/prewedding/photo_2026-10-18_21-19-49.webp" alt="" style="aspect-ratio:1.4981"></figure></div></div></section><figure class="pfull rv"><img data-src="assets/photos/prewedding/HT2654.webp" alt="" style="aspect-ratio:1.4995"></figure></div>
       <div class="pw-end">
         <p data-t="pw.end">Hẹn gặp bạn ngày 29.12</p>
-        <button class="pill" data-p="civil"><span data-t="pw.next">Tiếp theo: Lễ đăng ký kết hôn</span> →</button>
+        <button class="pill" data-p="civil"><span data-t="pw.next">Lễ đăng ký kết hôn</span> →</button>
       </div>
     </div>
 
@@ -1186,15 +1192,15 @@ body{font:400 15.5px/1.75 var(--sans)}
           <div class="mg-stage">
             <svg class="mg-arc" viewBox="0 0 1000 1000" aria-hidden="true"><path id="mgArcP" d="M 170 500 A 330 330 0 0 1 830 500" fill="none"/><path d="M 150 640 A 360 360 0 0 1 300 200" fill="none" stroke="currentColor" stroke-width="2" opacity=".35"/><path d="M 700 200 A 360 360 0 0 1 850 640" fill="none" stroke="currentColor" stroke-width="2" opacity=".35"/><path d="M 380 860 A 360 360 0 0 1 250 790" fill="none" stroke="currentColor" stroke-width="2" opacity=".35"/><text><textPath href="#mgArcP" startOffset="50%" text-anchor="middle">MONTRÉAL · 26.07.2025</textPath></text></svg>
             <figure class="mg-pol p1"><div class="mg-fr"><img alt=""></div></figure>
-            <h2 class="mg-title">Huy <span>&amp;</span><br class="mg-br"> Trang<small class="mg-capm">Montréal · 26.07.2025</small></h2>
+            <h2 class="mg-title"><span data-t="civ.t1">Lễ đăng ký</span><br><span data-t="civ.t2">kết hôn</span><small class="mg-capm">Montréal · 26.07.2025</small></h2>
             <figure class="mg-pol p2"><div class="mg-fr"><img alt=""></div></figure>
             <figure class="mg-pol p3"><div class="mg-fr"><img alt=""></div></figure>
             <button class="mg-btn" id="mgSee"><span data-t="civ.see">Xem album</span></button>
             <svg class="mg-circle" id="mgCircle" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 36C14 31.6 3 24.5 3 14.6 3 9 7.2 5 12 5c3.6 0 6.3 2 8 4.6C21.7 7 24.4 5 28 5c4.8 0 9 4 9 9.6C37 24.5 26 31.6 20 36z"/></svg>
+            <div class="mg-rev" id="mgRev"><div class="mg-head"><h3 class="mg-name mg-date">26.07.2025</h3><p class="mg-name mg-date mg-place" data-t="civ.h1">Tại tòa thị chính Montréal</p><p class="mg-sub" data-t="civ.h2">Cả hai ký giấy kết hôn</p></div></div>
           </div>
         </div>
         <div class="mg-gal" id="mgGal">
-          <div class="mg-head"><h3 class="mg-name mg-date">26.07.2025</h3><p class="mg-name mg-date mg-place" data-t="civ.h1">Tại tòa thị chính Montreal</p><p class="mg-sub" data-t="civ.h2">Cả hai ký giấy kết hôn</p></div>
           <div class="mg-flow" id="mgFlow"></div>
           <div class="mg-end"><p data-t="civ.end">Và rồi, một chương mới bắt đầu.</p><button class="mg-btn2" data-p="family"><span data-t="civ.next">Tiếp theo: Lễ gia tiên</span> →</button></div>
         </div>
@@ -1205,7 +1211,7 @@ body{font:400 15.5px/1.75 var(--sans)}
       <div class="b53grid"></div>
       <div class="b53bar"><button class="b53plus" aria-label="Danh mục" aria-expanded="false"><i></i><i></i></button><span class="b53cur"></span></div>
       <div class="b53ov" role="dialog" aria-modal="true" hidden>
-        <ul><li><button data-c="bw" data-t="b.bw"></button></li><li><button data-c="bg" data-t="b.bg"></button></li><li><button data-c="ff" data-t="b.ff"></button></li><li><button data-c="det" data-t="b.det"></button></li></ul>
+        <ul><li><button data-c="bw" data-t="b.bw"></button></li><li><button data-c="bg" data-t="b.bg"></button></li><li><button data-c="ff" data-t="b.ff"></button></li><li><button data-c="det" data-t="b.det"></button></li><li><button data-c="more" data-t="b.more"></button></li><li><button data-c="fromguests" data-t="b.fromguests"></button></li></ul>
         <button class="b53x" aria-label="Đóng"><i></i><i></i></button>
       </div>
     </div>
@@ -1299,7 +1305,9 @@ var T={
 "cat.p3":["Trái ngược hoàn toàn là cậu em Danou (8 tuổi) cực kỳ tình cảm và đặc biệt mê món thịt kho. Cậu chàng rất hay muốn gần gũi với chị gái Bébé nhưng lần nào cũng bị từ chối phũ phàng, nên hay tủi thân và phải kiếm Trang để “an ủi tinh thần” mỗi đêm. Dù vậy, lúc Danou tình cảm nhất vẫn là lúc... tới bữa ăn và nghe thấy mùi thịt!","Her total opposite is her little brother Danou (8), extremely affectionate and especially crazy about braised pork. He keeps trying to snuggle up to his big sister Bébé but gets turned down flat every single time, so he sulks and goes looking for Trang for some “emotional support” every night. Still, Danou is at his most affectionate… at mealtime, the moment he smells meat!","Tout l’inverse de son petit frère Danou (8 ans), ultra câlin et fou de porc caramélisé. Il essaie sans cesse de se rapprocher de sa grande sœur Bébé, mais se fait rembarrer sans pitié à chaque fois ; alors il boude et va chercher Trang pour un « soutien moral » chaque soir. Cela dit, Danou n’est jamais aussi câlin… qu’à l’heure du repas, dès qu’il sent l’odeur de la viande !"],
 "as.on":["Tắt tự cuộn","Stop auto-scroll","Arrêter le défilement"],
 "as.off":["Bật tự cuộn","Start auto-scroll","Lancer le défilement"],
-"civ.h1":["Tại tòa thị chính Montreal","At Montreal City Hall","Au Palais de justice"],
+"civ.t1":["Lễ đăng ký","Civil","Mariage"],
+"civ.t2":["kết hôn","Ceremony","civil"],
+"civ.h1":["Tại tòa thị chính Montréal","At Montréal City Hall","Au Palais de justice de Montréal"],
 "civ.h2":["Cả hai ký giấy kết hôn","The two of us signed our marriage papers","Nous avons signé notre acte de mariage"],
 "st.t":["Câu chuyện của chúng mình","Our story","Notre histoire"],
 "st.go":["Đến đám cưới","To the wedding","Vers le mariage"],
@@ -1380,7 +1388,7 @@ var T={
 "pw.l1":["Nơi mọi thứ bắt đầu, năm 2010.","Where it all began, in 2010.","Là où tout a commencé, en 2010."],
 "pw.chapp":["Love – Love. Tỉ số đẹp nhất của một trận đấu.","Love – Love. The best score in any match.","Love – Love. Le plus beau score d’un match."],
 "pw.end":["Hẹn gặp bạn ngày 29.12","See you on 29.12","Rendez-vous le 29.12"],
-"pw.next":["Tiếp theo: Lễ đăng ký kết hôn","Next: Civil Ceremony","Suivant : Mariage civil"],
+"pw.next":["Lễ đăng ký kết hôn","Civil Ceremony","Mariage civil"],
 "pw.btn":["Xem thông tin tiệc cưới","Reception details","Détails de la réception"],
 "d.date2":["Thứ Ba, 29 tháng 12 năm 2026, 17H30","Tuesday, December 29, 2026, 5:30 PM","Mardi 29 décembre 2026, 17 h 30"],
 "d.ow":["Tiệc cưới của Huy & Trang","The Wedding of Huy & Trang","Le mariage de Huy & Trang"],
@@ -1444,7 +1452,7 @@ var T={
 "b.close":["Đóng","Close","Fermer"],
 "a4l":["Chú thích sơ đồ: Motorbike parking = bãi giữ xe máy · Car parking = bãi giữ xe ô tô · Main Entrance = cổng chính · City Entrance = lối vào phía trung tâm thành phố.","","Légende : Motorbike parking = parking motos · Car parking = parking voitures · Main Entrance = entrée principale · City Entrance = entrée côté centre-ville."],
 "up.t":["Chia sẻ ảnh từ quý khách","Share Your Photos","Partagez vos photos"],
-"up.intro":["Quý khách có ảnh đẹp trong đám cưới, hãy gửi cho Huy & Trang nhé. Khi được chọn, ảnh sẽ hiện trong mục Ảnh từ khách của album Tiệc cưới và quý khách sẽ nhận được email thông báo.","Have lovely photos from the wedding? Please send them to Huy & Trang. Once selected, they’ll appear under From our guests in the Wedding album and you’ll receive an email.","Vous avez de belles photos du mariage ? Envoyez-les à Huy & Trang. Une fois sélectionnées, elles apparaîtront dans la rubrique Photos de nos invités de l’album Mariage et vous recevrez un e-mail."],
+"up.intro":["Quý khách có ảnh đẹp trong đám cưới, hãy gửi cho Huy & Trang nhé. Khi được chọn, ảnh sẽ hiện trong mục Ảnh từ khách của album Lễ gia tiên hoặc Tiệc cưới và quý khách sẽ nhận được email thông báo.","Have lovely photos from the wedding? Please send them to Huy & Trang. Once selected, they’ll appear under From our guests in the Family Ceremony or Wedding album and you’ll receive an email.","Vous avez de belles photos du mariage ? Envoyez-les à Huy & Trang. Une fois sélectionnées, elles apparaîtront dans la rubrique Photos de nos invités de l’album Cérémonie familiale ou Mariage et vous recevrez un e-mail."],
 "up.name":["Họ tên *","Your name *","Votre nom *"],
 "up.req":["* Bắt buộc","* Required","* Obligatoire"],
 "up.eName":["Quý khách vui lòng nhập họ tên.","Please enter your name.","Veuillez saisir votre nom."],
@@ -1455,12 +1463,12 @@ var T={
 "up.pick":["Chọn ảnh","Choose photos","Choisir des photos"],
 "up.none":["Chưa chọn ảnh nào","No photos chosen","Aucune photo choisie"],
 "up.sel":["Đã chọn {n} ảnh","{n} photo(s) chosen","{n} photo(s) choisie(s)"],
-"up.lim":["Tối đa 20 ảnh mỗi lần","Up to 20 photos at a time","Jusqu’à 20 photos à la fois"],
+"up.lim":["Tối đa 50 ảnh mỗi lần, mỗi ảnh tối đa 35 MB","Up to 50 photos at a time, 35 MB each","Jusqu’à 50 photos à la fois, 35 Mo chacune"],
 "up.ok":["Tôi đồng ý để Huy & Trang đăng ảnh này lên website sau khi duyệt.","I agree that Huy & Trang may post these photos on the website after review.","J’accepte que Huy & Trang publient ces photos sur le site après validation."],
 "up.go":["Gửi ảnh","Send","Envoyer"],
 "up.eEmail":["Quý khách vui lòng nhập email hợp lệ.","Please enter a valid email address.","Veuillez saisir une adresse e-mail valide."],
 "up.eFiles":["Quý khách chưa chọn ảnh nào.","Please choose at least one photo.","Veuillez choisir au moins une photo."],
-"up.eMany":["Mỗi lần gửi tối đa 20 ảnh.","You can send up to 20 photos at a time.","Vous pouvez envoyer 20 photos maximum à la fois."],
+"up.eMany":["Mỗi lần gửi tối đa 50 ảnh.","You can send up to 50 photos at a time.","Vous pouvez envoyer 50 photos maximum à la fois."],
 "up.eOk":["Quý khách vui lòng tick vào ô đồng ý.","Please tick the consent box.","Veuillez cocher la case d’accord."],
 "up.eBig":["{f}: ảnh lớn hơn 35 MB, quý khách chọn ảnh khác nhé.","{f}: larger than 35 MB, please choose another photo.","{f} : plus de 35 Mo, merci de choisir une autre photo."],
 "up.eType":["{f}: không phải ảnh. Hiện tại chỉ nhận ảnh thôi nhé.","{f}: not a photo. Only photos can be shared.","{f} : ce n’est pas une photo. Seules les photos sont acceptées."],
@@ -1654,7 +1662,7 @@ var CIVD={list:CIVIL,hero:CIVHERO,done:false};
 function civSet(list,hero){CIVD.list=list;CIVD.hero=hero;if(CIVD.done)civRender(list,hero)}
 function civEnsure(){if(CIVD.done)return;CIVD.done=true;civRender(CIVD.list,CIVD.hero)}
 function mgLang(){}
-(function(){var hero=$("#mgHero"),pols=$$("#mgHero .mg-pol"),tt=$("#mgHero .mg-title"),arc=$("#mgHero .mg-arc"),btn=$("#mgSee"),circ=$("#mgCircle"),mx=0,my=0,tk=0;
+(function(){var hero=$("#mgHero"),pols=$$("#mgHero .mg-pol"),tt=$("#mgHero .mg-title"),arc=$("#mgHero .mg-arc"),btn=$("#mgSee"),circ=$("#mgCircle"),rev=$("#mgRev"),mx=0,my=0,tk=0;
   var BASE=[[-8,0,0],[2,0,0],[9,0,0]];
   function cl(v){return Math.max(0,Math.min(1,v))}
   function frame(){tk=0;if(!$("#p-civil").classList.contains("on")||cur!=="wedding")return;
@@ -1665,11 +1673,12 @@ function mgLang(){}
     tt.style.transform="translateY(-46%) scale("+(1+e*.25)+")";tt.style.opacity=1-cl(p*1.6);
     arc.style.transform="rotate("+(p*140)+"deg)";arc.style.opacity=1-cl(p*1.4);
     btn.style.opacity=1-cl(p*5);btn.style.pointerEvents=p>.15?"none":"auto";
-    var c=cl((p-.3)/.62),D=Math.hypot(W,H)*1.05;circ.style.transform="translateY("+(-c*H*.12)+"px) scale("+(c*c*D/40*2.3)+")"}
+    var c=cl((p-.3)/.62),D=Math.hypot(W,H)*1.05;circ.style.transform="translateY("+(-c*H*.12)+"px) scale("+(c*c*D/40*2.3)+")";
+    rev.style.opacity=cl((c-.68)/.2);circ.style.opacity=1-cl((p-.9)/.1)}
   function req(){if(!tk)tk=requestAnimationFrame(frame)}
   addEventListener("scroll",req,{passive:true});addEventListener("resize",req);
   addEventListener("pointermove",function(e){if(e.pointerType!=="mouse")return;mx=e.clientX/innerWidth*2-1;my=e.clientY/innerHeight*2-1;req()},{passive:true});
-  btn.addEventListener("click",function(){var g=$("#mgGal");scrollTo({top:g.getBoundingClientRect().top+scrollY-40,behavior:"smooth"})});
+  btn.addEventListener("click",function(){var r=hero.getBoundingClientRect();scrollTo({top:r.top+scrollY+(r.height-innerHeight)*.95,behavior:"smooth"})});
   $$("#ptabs button").forEach(function(b){b.addEventListener("click",function(){setTimeout(req,30)})});
   req()})();
 /* ---------- auto-scroll (Photos tab and its sub-tabs) ---------- */
@@ -1692,7 +1701,7 @@ addEventListener("keydown",function(e){if(/^(ArrowDown|ArrowUp|PageDown|PageUp|S
 asBtn.addEventListener("click",function(){AS.on=!AS.on;if(AS.on)asStart();else asStop();asPaint()});
 /* ---------- photos: bottega-style albums ---------- */
 /* Thêm ảnh vào từng danh mục: đường dẫn ảnh trong mảng tương ứng. */
-var ALBUMS={family:{bw:[],bg:[],ff:[],det:[]},wed:{bw:[],bg:[],guests:[],det:[],more:[],fromguests:[]}};
+var ALBUMS={family:{bw:[],bg:[],ff:[],det:[],more:[],fromguests:[]},wed:{bw:[],bg:[],guests:[],det:[],more:[],fromguests:[]}};
 var B53={};
 function b53render(key){
   var box=$("#b53-"+key),st=B53[key]||(B53[key]={c:null}),grid=$(".b53grid",box),al=ALBUMS[key],cats=Object.keys(al);
@@ -1747,7 +1756,7 @@ function wtab(k){if(typeof asTab==="function")setTimeout(asTab,0);
   var t=$("#wedding").offsetTop;if(scrollY>t)window.scrollTo(0,t);
 }
 function ptab(k){
-  NS.p=k;if(k==="wed"&&guestLoad)guestLoad();setTimeout(upPlace,0);if(k==="civil")civEnsure();if((k==="family"||k==="wed")&&typeof B53!=="undefined"&&B53[k]&&B53[k].c){B53[k].c=null;b53render(k)}if(typeof asTab==="function")setTimeout(asTab,0);
+  NS.p=k;if((k==="wed"||k==="family")&&guestLoad)guestLoad();setTimeout(upPlace,0);if(k==="civil")civEnsure();if((k==="family"||k==="wed")&&typeof B53!=="undefined"&&B53[k]&&B53[k].c){B53[k].c=null;b53render(k)}if(typeof asTab==="function")setTimeout(asTab,0);
   $$("#ptabs button").forEach(function(b){b.classList.toggle("on",b.dataset.p===k)});
   $$(".pp").forEach(function(p){p.classList.toggle("on",p.id==="p-"+k)});
   var t=$("#wedding").offsetTop;if(scrollY>t)window.scrollTo(0,t);
@@ -2123,7 +2132,7 @@ var G=window.G=(function(){
 /* ---------- photo manifest (GitHub version): assets/photos/photos.json is rebuilt automatically on every push ---------- */
 (function(){
   var CITYDIR={yyc:"banff",yul:"montreal",yyz:"toronto",bel:"belgium",kor:"korea",twn:"taiwan",phl:"philippines",tha:"thailand",vnm:"vietnam",sgp:"singapore"};
-  var ALBDIR={family:{bw:"bw",bg:"bride-groom",ff:"family-friends",det:"details"},wed:{bw:"bw",bg:"bride-groom",guests:"guests",det:"details",more:"more"}};
+  var ALBDIR={family:{bw:"bw",bg:"bride-groom",ff:"family-friends",det:"details",more:"more"},wed:{bw:"bw",bg:"bride-groom",guests:"guests",det:"details",more:"more"}};
   function img(u,cls){return '<img'+(cls?' class="'+cls+'"':'')+' data-src="'+u+'" alt="" loading="lazy">'}
   function lazy(root){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var im=e.target;im.src=im.dataset.src;im.removeAttribute("data-src");io.unobserve(im)}})},{rootMargin:"1200px 2400px"});
     $$("img[data-src]",root).forEach(function(im){io.observe(im)});
@@ -2172,7 +2181,7 @@ var G=window.G=(function(){
     RG.shown+=(target-RG.shown)*.12;if(target>=1&&RG.shown>.995)RG.shown=1;bar.style.strokeDashoffset=(326.7*(1-RG.shown)).toFixed(1);pct.textContent=Math.round(RG.shown*100)+"%";
     if(RG.shown<1||RG.done<RG.n)RG.raf=requestAnimationFrame(ringDraw)}
   $(".upsee").addEventListener("click",function(){setTimeout(function(){if(typeof B53!=="undefined"&&B53.wed){B53.wed.c="fromguests";b53render("wed")}},0)});
-  var MAXN=20,MAXV=35*1024*1024,last=null;
+  var MAXN=50,MAXV=35*1024*1024,last=null;
   function fmt(k,o){var t=tr(k);for(var x in o)t=t.split("{"+x+"}").join(o[x]);return t}
   function say(t,cls){msg.textContent=t;msg.className="upmsg"+(cls?" "+cls:"")}
   var PICK=[];
@@ -2186,17 +2195,11 @@ var G=window.G=(function(){
     inp.value="";selText();
     if(bad){last=["up.eType",{f:bad},"err"];say(fmt("up.eType",{f:bad}),"err")}else if(big){last=["up.eBig",{f:big},"err"];say(fmt("up.eBig",{f:big}),"err")}else if(many){last=["up.eMany",{},"err"];say(tr("up.eMany"),"err")}});
   /* photos are re-drawn at max 2560 px as JPEG: smaller uploads, and the GPS location stored inside the photo is dropped */
-  function shrink(f){return new Promise(function(res){
-    if(!/^image\//.test(f.type)||/gif|svg/.test(f.type)){res(f);return}
-    var u=URL.createObjectURL(f),im=new Image();
-    im.onload=function(){var w=im.naturalWidth,h=im.naturalHeight,k=Math.min(1,2560/Math.max(w,h)),c=document.createElement("canvas");c.width=Math.round(w*k);c.height=Math.round(h*k);
-      var x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);
-      c.toBlob(function(b){res(b?new File([b],f.name.replace(/\.[^.]+$/,"")+".jpg",{type:"image/jpeg"}):f)},"image/jpeg",.88)};
-    im.onerror=function(){URL.revokeObjectURL(u);res(f)};im.src=u})}
+  function mimeOf(f){if(f.type)return f.type;var x=(f.name.match(/\.(\w+)$/)||[])[1]||"";x=x.toLowerCase();return x==="heic"||x==="heif"?"image/"+x:x==="png"?"image/png":x==="webp"?"image/webp":x==="gif"?"image/gif":"image/jpeg"}
   function b64(f){return new Promise(function(res,rej){var r=new FileReader();r.onload=function(){res(String(r.result).split(",")[1]||"")};r.onerror=rej;r.readAsDataURL(f)})}
   /* text/plain body = no CORS preflight; Apps Script answers through a redirect that fetch follows */
-  /* each file waits at most 90 s; on a timeout or network error it is sent once more */
-  function post1(o){var c=window.AbortController?new AbortController():null,t=setTimeout(function(){if(c)c.abort()},90000);
+  /* each file waits at most 3 min (originals can be large); on a timeout or network error it is sent once more */
+  function post1(o){var c=window.AbortController?new AbortController():null,t=setTimeout(function(){if(c)c.abort()},180000);
     return fetch(GUEST_API,{method:"POST",body:JSON.stringify(o),signal:c?c.signal:undefined}).then(function(r){clearTimeout(t);return r.json()},function(e){clearTimeout(t);throw e})}
   function post(o){return post1(o).catch(function(){return post1(o)})}
   form.addEventListener("submit",function(e){e.preventDefault();
@@ -2215,8 +2218,8 @@ var G=window.G=(function(){
     var base={name:String(fd.get("name")||"").trim(),email:email,msg:String(fd.get("msg")||"").trim(),lang:lang,ok:true,website:String(fd.get("website")||""),batch:Date.now().toString(36)+Math.random().toString(36).slice(2,8),n:n};
     var chain=Promise.resolve();
     files.forEach(function(f,j){chain=chain.then(function(){last=["up.sending",{i:j+1,n:n},""];say(fmt("up.sending",{i:j+1,n:n}));
-      return shrink(f).then(function(g){if(g.size>MAXV*1.1)throw 0;return b64(g).then(function(d){var o={};for(var k in base)o[k]=base[k];
-          o.fileName=g.name;o.i=j+1;o.mime=g.type||"image/jpeg";o.data=d;return post(o)})})
+      return b64(f).then(function(d){var o={};for(var k in base)o[k]=base[k];
+          o.fileName=f.name;o.i=j+1;o.mime=mimeOf(f);o.data=d;return post(o)})
         .then(function(r){if(r&&r.ok)ok++;else throw 0})
         .catch(function(){})
         .then(function(){RG.done=j+1;RG.t0=performance.now();cnt.textContent=(j+1)+"/"+n;cancelAnimationFrame(RG.raf);RG.raf=requestAnimationFrame(ringDraw)})})});
@@ -2225,18 +2228,21 @@ var G=window.G=(function(){
       if(ok===n){last=["up.done",{n:n},"ok"];form.reset();PICK=[];selText()}else if(ok)last=["up.part",{ok:ok,n:n},"err"];else last=["up.fail",{},"err"];
       say(fmt(last[0],last[1]),last[2])})});
 })();
-/* approved guest photos → Tiệc cưới › From our guests (Drive thumbnails; clips open Drive's own player in the lightbox) */
+/* approved guest photos → Lễ gia tiên or Tiệc cưới › Ảnh từ khách (Drive keeps the original, the site shows Drive's resized copies) */
 guestLoad=function(){if(!GUEST_API||guestLoad.done)return;guestLoad.done=true;
   fetch(GUEST_API+"?action=list",{cache:"no-cache"}).then(function(r){return r.json()}).then(function(d){
-    ALBUMS.wed.fromguests=((d&&d.items)||[]).filter(function(x){return /^[\w-]{10,}$/.test(x.id)}).map(function(x){var t="https://drive.google.com/thumbnail?id="+x.id+"&sz=";
-      return x.v?{src:t+"w800",vid:x.id,fb:"https://lh3.googleusercontent.com/d/"+x.id+"=w800"}:{src:t+"w800",full:t+"w2400",fb:"https://lh3.googleusercontent.com/d/"+x.id+"=w800"}});
-    b53render("wed")}).catch(function(){guestLoad.done=false})};
+    var all=((d&&d.items)||[]).filter(function(x){return /^[\w-]{10,}$/.test(x.id)}),one=function(x){var t="https://drive.google.com/thumbnail?id="+x.id+"&sz=";
+      return {src:t+"w800",full:t+"w2000",fb:"https://lh3.googleusercontent.com/d/"+x.id+"=w800"}};
+    ALBUMS.family.fromguests=all.filter(function(x){return x.g}).map(one);
+    ALBUMS.wed.fromguests=all.filter(function(x){return !x.g}).map(one);
+    b53render("family");b53render("wed")}).catch(function(){guestLoad.done=false})};
 
 applyLang(lang);
 var h=(location.hash||"").slice(1);
 if(ORDER.indexOf(h)>=0)show(h);
 else if(["baohy","damcuoi","photos"].indexOf(h)>=0||(h==="upload"&&GUEST_API)){show("wedding");wtab(h)}
 else if(h==="guests"){show("wedding");wtab("photos");ptab("wed");B53.wed.c="fromguests";b53render("wed")}
+else if(h==="guests-family"){show("wedding");wtab("photos");ptab("family");(B53.family||(B53.family={})).c="fromguests";b53render("family")}
 try{history.replaceState(navState(),"",location.hash||"#intro")}catch(e){}
 })();
 </script>
