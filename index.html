@@ -258,9 +258,9 @@ html.galon,html.galon body{overflow:hidden}
 .upicon svg{width:15px;height:15px}
 #stabs,#ptabs{padding-right:calc(var(--gutR) + 40px)}
 .upicon:hover,.upicon.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.uptip{position:absolute;top:calc(100% + 7px);right:-2px;white-space:nowrap;font:500 12px/1 var(--sans);letter-spacing:.06em;color:var(--bg);background:var(--ink);padding:7px 10px;border-radius:14px;pointer-events:none;opacity:0;transform:translateY(-4px);transition:opacity .6s,transform .6s}
+.uptip{position:absolute;top:calc(100% + 7px);right:-2px;white-space:nowrap;font:500 15.5px/1 var(--sans);letter-spacing:.06em;color:var(--bg);background:var(--ink);padding:8px 12px;border-radius:16px;pointer-events:none;opacity:0;transform:translateY(-4px);transition:opacity .6s,transform .6s}
 .uptip::before{content:"";position:absolute;right:11px;top:-5px;border:5px solid transparent;border-top:0;border-bottom-color:var(--ink)}
-.upicon.tip .uptip{opacity:1;transform:none}
+.upicon.tip .uptip,.upicon:hover .uptip,.upicon:focus-visible .uptip{opacity:1;transform:none}
 .wtabs button,.stabs button{padding:10px 2px 12px;color:var(--mute);border-bottom:1.5px solid transparent;white-space:nowrap;transition:color .3s,border-color .3s}
 .wtabs button.on,.stabs button.on{color:var(--ink);border-color:var(--ink)}
 .stabs{display:flex;justify-content:center;gap:clamp(14px,4vw,34px);padding:6px var(--gutR) 0 var(--gut);overflow-x:auto;scrollbar-width:none}
@@ -588,15 +588,14 @@ img[data-src]{width:100%;display:block;background:var(--soft);max-width:100%}
 }
 .ascroll{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:72;height:40px;padding:0 14px 0 11px;border-radius:22px;display:flex;align-items:center;gap:7px;font:500 13px/1 var(--sans);color:rgba(22,21,20,.6);background:rgba(255,255,255,.28);-webkit-backdrop-filter:blur(10px) saturate(1.4);backdrop-filter:blur(10px) saturate(1.4);border:1px solid rgba(255,255,255,.55);box-shadow:0 4px 14px -6px rgba(0,0,0,.3),inset 0 0 0 .5px rgba(0,0,0,.12);transition:color .3s,bottom .3s,border-color .3s}
 .ascroll svg{width:16px;height:16px;flex:none;stroke-width:1.6;transition:stroke-width .3s}
-.ascroll span{max-width:110px;overflow:hidden;white-space:nowrap;transition:max-width .4s,opacity .3s}
+.ascroll span{max-width:110px;overflow:hidden;white-space:nowrap;line-height:1.6;padding:2px 0;transition:max-width .4s,opacity .3s}
 .ascroll.mini{width:40px;padding:0;gap:0;justify-content:center}.ascroll.mini span{max-width:0;opacity:0}
 .ascroll[aria-pressed="true"]{color:var(--ink);border-color:rgba(22,21,20,.55)}
 .ascroll[aria-pressed="true"] svg{stroke-width:3}
 .ascroll.run svg circle{animation:aspulse 1.6s ease-in-out infinite}
 @keyframes aspulse{50%{opacity:.35}}
 
-@media (max-width:760px){.ascroll{height:29px;padding:0 9px 0 7px;font-size:11px;gap:5px;right:8px;bottom:calc(104px + env(safe-area-inset-bottom,0px));transition:color .3s,border-color .3s,padding .4s,gap .4s,bottom .35s}.ascroll svg{width:12px;height:12px}
-  body.railhide .ascroll{bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+@media (max-width:760px){.ascroll{height:29px;padding:0 9px 0 7px;font-size:9.5px;gap:5px;right:8px;bottom:calc(10px + env(safe-area-inset-bottom,0px));transition:color .3s,border-color .3s,padding .4s,gap .4s,bottom .35s}.ascroll svg{width:12px;height:12px}
   .ascroll.mini{width:29px}}
 /* desktop: smaller display type, but body text, labels and buttons stay comfortable to read for older guests */
 @media (min-width:761px){
