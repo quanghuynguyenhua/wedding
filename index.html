@@ -525,7 +525,7 @@ img[data-src]{width:100%;display:block;background:var(--soft);max-width:100%}
 .mapbox .mnote{font-size:12px;color:var(--mute);margin-top:10px;text-align:center}
 .mapbox .pill{margin-top:18px}
 .mapbtn{text-align:center}
-.dfaq{margin-top:80px;text-align:left}
+.dfaq{margin-top:12px;text-align:left}.dfaq .ttl{padding-block:28px 18px}
 @media (max-width:760px){.mapbtn .pill{width:min(290px,100%);justify-content:center;box-sizing:border-box}}
 .maplink{cursor:pointer}.maplink:hover rect{fill:#fff6ef}
 .maptop{margin:0 0 34px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}.maptop .pill{margin-top:0}
@@ -573,14 +573,14 @@ img[data-src]{width:100%;display:block;background:var(--soft);max-width:100%}
 
 /* civil ceremony: marieguillaume-style polaroids on peach */
 #p-civil{--mgbg:#fde8d8;--mgink:#e0643a;--mgbg2:#f3d3bf;--mgdot:#e9bda1}
-@media (min-width:761px){
-  #p-civil{--mgbg:#ffffff;--mgbg2:#ffffff;--mgdot:#f7d7df}
-  #p-civil .mg-fr,#p-civil .mg-ph{background:none;padding:0}
-  #p-civil .mg-ph{transform:translateY(80px)}#p-civil .mg-ph.in{transform:none}
-  #p-civil .mg-circle path{fill:#f9dfe5}
-  #p-civil .mg-arc{color:#efb9c6}
-  #p-civil .mg-btn,#p-civil .mg-btn2{border:1px solid var(--mgink)}
-}
+/* Đăng ký album: black & white page (white background, black type, straight photos without frames, soft pink shapes) */
+#p-civil{--mgbg:#ffffff;--mgbg2:#ffffff;--mgink:#161514;--mgdot:#f7d7df}
+#p-civil .mg-fr,#p-civil .mg-ph{background:none;padding:0;box-shadow:0 18px 40px -22px rgba(0,0,0,.35)}
+#p-civil .mg-ph{transform:translateY(80px)}#p-civil .mg-ph.in{transform:none}
+#p-civil .mg-circle path{fill:#f9dfe5}
+#p-civil .mg-arc{color:#efb9c6}
+#p-civil .mg-sub,#p-civil .mg-end p{color:var(--mute)}
+#p-civil .mg-btn,#p-civil .mg-btn2{border:1px solid var(--mgink);box-shadow:none}
 .mg{background:var(--mgbg);color:var(--mgink);position:relative;overflow:clip}
 .mg-hero{height:220vh;position:relative}
 .mg-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
@@ -1661,7 +1661,7 @@ function mgLang(){}
     var r=hero.getBoundingClientRect(),p=cl(-r.top/Math.max(1,r.height-innerHeight)),e=p*p*(3-2*p),W=innerWidth,H=innerHeight;
     var mv=[[-.42*W,-.35*H,-26],[0,-.55*H,8],[.42*W,.35*H,24]];
     pols.forEach(function(el,i){var b=BASE[i],m=mv[i],px=mx*(i===1?8:16)*(i===0?-1:1),py=my*(i===1?6:12);
-      el.style.transform="translate("+(m[0]*e+px)+"px,"+(m[1]*e+py)+"px) rotate("+(W>760?0:b[0]+m[2]*e)+"deg)";el.style.opacity=1-cl((p-.45)/.4)});
+      el.style.transform="translate("+(m[0]*e+px)+"px,"+(m[1]*e+py)+"px) rotate(0deg)";el.style.opacity=1-cl((p-.45)/.4)});
     tt.style.transform="translateY(-46%) scale("+(1+e*.25)+")";tt.style.opacity=1-cl(p*1.6);
     arc.style.transform="rotate("+(p*140)+"deg)";arc.style.opacity=1-cl(p*1.4);
     btn.style.opacity=1-cl(p*5);btn.style.pointerEvents=p>.15?"none":"auto";
