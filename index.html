@@ -975,10 +975,10 @@ body{font:400 15.5px/1.75 var(--sans)}
           </div>
           <p class="ow" data-t="d.ow">Tiệc cưới của Huy &amp; Trang</p>
           <p class="owat" data-t="d.at">tại</p>
-          <a class="vlogo" href="https://www.google.com/maps/search/?api=1&amp;query=Lotte+Hotel+Saigon+2A-4A+Ton+Duc+Thang" target="_blank" rel="noopener" aria-label="Lotte Hotel Saigon – Google Maps"><img src="assets/photos/info/lotte-saigon.webp" alt="Lotte Hotels Saigon" width="640" height="309" decoding="async"></a>
+          <a class="vlogo" href="venue3d/?mode=venue" data-v3d="venue3d/?mode=venue" data-ta="d.3dh" aria-label="Lotte Hotel Saigon: xem khách sạn và sân tiệc 3D"><img src="assets/photos/info/lotte-saigon.webp" alt="Lotte Hotels Saigon" width="640" height="309" decoding="async"></a>
           <p class="vaddr"><span data-t="d.garden">Sân vườn tầng trệt</span><br>2A-4A Tôn Đức Thắng, Phường Sài&nbsp;Gòn,<br>TP.&nbsp;Hồ&nbsp;Chí&nbsp;Minh</p>
           <div class="mapbox" style="margin-top:34px">
-            <div class="mapbtn maptop"><a class="pill" id="addcal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;dates=20261229T103000Z%2F20261229T143000Z" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg><span data-t="d.cal">Thêm vào lịch</span></a><a class="pill" href="https://www.google.com/maps/search/?api=1&amp;query=Lotte+Hotel+Saigon+2A-4A+Ton+Duc+Thang" target="_blank" rel="noopener"><span data-t="d.gm">Mở Google Maps</span> ↗</a></div>
+            <div class="mapbtn maptop"><a class="pill" id="addcal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;dates=20261229T103000Z%2F20261229T143000Z" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg><span data-t="d.cal">Thêm vào lịch</span></a><a class="pill" href="https://www.google.com/maps/search/?api=1&amp;query=Lotte+Hotel+Saigon+2A-4A+Ton+Duc+Thang" target="_blank" rel="noopener"><span data-t="d.gm">Mở Google Maps</span> ↗</a><a class="pill" href="venue3d/" data-v3d="venue3d/" data-ta="d.3da" aria-label="Xem bản đồ 3D"><span data-t="d.3d">3D</span></a></div>
             <div class="ilwrap"><svg class="ilmap" viewBox="0 0 1000 666" role="img" aria-label="Lotte Hotel Saigon map" font-family="'Be Vietnam Pro',system-ui,sans-serif">
   <defs>
     <linearGradient id="q-land" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbf4e6"/><stop offset="1" stop-color="#f3e6cf"/></linearGradient>
@@ -1447,6 +1447,9 @@ var T={
 "d.tolt":["Lịch Trình","Schedule","Programme"],
 "d.note":["Bản đồ minh họa","Illustrated map","Carte illustrée"],
 "d.gm":["Mở Google Maps","Open in Google Maps","Ouvrir dans Google Maps"],
+"d.3d":["3D","3D","3D"],
+"d.3da":["Xem bản đồ 3D","See the 3D map","Voir le plan 3D"],
+"d.3dh":["Lotte Hotel Saigon: xem khách sạn và sân tiệc 3D","Lotte Hotel Saigon: see the hotel and garden in 3D","Lotte Hotel Saigon : voir l’hôtel et le jardin en 3D"],
 "m.river":["Sông Sài Gòn","Saigon River","Rivière de Saïgon"],
 "m.tt":["Thủ Thiêm","Thu Thiem","Thủ Thiêm"],
 "m.bridge":["Cầu Ba Son","Ba Son Bridge","Pont Ba Son"],
@@ -1815,6 +1818,8 @@ $$(".b53").forEach(function(box){var key=box.dataset.set;b53render(key);
 });
 addEventListener("keydown",function(e){if(e.key==="Escape")$$(".b53ov").forEach(function(o){if(!o.hidden)b53open(o.closest(".b53"),false)})});
 
+/* links to the 3D map (venue3d/) open it in the language the visitor is using */
+$$("a[data-v3d]").forEach(function(a){a.addEventListener("click",function(){var u=a.dataset.v3d;a.href=u+(u.indexOf("?")<0?"?":"&")+"lang="+lang})});
 /* ---------- wedding tabs ---------- */
 function upPlace(){var wt=$("#wtabs"),w=$("#wedding"),ic=$(".upicon");if(!wt||!w||!ic)return;
   w.style.setProperty("--uptop",(parseFloat(getComputedStyle(w).paddingTop)+wt.offsetHeight+9)+"px");
