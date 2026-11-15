@@ -499,6 +499,44 @@ img[data-src]{width:100%;display:block;background:var(--soft);max-width:100%}
 .b53x:hover i:first-child{transform:rotate(135deg)}.b53x:hover i:last-child{transform:rotate(45deg)}
 .b53soon{grid-column:1/-1;text-align:center;margin:0;padding:26px var(--gutR) 30px var(--gut);font:italic 400 clamp(20px,2.6vw,28px)/1.45 var(--serif);color:var(--mute)}
 .b53empty{grid-column:1/-1;text-align:center;padding:30px 16px 0;color:var(--mute);font:italic 400 clamp(18px,2.2vw,24px)/1.4 var(--serif)}
+/* --- Bottega53-style strip (B53STRIP): on desktop the page scroll slides the photos sideways; on phones one full-screen photo per swipe; a rolling photo number sits bottom-left --- */
+.b53grid.strip{display:block;margin-top:0;position:relative}
+.b53pin{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--bg)}
+.b53track{display:flex;align-items:flex-start;height:100%;width:max-content;gap:clamp(56px,9.4vw,120px);padding:26px clamp(56px,9.4vw,120px) 0;will-change:transform}
+.b53track>*{flex:none;height:calc(100% - 26px - 112px)}
+.b53grid.strip figure{aspect-ratio:3/2;width:auto;margin:0;overflow:hidden;background:#e9e6e1}
+.b53grid.strip figure img{width:100%;height:100%;object-fit:cover}
+.b53grid.strip figure:hover img{transform:none}
+.b53ttl,.b53fin{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;min-width:min(44vw,560px);padding-left:clamp(60px,6vw,96px)}
+.b53ttl small,.b53fin small{font:400 12px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+.b53ttl h3,.b53fin button{font:600 clamp(34px,5.2vw,76px)/1 var(--sans);letter-spacing:-.035em;text-transform:uppercase;color:var(--ink);margin:18px 0 0;text-align:left;padding:0}
+.b53ttl p{margin:16px 0 0;font:italic 400 clamp(17px,1.6vw,22px)/1.3 var(--serif);color:var(--mute)}
+.b53ttl i{margin-top:44px;font:400 12px/1 var(--sans);font-style:normal;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:12px}
+.b53ttl i::after{content:"";width:54px;height:1px;background:currentColor;transform-origin:left;animation:b53hint 1.8s ease-in-out infinite}
+@keyframes b53hint{0%,100%{transform:scaleX(.35)}50%{transform:scaleX(1)}}
+.b53fin button{cursor:pointer;background:none;transition:opacity .25s}
+.b53fin button:hover,.b53fin button:focus-visible{opacity:.55}
+.b53fin button span{display:inline-block;margin-left:.25em;transition:transform .35s}
+.b53fin button:hover span{transform:translateX(.2em)}
+.b53num{position:fixed;left:max(30px,env(safe-area-inset-left,0px));bottom:calc(30px + env(safe-area-inset-bottom,0px));z-index:70;width:34px;overflow:hidden;writing-mode:vertical-rl;transform:rotate(180deg);mix-blend-mode:difference;color:#fff;font:400 25px/34px var(--sans);font-variant-numeric:tabular-nums;pointer-events:none}
+.b53num .w{display:block;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.b53num .w div{block-size:34px;white-space:nowrap}
+.b53.isopen .b53num{visibility:hidden}
+@media (max-width:760px){
+  html.b53snap{scroll-snap-type:y mandatory;scroll-padding-top:var(--b53top,0px)}
+  html.b53snap #ptabs{scroll-snap-align:start}
+  html.b53snap .ascroll{display:none}
+  .b53grid.strip{height:auto!important}
+  .b53pin{position:static;height:auto!important;overflow:visible}
+  .b53track{display:block;width:auto;gap:0;padding:0;transform:none!important}
+  .b53track>*{height:calc(100svh - var(--b53top,0px));scroll-snap-align:start;scroll-snap-stop:always}
+  .b53grid.strip figure{width:100%;aspect-ratio:auto!important;background:#000}
+  .b53ttl,.b53fin{min-width:0;width:100%;padding:0 20px 0 86px}
+  .b53ttl h3,.b53fin button{font-size:clamp(30px,9.4vw,46px)}
+  .b53num{left:15px;bottom:calc(70px + env(safe-area-inset-bottom,0px));width:28px;font-size:20px;line-height:28px}
+  .b53num .w div{block-size:28px}
+}
+@media (prefers-reduced-motion:reduce){.b53num .w{transition:none}.b53ttl i::after{animation:none}}
 @media (max-width:760px){
   .b53grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .b53grid figure{aspect-ratio:4/5}
@@ -1343,6 +1381,11 @@ var T={
 "up.cta":["Chia sẻ ảnh","Share photos","Partager vos photos"],
 "b.soon":["Sắp có","Coming soon","Bientôt"],
 "b.empty":["Ảnh sẽ được cập nhật sau ngày cưới","Photos will be added after the wedding","Les photos seront ajoutées après le mariage"],
+"b.next":["Tiếp theo","Next","Suivant"],
+"b.back":["Tất cả danh mục","All categories","Toutes les catégories"],
+"b.count":["ảnh","photos","photos"],
+"b.scroll":["Cuộn xuống để xem","Scroll to view","Faites défiler"],
+"b.scrollm":["Vuốt lên để xem","Swipe up to view","Balayez vers le haut"],
 "p.pw":["Ảnh cưới","Pre-Wedding","Pré-mariage"],
 "w.photos":["Hình ảnh","Photos","Photos"],
 "civ.see":["Xem album","See the gallery","Voir la galerie"],
@@ -1687,12 +1730,12 @@ var asBtn=$("#ascroll"),AS={on:!matchMedia("(prefers-reduced-motion:reduce)").ma
 function asGal(){var g=$("#gal");return g&&g.classList.contains("on")}
 function asActive(){if(asGal())return true;if(!(cur==="wedding"&&$("#w-photos").classList.contains("on")))return false;var k=NS.p==="family"?"family":(NS.p==="wed"?"wed":null);return !k||!!(B53[k]&&B53[k].c)}
 var asMiniT=0;
-function asTab(){var a=asActive();if(a&&asBtn.hidden){asBtn.classList.remove("mini");clearTimeout(asMiniT);asMiniT=setTimeout(function(){asBtn.classList.add("mini")},5000)}asBtn.hidden=!a;document.body.classList.toggle("b53on",a&&!asGal()&&/family|wed/.test(NS.p||""));if(!a)asStop();asPaint()}
+function asTab(){if(typeof b53lay==="function")b53lay();var a=asActive();if(a&&asBtn.hidden){asBtn.classList.remove("mini");clearTimeout(asMiniT);asMiniT=setTimeout(function(){asBtn.classList.add("mini")},5000)}asBtn.hidden=!a;document.body.classList.toggle("b53on",a&&!asGal()&&/family|wed/.test(NS.p||""));if(!a)asStop();asPaint()}
 function asPaint(){asBtn.setAttribute("aria-pressed",AS.on?"true":"false");asBtn.classList.toggle("run",AS.run);asBtn.setAttribute("aria-label",tr(AS.on?"as.on":"as.off"))}
 function asStart(){if(AS.run||!AS.on||!asActive())return;AS.run=true;AS.last=performance.now();AS.acc=0;AS.raf=requestAnimationFrame(asStep);asPaint()}
 function asStop(){AS.run=false;cancelAnimationFrame(AS.raf);asPaint()}
 function asStep(now){if(!AS.run)return;var dt=Math.min(.1,(now-AS.last)/1000);AS.last=now;
-  if(now>AS.pauseTo&&!document.hidden&&!document.querySelector(".b53ov:not([hidden])")&&!document.documentElement.classList.contains("lbon")){var sp=innerWidth<760?38:52;AS.acc+=sp*dt;var step=Math.floor(AS.acc);
+  if(now>AS.pauseTo&&!document.hidden&&!document.documentElement.classList.contains("b53snap")&&!document.querySelector(".b53ov:not([hidden])")&&!document.documentElement.classList.contains("lbon")){var sp=innerWidth<760?38:52;AS.acc+=sp*dt;var step=Math.floor(AS.acc);
     if(step>=1){AS.acc-=step;var g=asGal()?$("#gal"):null,max=g?g.scrollHeight-g.clientHeight:document.documentElement.scrollHeight-innerHeight,y=g?g.scrollTop:scrollY;if(y>=max-2){asStop();return}if(g)g.scrollTop+=step;else window.scrollBy(0,step)}}
   AS.raf=requestAnimationFrame(asStep)}
 function asUser(){if(!asActive())return;if(AS.run)AS.pauseTo=performance.now()+1800;else if(AS.on)asStart()}
@@ -1705,7 +1748,7 @@ var ALBUMS={family:{bw:[],bg:[],ff:[],det:[],more:[],fromguests:[]},wed:{bw:[],b
 var B53={};
 function b53render(key){
   var box=$("#b53-"+key),st=B53[key]||(B53[key]={c:null}),grid=$(".b53grid",box),al=ALBUMS[key],cats=Object.keys(al);
-  grid.innerHTML="";grid.classList.toggle("land",!st.c);grid.classList.toggle("n5",!st.c&&cats.length===5);
+  grid.innerHTML="";grid.classList.remove("strip");grid.style.height="";grid.classList.toggle("land",!st.c);grid.classList.toggle("n5",!st.c&&cats.length===5);
   /* before the ceremony: the "photos will be here after 28.12 / 29.12" line comes first, above the tiles */
   var none=!cats.some(function(c){return al[c].length});
   if(none){var p0=document.createElement("p");p0.className="b53soon";p0.textContent=tr(key==="wed"?"ha.1s":"ha.2s");grid.appendChild(p0)}
@@ -1717,9 +1760,23 @@ function b53render(key){
       f.addEventListener("click",go);f.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}});grid.appendChild(f)});
   }else{
   var list=al[st.c].map(function(u){return [st.c,u]});
-  if(list.length){list.forEach(function(x){var f=document.createElement("figure");var im=document.createElement("img");im.loading="lazy";im.decoding="async";im.alt=tr("b."+x[0]);var e=x[1];
+  if(list.length){var host=grid,strip=!!B53STRIP[key],figs=[];
+    if(strip){/* Bottega53-style: title slide · photos · "next album" slide, inside a pinned track (see b53lay / b53tick) */
+      grid.classList.add("strip");var pin=document.createElement("div");pin.className="b53pin";host=document.createElement("div");host.className="b53track";pin.appendChild(host);grid.appendChild(pin);
+      var hd=document.createElement("section");hd.className="b53ttl";hd.innerHTML="<small></small><h3></h3><p></p><i></i>";
+      hd.children[0].textContent=tr(key==="wed"?"p.wed":"p.fam");hd.children[1].textContent=tr("b."+st.c);hd.children[2].textContent=list.length+" "+tr("b.count");
+      hd.children[3].textContent=tr(matchMedia("(max-width:760px)").matches?"b.scrollm":"b.scroll");host.appendChild(hd)}
+    list.forEach(function(x){var f=document.createElement("figure");var im=document.createElement("img");im.loading="lazy";im.decoding="async";im.alt=tr("b."+x[0]);var e=x[1];
     if(typeof e==="string")im.src=e;else{im.src=e.src;if(e.vid){im.dataset.lbVid=e.vid;f.className="v"}else if(e.full)im.dataset.full=e.full;if(e.fb)im.onerror=function(){if(!im.dataset.fb){im.dataset.fb=1;im.src=e.fb}}}
-    f.appendChild(im);grid.appendChild(f)})}
+    if(strip){figs.push(f);im.addEventListener("load",function(){if(im.naturalWidth){f.style.aspectRatio=im.naturalWidth+"/"+im.naturalHeight;b53relay()}})}
+    f.appendChild(im);host.appendChild(f)});
+    if(strip){var nx=null,ci=cats.indexOf(st.c);for(var q=1;q<cats.length;q++){var cc=cats[(ci+q)%cats.length];if(al[cc].length){nx=cc;break}}
+      var fin=document.createElement("section");fin.className="b53fin";fin.innerHTML="<small></small><button type=\"button\"><b></b><span aria-hidden=\"true\">→</span></button>";
+      fin.children[0].textContent=tr(nx?"b.next":"b.menu");var fb=fin.children[1];fb.firstChild.style.fontWeight="inherit";fb.firstChild.textContent=tr(nx?"b."+nx:"b.back");
+      fb.addEventListener("click",function(){B53[key].c=nx;b53render(key);window.scrollTo(0,$("#wedding").offsetTop)});host.appendChild(fin);
+      var nm=document.createElement("div");nm.className="b53num";nm.setAttribute("aria-hidden","true");var nw=document.createElement("div");nw.className="w";
+      figs.forEach(function(_,k){var d=document.createElement("div");d.textContent=pad(k+1);nw.appendChild(d)});nm.appendChild(nw);grid.appendChild(nm);
+      grid._figs=figs;grid._track=host;grid._num=nw;b53S.i=-1}}
   else{var show=st.c?[st.c,st.c,st.c,st.c,st.c,st.c]:cats.concat(cats).slice(0,Math.max(6,cats.length));
     if(!none){var p=document.createElement("p");p.className="b53soon";p.textContent=tr("b.empty");grid.appendChild(p)}
     show.forEach(function(c,k){var f=document.createElement("figure");f.className="ph";f.innerHTML='<em>'+pad(k+1)+'</em><span></span>';f.querySelector("span").textContent=tr("b."+c);grid.appendChild(f)})}
@@ -1728,6 +1785,27 @@ function b53render(key){
   $$(".b53ov li button",box).forEach(function(b){b.classList.toggle("on",b.dataset.c===st.c)});
   if(typeof asTab==="function")setTimeout(asTab,0);
 }
+/* Strip albums (Bottega53 style). Desktop: the grid is made as tall as the track is wide and the track is pinned, so normal page scrolling (wheel, keys, auto-scroll) slides it sideways.
+   Phone: plain full-screen slides with scroll-snap. The number bottom-left rolls to the photo nearest the centre. Set wed:true to use it for the Tiệc cưới album too. */
+var B53STRIP={family:true},B53K=1.5/* sideways px per scrolled px */,b53S={g:null,x:0,tx:0,raf:0,i:-1,lay:0};
+function b53lay(){var g=null;$$(".b53grid.strip").forEach(function(e){if(e.offsetParent)g=e});b53S.g=g;
+  var m=matchMedia("(max-width:760px)").matches,top=$("#wtabs").offsetHeight;
+  document.documentElement.classList.toggle("b53snap",!!g&&m);if(!g)return;
+  document.documentElement.style.setProperty("--b53top",top+"px");var pin=g.firstChild;g._top=top;
+  if(m){g.style.height="";pin.style.top="";pin.style.height="";g._ex=0}
+  else{pin.style.top=top+"px";pin.style.height=(innerHeight-top)+"px";g._ex=Math.max(0,g._track.scrollWidth-innerWidth);g.style.height=Math.round(innerHeight-top+g._ex/B53K)+"px"}
+  b53tick(true)}
+function b53relay(){if(!b53S.lay)b53S.lay=requestAnimationFrame(function(){b53S.lay=0;b53lay()})}
+function b53tick(jump){var S=b53S,g=S.g;S.raf=0;if(!g||!g.isConnected||!g.offsetParent)return;
+  var m=matchMedia("(max-width:760px)").matches,r=g.getBoundingClientRect(),figs=g._figs,n=figs.length,i=0;
+  if(m)i=Math.round((g._top-r.top)/(figs[0].offsetHeight||1))-1;
+  else{S.tx=Math.min(g._ex,Math.max(0,(g._top-r.top)*B53K));S.x=jump?S.tx:S.x+(S.tx-S.x)*.16;if(Math.abs(S.tx-S.x)<.4)S.x=S.tx;
+    g._track.style.transform="translate3d("+(-S.x).toFixed(1)+"px,0,0)";
+    var c=S.x+innerWidth/2;for(var k=0;k<n;k++)if(figs[k].offsetLeft<=c)i=k;
+    if(S.x!==S.tx)S.raf=requestAnimationFrame(function(){b53tick()})}
+  i=Math.max(0,Math.min(n-1,i));if(i!==S.i){S.i=i;g._num.style.transform="translateX("+(i*(g._num.firstChild.offsetWidth||34))+"px)"}}
+addEventListener("scroll",function(){if(b53S.g&&!b53S.raf)b53S.raf=requestAnimationFrame(function(){b53tick()})},{passive:true});
+addEventListener("resize",b53relay);
 function b53open(box,on){var ov=$(".b53ov",box),pl=$(".b53plus",box);ov.hidden=!on;pl.classList.toggle("open",on);box.classList.toggle("isopen",on);pl.setAttribute("aria-expanded",on?"true":"false");pl.setAttribute("aria-label",tr(on?"b.close":"b.menu"));if(on){var f=$(".b53ov li button",box);if(f)f.focus()}}
 $$(".b53").forEach(function(box){var key=box.dataset.set;b53render(key);
   $(".b53plus",box).addEventListener("click",function(){b53open(box,$(".b53ov",box).hidden)});
