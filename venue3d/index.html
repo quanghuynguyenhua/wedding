@@ -31,7 +31,8 @@ a{color:inherit;text-decoration:none}
 .hd h1{font:400 22px/1.15 var(--serif);margin:0;letter-spacing:.01em}
 .hd p{margin:2px 0 0;font-size:12.5px;color:var(--mute)}
 .proto{display:inline-block;margin-top:6px;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--hy);border:1px solid rgba(179,38,30,.35);border-radius:99px;padding:1px 8px}
-.langs{position:fixed;top:14px;right:16px;display:flex;border-radius:99px;padding:3px;z-index:5}
+.langs{position:fixed;top:14px;right:16px;border-radius:99px;padding:8px 0;min-width:52px;text-align:center;z-index:5;font-size:12.5px;font-weight:500;letter-spacing:.1em;cursor:pointer}
+.langs:hover{border-color:#cfc8bd}
 .langs button{border:0;background:none;padding:5px 10px;border-radius:99px;font-size:12px;letter-spacing:.08em;cursor:pointer;color:var(--mute)}
 .langs button[aria-pressed=true]{background:var(--ink);color:#fff}
 
@@ -53,8 +54,19 @@ body[data-mode=city] .v-only,body[data-mode=venue] .c-only{display:none!importan
 .card .k i{display:inline-block;width:22px;height:5px;border-radius:3px;background:var(--acc)}
 .card.r2 .k i{background:var(--blue)}.card.r3 .k i{background:var(--must)}
 .card p{margin:6px 0 0;font-size:13.5px;line-height:1.5}
-.card .x{position:absolute;top:8px;right:8px;border:0;background:none;width:32px;height:32px;border-radius:50%;cursor:pointer;color:var(--mute);font-size:20px;line-height:1}
-.card .x:hover{background:var(--soft)}
+.card .x,.ask .x{position:absolute;top:8px;right:8px;border:0;background:none;width:32px;height:32px;border-radius:50%;cursor:pointer;color:var(--mute);font-size:20px;line-height:1}
+.card .x:hover,.ask .x:hover{background:var(--soft)}
+/* "how are you coming?" — shown once after the hotel fly-over */
+.ask{position:fixed;left:50%;top:50%;width:min(370px,calc(100% - 32px));transform:translate(-50%,-46%);border-radius:20px;padding:24px 20px 20px;z-index:8;text-align:center;opacity:0;visibility:hidden;transition:opacity .35s ease,transform .35s ease,visibility 0s .35s}
+.ask.on{opacity:1;visibility:visible;transform:translate(-50%,-50%);transition:opacity .35s ease,transform .35s ease}
+.ask .x{border:0;background:none;width:32px;height:32px;border-radius:50%;cursor:pointer;color:var(--mute);font-size:20px;line-height:1;top:8px;right:8px}
+.ask h2{font:400 20px/1.25 var(--serif);margin:0 14px 16px}
+.ask .opts{display:flex;gap:10px}
+.ask .opts button{flex:1;border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px 8px 12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:14px;font-weight:500;transition:border-color .2s,transform .2s}
+.ask .opts button:hover,.ask .opts button:focus-visible{border-color:var(--ink);transform:translateY(-2px)}
+.ask .opts svg{width:36px;height:36px}
+.ask .opts .r2 svg{color:var(--blue)}.ask .opts .r3 svg{color:var(--must)}
+body.night #bNight .i-sun,body:not(.night) #bNight .i-moon{display:none}
 
 /* labels = little card signs on pins */
 #labels{position:fixed;inset:0;pointer-events:none;z-index:3;overflow:hidden}
@@ -83,7 +95,7 @@ body.night .load,body.night .hint{color:#c9d3ea}
   .hd h1{font-size:18px}
   .hd p{font-size:11.5px}
   .proto{font-size:9.5px;margin-top:4px}
-  .langs{top:10px;right:12px}
+  .langs{top:10px;right:12px;padding:7px 0;min-width:46px;font-size:11.5px}
   .langs button{padding:5px 8px;font-size:11px}
   .modes{bottom:calc(14px + env(safe-area-inset-bottom,0px))}
   .modes button{padding:9px 16px;font-size:13px}
@@ -118,9 +130,7 @@ body.night .load,body.night .hint{color:#c9d3ea}
   <span class="proto v-only" data-t="proto">Bản thử · vị trí bàn chỉ là minh hoạ</span>
 </header>
 
-<nav class="langs glass" data-ta="a.lang" aria-label="Ngôn ngữ">
-  <button data-l="vi" aria-pressed="true">VI</button><button data-l="en" aria-pressed="false">EN</button><button data-l="fr" aria-pressed="false">FR</button>
-</nav>
+<button class="langs glass" id="bLang" data-ta="a.lang" aria-label="Đổi ngôn ngữ">VI</button>
 
 <div class="hint glass" id="hint" data-t="hint">Kéo để xoay · cuộn để phóng to · bấm vào nhãn để bay tới</div>
 
@@ -130,7 +140,7 @@ body.night .load,body.night .hint{color:#c9d3ea}
   <button class="glass v-only r2" data-r="r2" data-ta="b.r2" aria-label="Đi từ bãi xe ô tô"><i class="ln"></i><span class="tx" data-t="b.r2">Đi từ bãi xe ô tô</span></button>
   <button class="glass v-only r3" data-r="r3" data-ta="b.r3" aria-label="Đi từ bãi xe máy"><i class="ln"></i><span class="tx" data-t="b.r3">Đi từ bãi xe máy</span></button>
   <button class="glass v-only" id="bLawn" data-ta="b.lawn" aria-label="Khu tiệc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="4"/><path d="M12 9V4M8.5 6.5 12 4l3.5 2.5M4 20h16"/></svg><span class="tx" data-t="b.lawn">Khu tiệc</span></button>
-  <button class="glass" id="bNight" data-ta="b.night" aria-label="Trời tối"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span class="tx" id="nightTx" data-t="b.night">Trời tối</span></button>
+  <button class="glass" id="bNight" data-ta="a.tonight" aria-label="Đang là trời sáng, bấm để đổi sang trời tối"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span class="tx" id="nightTx" data-t="b.day">Trời sáng</span></button>
   <button class="glass" id="bTop" data-ta="b.top" aria-label="Nhìn từ trên"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v6M9 6l3 3 3-3"/><ellipse cx="12" cy="16" rx="8" ry="4"/></svg><span class="tx" data-t="b.top">Nhìn từ trên</span></button>
   <button class="glass" id="bAll" data-ta="b.all" aria-label="Toàn cảnh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9V4h5M21 9V4h-5M3 15v5h5M21 15v5h-5"/><circle cx="12" cy="12" r="3"/></svg><span class="tx" data-t="b.all">Toàn cảnh</span></button>
 </div>
@@ -143,6 +153,15 @@ body.night .load,body.night .hint{color:#c9d3ea}
   <button class="x" id="cx" data-ta="b.close" aria-label="Đóng">×</button>
   <div class="k"><i></i><span id="cK"></span></div>
   <p id="cP"></p>
+</section>
+
+<section class="ask glass" id="ask" role="dialog" aria-labelledby="askQ">
+  <button class="x" id="askX" data-ta="b.close" aria-label="Đóng">×</button>
+  <h2 id="askQ" data-t="ask.q">Quý khách tới dự tiệc bằng gì?</h2>
+  <div class="opts">
+    <button class="r2" data-go="r2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16v-3.5l2-5h14l2 5V16H3zM3.4 12.5h17.2M4 16v2h3v-2M17 16v2h3v-2"/><circle cx="7" cy="14.2" r=".7"/><circle cx="17" cy="14.2" r=".7"/></svg><span data-t="ask.car">Ô tô</span></button>
+    <button class="r3" data-go="r3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="16" r="3"/><circle cx="18.5" cy="16" r="3"/><path d="M5.5 16l4-5.5h4.5l4.5 5.5M9.5 10.5l-1-2.5H6.5M14 10.5l1.5-3.5H18M8.5 13.5h6.5"/></svg><span data-t="ask.moto">Xe máy</span></button>
+  </div>
 </section>
 
 <div class="load" id="load" data-t="loading">Đang dựng bản đồ…</div>
@@ -168,13 +187,18 @@ const T={
   "b.lawn":["Khu tiệc","Party Lawn","Jardin de réception"],
   "b.top":["Nhìn từ trên","Top View","Vue de dessus"],
   "b.night":["Trời tối","Evening","Soirée"],
+  "a.tonight":["Đang là trời sáng, bấm để đổi sang trời tối","Daytime now, tap to switch to evening","Il fait jour, touchez pour passer en soirée"],
+  "a.today":["Đang là trời tối, bấm để đổi sang trời sáng","Evening now, tap to switch to daytime","C’est le soir, touchez pour repasser en journée"],
+  "ask.q":["Quý khách tới dự tiệc bằng gì?","How Are You Getting to the Party?","Comment venez-vous à la réception ?"],
+  "ask.car":["Ô tô","By Car","En voiture"],
+  "ask.moto":["Xe máy","By Motorbike","À moto"],
   "b.day":["Trời sáng","Daytime","Journée"],
   "b.back":["Về trang cưới","Back to the wedding site","Retour au site du mariage"],
   "b.r1":["Đi từ cổng chính","From the Main Entrance","Depuis l’entrée principale"],
   "b.r2":["Đi từ bãi xe ô tô","From the Car Park","Depuis le parking voitures"],
   "b.r3":["Đi từ bãi xe máy","From the Motorbike Park","Depuis le parking motos"],
   "b.close":["Đóng","Close","Fermer"],
-  "a.lang":["Ngôn ngữ","Language","Langue"],
+  "a.lang":["Đổi ngôn ngữ","Change language","Changer de langue"],
   "a.mode":["Chọn bản đồ","Choose the map","Choisir la carte"],
   "a.canvas":["Bản đồ 3D đường đến tiệc cưới","3D map of the way to the wedding","Plan 3D pour venir au mariage"],
   "loading":["Đang dựng bản đồ…","Building the map…","Construction de la carte…"],
@@ -187,13 +211,9 @@ const T={
   "z.welcome":["Bàn đón khách","Welcome Table","Table d’accueil"],
   "z.backdrop":["Backdrop chụp hình","Photo Backdrop","Décor photo"],
   "z.entrance":["Lối vào khu tiệc","Party Entrance","Entrée de la réception"],
-  "z.pool":["Hồ bơi","Swimming Pool","Piscine"],
-  "z.pool2":["Hồ bơi nhỏ","Small Pool","Petit bassin"],
-  "z.hotel":["Lotte Hotel Saigon","Lotte Hotel Saigon","Lotte Hotel Saigon"],
   "z.gate":["Cổng chính","Main Entrance","Entrée principale"],
   "z.car":["Bãi xe ô tô","Car Parking","Parking voitures"],
   "z.moto":["Bãi xe máy","Motorbike Parking","Parking motos"],
-  "z.tdt":["Tôn Đức Thắng","Tôn Đức Thắng","Tôn Đức Thắng"],
   "z.river":["Sông Sài Gòn","Saigon River","Rivière de Saïgon"],
   "c.lotte":["Lotte Hotel Saigon · tiệc cưới ở đây!","Lotte Hotel Saigon · the party is here!","Lotte Hotel Saigon · la fête est ici !"],
   "c.ndb":["Nhà thờ Đức Bà","Notre-Dame Cathedral","Cathédrale Notre-Dame"],
@@ -206,7 +226,8 @@ const T={
   "c.bitexco":["Bitexco","Bitexco","Bitexco"],
   "c.metro":["Ga Ba Son","Ba Son Station","Station Ba Son"],
   "c.park":["Công viên Bạch Đằng","Bach Dang Park","Parc Bạch Đằng"],
-  "c.tt":["Thủ Thiêm","Thu Thiem","Thủ Thiêm"]
+  "c.tt":["Thủ Thiêm","Thu Thiem","Thủ Thiêm"],
+  "c.cats":["Danou & Bébé","Danou & Bébé","Danou & Bébé"]
 };
 const LI={vi:0,en:1,fr:2};
 const QS=new URLSearchParams(location.search);
@@ -343,13 +364,14 @@ const CARCOL=[PAL.cream,PAL.slate,PAL.mustard,'#8fa9b8','#d9cdb8',PAL.dark,'#c45
    VENUE (metres). "L frame": origin = lawn centre under the arch front, +z = toward the pool.
    ===================================================================================== */
 PARENT=venue;
-const LY=0.6,A=15,B=11.5,FZ=21;
+const LY=0.6,A=15,B=11.5,FZ=27,NF=4.5;
+const underArch=(x,z)=>z<3&&z>-15&&Math.abs(x)<17.5;
 const wrap=d=>{while(d>Math.PI)d-=2*Math.PI;while(d<-Math.PI)d+=2*Math.PI;return d};
 const gs=(d,w)=>Math.exp(-((d/w)**2));
-/* lawn outline, a soft figure 8 as Huy drew: round back lobe under the arch, a waist, then the front lobe toward the pool */
+/* lawn outline as Huy drew: round back lobe under the arch, a slight waist, then a long, broad front lobe that runs on toward the pool */
 function R(th){const c=Math.cos(th),s=Math.sin(th);
-  const r=s>=0?Math.pow(Math.pow(Math.abs(c)/A,3)+Math.pow(s/FZ,3),-1/3):A*B/Math.hypot(B*c,A*s);
-  return r*(1-.2*(gs(wrap(th-.36),.3)+gs(wrap(th-(Math.PI-.36)),.3)))}
+  const r=s>=0?Math.pow(Math.pow(Math.abs(c)/A,NF)+Math.pow(s/FZ,NF),-1/NF):A*B/Math.hypot(B*c,A*s);
+  return r*(1-.1*(gs(wrap(th-.3),.26)+gs(wrap(th-(Math.PI-.3)),.26)))}
 const P=(th,off=0)=>{const r=R(th)+off;return new THREE.Vector2(r*Math.cos(th),r*Math.sin(th))};
 const inLawn=(x,z,m=0)=>Math.hypot(x,z)<=R(Math.atan2(z,x))-m;
 function band(off0,off1,th0,th1,n=96){const s=new THREE.Shape();
@@ -362,18 +384,18 @@ const lawnShape=new THREE.Shape();
 for(let i=0;i<=240;i++){const p=P(-Math.PI+2*Math.PI*i/240);i?lawnShape.lineTo(p.x,-p.y):lawnShape.moveTo(p.x,-p.y)}
 slab(lawnShape,LY,[mGrass,mStone]);
 slab(band(0,1.6,-Math.PI,Math.PI,240),LY+0.02,mStone);
-const FRONT0=Math.PI/2-0.5,FRONT1=Math.PI/2+0.5;
+const FRONT0=Math.PI/2-0.4,FRONT1=Math.PI/2+0.4;
 [[1.6,2.1,.45],[2.1,2.6,.3],[2.6,3.1,.15]].forEach(([a,b,h])=>slab(band(a,b,FRONT0,FRONT1),h,mStep));
 for(let i=0;i<=12;i++){const p=P(FRONT0+(FRONT1-FRONT0)*i/12,1.62);box(.14,.07,.05,M('#fff3c8',{emissive:'#ffc56e',emissiveIntensity:1}),{x:p.x,y:.3,z:p.y,cast:false})}
 /* planting beds, thick with trees all around the sides and the back */
-const BED0=FRONT1+0.42,BED1=FRONT0+2*Math.PI-0.42;
+const BED0=FRONT1+0.3,BED1=FRONT0+2*Math.PI-0.3;
 slab(band(1.6,6,BED0,BED1,180),0.75,[mBed,mStone]);
 for(let i=0;i<110;i++){const th=BED0+(BED1-BED0)*rnd(),p=P(th,1.9+rnd()*3.8);bush(p.x,p.y,.6+rnd()*.9,.75)}
-for(let i=0;i<46;i++){const th=BED0+(BED1-BED0)*(i+rnd()*.8)/46,p=P(th,2.4+rnd()*3);if(i%3===0)palm(p.x,p.y,5.2+rnd()*1.6,.75);else anyTree(p.x,p.y,3.2+rnd()*1.8,.75)}
+for(let i=0;i<46;i++){const th=BED0+(BED1-BED0)*(i+rnd()*.8)/46,p=P(th,2.4+rnd()*3);if(underArch(p.x,p.y))bush(p.x,p.y,1+rnd()*.7,.75);else if(i%3===0)palm(p.x,p.y,5.2+rnd()*1.6,.75);else anyTree(p.x,p.y,3.2+rnd()*1.8,.75)}
 for(let i=0;i<34;i++){const th=BED0+(BED1-BED0)*(i+rnd())/34,p=P(th,6.8+rnd()*3.2);anyTree(p.x,p.y,3.6+rnd()*2.2,0)}
 
 /* ---------- arch canopy (white truss barrel vault, semi-transparent) ---------- */
-const arch=new THREE.Group();venue.add(arch);arch.visible=false;   // Huy: no canopy in the model
+const arch=new THREE.Group();venue.add(arch);
 const ZF=1.5,ZB=-13.5,SPR=3.2;
 const W=t=>15.9-1.3*t,Hh=t=>8.2-1.6*t;
 const aPt=(phi,t,off=0)=>V3((W(t)+off)*Math.cos(phi),SPR+(Hh(t)+off)*Math.sin(phi),ZF+(ZB-ZF)*t);
@@ -402,8 +424,8 @@ for(let i=0;i<16;i++){const a=i/16*Math.PI*2;ball(.3,i%2?'#f6c9cf':'#fff1dc',{x:
 const FL=['#5b2d8e','#7d4fb5','#b79ad9','#2f7d4f','#84ba6b','#fbf6ea','#fbf6ea'];
 const fG=new THREE.SphereGeometry(1,10,8);
 const fl=(r,x,y,z)=>{const o=mesh(fG,pick(FL),{x,y,z,cast:false});o.scale.setScalar(r);return o};
-const aisleX=z=>(.5+1.9*Math.min(1,Math.max(0,(z-4)/5)))*Math.sin(z*.62);
-const AISLE=[];for(let z=17.6;z>=-5.4;z-=.4)AISLE.push(V3(aisleX(z),LY+.04,z));
+const aisleX=z=>(.5+1.9*Math.min(1,Math.max(0,(z-8)/5)))*Math.sin(z*.62);
+const AISLE=[];for(let z=9.6;z>=-5.4;z-=.4)AISLE.push(V3(aisleX(z),LY+.04,z));
 ribbon(AISLE,1.6,M('#fbf6ea',{}));
 const candles=[];
 AISLE.forEach((p,i)=>{const a=AISLE[Math.max(0,i-1)],b=AISLE[Math.min(AISLE.length-1,i+1)],dx=b.x-a.x,dz=b.z-a.z,l=Math.hypot(dx,dz);
@@ -416,15 +438,23 @@ rbox(2,.22,1.2,mWhite,{x:0,y:LY+.11,z:-5.5,r:.06});
 for(let i=0;i<26;i++){const a=i/26*Math.PI*2;if(Math.abs(wrap(a-Math.PI/2))<.45)continue;fl(.26+rnd()*.14,STAGE.x+Math.cos(a)*3.1,LY+.28,STAGE.z+Math.sin(a)*3.1)}
 
 /* ---------- fixed spots on the lawn ---------- */
-const BAND=V3(10.2,LY,8);
-const thB=0.93,pB=P(thB,-2.2),BACKDROP=V3(pB.x,LY,pB.y);
-const GPOS=[[-10.9,7.6],[-10.6,9.9],[-10,12.2],[-9.1,14.4]].map(([x,z])=>V3(x,LY,z));   // moved further into the lawn
-const WELCOME=V3(-5.8,LY,18);                                                          // nudged to the left
-const COCK=[[-6.9,10.2],[-5.3,13.2],[4.4,14.8],[5.8,11.6]];
+const BAND=V3(10.6,LY,11.6);
+const BACKDROP=V3(10.4,LY,20.2),BRY=Math.atan2(1-BACKDROP.x,25-BACKDROP.z);
+const GALLERY=V3(-13.3,LY,20);                                            // four tall boards side by side on the left edge, facing the lawn
+const GPOS=[-1.35,-.45,.45,1.35].map(d=>{const v=V3(GALLERY.x+.13*d*d,LY,GALLERY.z+d);v.ry=Math.PI/2+.1*d;return v});
+const WELCOME=V3(-12.9,LY,15.4);                                          // just to the right of the boards, as in the florist's sketch
+const COCK=[[-6.4,13.4],[-4.6,19],[3.6,22],[5.4,15.6]];
+/* florist's colours for the props: lilac, soft pink, white, sage */
+const DECO=['#b79ad9','#cbb2e6','#e9a9bd','#f3cdd6','#fbf6ea','#fbf6ea','#fbf6ea','#a9c79c'],SAGE=['#8fb38a','#6f9a6a','#a9c79c','#5f8f5f'];
+const dfl=(r,x,y,z)=>{const o=mesh(fG,pick(DECO),{x,y,z,cast:false});o.scale.setScalar(r);return o};
+const tuftG=new THREE.ConeGeometry(.045,1,5);tuftG.translate(0,.5,0);
+function posy(x,y,z,n=9,sp=.3){for(let i=0;i<n;i++)dfl(.09+rnd()*.11,x+(rnd()-.5)*sp*2,y+.1+rnd()*.4,z+(rnd()-.5)*sp*2);
+  for(let i=0;i<n*.7;i++){const t=mesh(tuftG,pick(SAGE),{x:x+(rnd()-.5)*sp*2,y,z:z+(rnd()-.5)*sp*2,cast:false});t.scale.set(1,.6+rnd()*.7,1);t.rotation.set((rnd()-.5)*.9,0,(rnd()-.5)*.9)}}
+const monoTex=(col)=>canvasTex(128,128,(g,w,h)=>{g.fillStyle=col;g.textAlign='center';g.textBaseline='middle';g.font='italic 400 84px "Playfair Display",Georgia,serif';g.fillText('T',46,54);g.fillText('H',82,78)});
 
 /* banquet tables: ILLUSTRATIVE only (the real layout is set on the day) */
 const TABLES=[];
-for(const z of [-6.4,-2.8,0.8,4.4])for(const c of [3.0,6.2,9.4,12.6])for(const x of [-c,c])if(inLawn(x,z,1.7)&&Math.hypot(x-STAGE.x,z-STAGE.z)>4.4&&Math.hypot(x-BAND.x,z-BAND.z)>3.6&&GPOS.every(g=>Math.hypot(x-g.x,z-g.z)>2.4))TABLES.push({x,z});
+for(const z of [-4.2,-.6,3,6.6])for(const c of [3.0,6.2,9.4,12.6])for(const x of [-c,c])if(inLawn(x,z,1.7)&&Math.hypot(x-STAGE.x,z-STAGE.z)>4.4&&Math.hypot(x-BAND.x,z-BAND.z)>5.4)TABLES.push({x,z});
 const clothG=new THREE.CylinderGeometry(.92,.98,.76,24),topG=new THREE.CylinderGeometry(.93,.93,.02,24);
 const NCH=10,total=TABLES.length*NCH;
 const chairG=new RoundedBoxGeometry(.44,.5,.44,2,.1),backG=new RoundedBoxGeometry(.44,.62,.1,2,.05);
@@ -441,42 +471,53 @@ for(const t of TABLES){
 }
 /* cocktail high tables */
 for(const [x,z] of COCK){cyl(.42,.42,.05,20,'#e4a87f',{x,y:LY+1.12,z});mesh(new THREE.CylinderGeometry(.42,.12,.55,20,1,true),'#e4a87f',{x,y:LY+.84,z});mesh(new THREE.CylinderGeometry(.12,.42,.56,20,1,true),'#e4a87f',{x,y:LY+.28,z})}
-/* gallery wall: 4 boards 70 × 180 cm */
-const photoCols=['#e9d5c4','#d9c2b0','#cdd9d2','#e8cfd3'];
-GPOS.forEach((p,i)=>{const ry=Math.atan2(1-p.x,11-p.z);
-  const tex=canvasTex(140,360,(g,w,h)=>{g.fillStyle='#fffdf8';g.fillRect(0,0,w,h);g.fillStyle=photoCols[i];g.fillRect(12,14,w-24,h-70);g.fillStyle='rgba(255,255,255,.55)';g.beginPath();g.arc(w/2,130,34,0,7);g.fill();g.fillStyle='#8a7a6a';g.font='600 22px "Fredoka",sans-serif';g.textAlign='center';g.fillText(['2019','2021','2023','2026'][i],w/2,h-22)});
-  box(.7,1.8,.06,[mWhite,mWhite,mWhite,mWhite,M('#fff',{map:tex}),mWhite],{x:p.x,y:LY+1.3,z:p.z,ry});
-  box(.07,.45,.07,mWood,{x:p.x,y:LY+.22,z:p.z,ry})});
-/* welcome table */
-rbox(2.4,.78,.75,mCloth,{x:WELCOME.x,y:LY+.39,z:WELCOME.z,r:.08});
-ball(.24,'#f3c4c9',{x:WELCOME.x+.7,y:LY+.98,z:WELCOME.z});rbox(.6,.42,.3,mGold,{x:WELCOME.x,y:LY+.99,z:WELCOME.z,r:.06});
-/* photo backdrop: a tree trunk that rises and reaches over to the left, covered in flowers */
-{const g=new THREE.Group();g.position.copy(BACKDROP);g.rotation.y=Math.atan2(-BACKDROP.x,-BACKDROP.z+8);venue.add(g);PARENT=g;
- const tp=[V3(1.6,0,0),V3(1.5,1.2,0),V3(1.0,2.4,0),V3(0,3.3,0),V3(-1.4,3.8,0),V3(-2.9,3.7,0),V3(-3.8,3.2,0)],tc=new THREE.CatmullRomCurve3(tp);
- const tm=new THREE.Mesh(new THREE.TubeGeometry(tc,40,.24,8),M('#7a5a40'));tm.castShadow=true;g.add(tm);
- cyl(.3,.46,.5,10,'#7a5a40',{x:1.6,y:.25});
- for(let i=0;i<80;i++){const pt=tc.getPointAt(.3+rnd()*.7);fl(.2+rnd()*.22,pt.x+(rnd()-.5)*.8,pt.y+(rnd()-.3)*.8,(rnd()-.5)*.8)}
- for(let i=0;i<10;i++){const pt=tc.getPointAt(.72+rnd()*.28);for(let k=1;k<4;k++)fl(.13,pt.x,pt.y-.36*k-rnd()*.15,(rnd()-.5)*.3)}
- for(let i=0;i<14;i++)fl(.2+rnd()*.2,1.6+(rnd()-.5)*1.4,.2+rnd()*.3,(rnd()-.5)*1);
+/* gallery wall: four tall white boards of photo collages standing shoulder to shoulder, flowers at their feet */
+GPOS.forEach((p,i)=>{
+  const tex=canvasTex(160,480,(g,w,h)=>{g.fillStyle='#fffdf8';g.fillRect(0,0,w,h);const c=['#cfc6bb','#b8b0a6','#ddd2c4','#a39b92'];
+    const ph=(x,y,a,b,k)=>{g.fillStyle=c[k%4];g.fillRect(x,y,a,b);g.fillStyle='rgba(255,255,255,.55)';const r=Math.min(a,b)*.15;g.beginPath();g.arc(x+a*.42,y+b*.42,r,0,7);g.arc(x+a*.6,y+b*.4,r,0,7);g.fill();g.fillRect(x+a*.34,y+b*.52,a*.34,b*.3)};
+    if(i%2===0){ph(14,44,132,160,i);ph(30,296,100,112,i+1)}else{ph(14,26,80,72,i);ph(100,26,46,72,i+2);ph(14,106,132,112,i+1);ph(14,296,62,92,i+3);ph(84,296,62,92,i)}
+    g.strokeStyle='#6b6258';g.lineWidth=2;g.beginPath();for(let x=30;x<=130;x+=3)g.lineTo(x,252+Math.sin(x*.34)*8*Math.sin(x*.045));g.stroke()});
+  box(.82,2.4,.06,[mWhite,mWhite,mWhite,mWhite,M('#fff',{map:tex}),mWhite],{x:p.x,y:LY+1.2,z:p.z,ry:p.ry});
+  posy(p.x+.3,LY,p.z+(i-1.5)*.12,9,.26)});
+/* welcome table: dark-green cloth to the ground, the white monogram box, tall candles, flowers on the corner and at its foot */
+{const g=new THREE.Group();g.position.copy(WELCOME);g.rotation.y=Math.PI/2;venue.add(g);PARENT=g;      // local +z looks at the lawn
+ rbox(2.3,.8,.95,'#1f4a36',{y:.4,r:.05});
+ rbox(.46,.4,.36,mWhite,{x:.05,y:1.0,r:.03});mesh(new THREE.PlaneGeometry(.34,.34),new THREE.MeshBasicMaterial({map:monoTex('#3d4a40'),transparent:true}),{x:.05,y:1.0,z:.185,cast:false,recv:false});
+ for(const [x,hh] of [[-.62,.52],[-.46,.36],[-.3,.44],[.46,.4]]){cyl(.022,.022,hh,6,mWhite,{x,y:.84+hh/2,z:.08});cyl(.055,.04,.05,8,mGold,{x,y:.825,z:.08})}
+ posy(.86,.8,-.05,9,.17);posy(-1.3,0,.55,11,.3);
+ PARENT=venue}
+/* photo backdrop (florist's sketch): a low blue platform; on its right a tall column of greenery and flowers, with a branch that reaches up and over to the left
+   and ends in a hanging cluster; trailing strands in between and the T·H monogram in the middle */
+{const g=new THREE.Group();g.position.copy(BACKDROP);g.rotation.y=BRY;venue.add(g);PARENT=g;
+ rbox(6.6,.16,2.7,'#5f7f99',{x:-.7,y:.08,r:.05});
+ const brown='#6f5440',blob=(r,x,y,z,sy=1)=>{const o=mesh(bushG,pick(SAGE),{x,y,z});o.scale.set(r,r*sy,r);return o};
+ const mound=mesh(bushG,'#5f8f5f',{x:1.6,y:.16,z:.1});mound.scale.set(1.5,.3,1);
+ cyl(.11,.17,3.2,8,brown,{x:1.7,y:1.76});
+ for(let i=0;i<26;i++)blob(.26+rnd()*.24,1.7+(rnd()-.5)*.9,.5+rnd()*2.9,(rnd()-.5)*.7,.8+rnd()*.5);
+ const bc=new THREE.CatmullRomCurve3([V3(1.65,2.7,0),V3(.9,3.25,0),V3(-.4,3.3,0),V3(-1.6,2.95,0),V3(-2.4,2.5,0)]);
+ const bm=new THREE.Mesh(new THREE.TubeGeometry(bc,30,.07,6),M(brown));bm.castShadow=true;g.add(bm);
+ for(let i=0;i<16;i++){const pt=bc.getPointAt(rnd());blob(.16+rnd()*.14,pt.x+(rnd()-.5)*.4,pt.y+(rnd()-.3)*.3,(rnd()-.5)*.4)}
+ for(let i=0;i<12;i++)blob(.2+rnd()*.2,-2.4+(rnd()-.5)*1,2.25+(rnd()-.5)*.9,(rnd()-.5)*.6);
+ const strand=(x,y,z,len)=>{cyl(.016,.016,len,4,pick(SAGE),{x,y:y-len/2,z,cast:false});if(rnd()<.6)dfl(.07,x,y-len*rnd(),z);if(rnd()<.5)dfl(.06,x,y-len,z)};
+ for(let i=0;i<26;i++){const pt=bc.getPointAt(rnd());strand(pt.x+(rnd()-.5)*.3,pt.y,(rnd()-.5)*.5,.6+rnd()*1.7)}
+ for(let i=0;i<16;i++){const a=rnd()*6.3;strand(1.7+Math.cos(a)*(.45+rnd()*.25),3.2+rnd()*.4,Math.sin(a)*.4,1+rnd()*1.6)}
+ for(let i=0;i<34;i++)dfl(.13+rnd()*.13,1.7+(rnd()-.5)*1.2,.4+rnd()*2.9,.38+(rnd()-.5)*.4);
+ for(let i=0;i<16;i++)dfl(.13+rnd()*.12,-2.4+(rnd()-.5)*1,2.2+(rnd()-.5)*.9,.3+(rnd()-.5)*.3);
+ posy(1.3,.16,.75,16,.6);
+ mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshBasicMaterial({map:monoTex('#ffffff'),transparent:true,side:THREE.DoubleSide,depthWrite:false}),{x:-.2,y:2.75,z:.45,cast:false,recv:false});
  PARENT=venue}
 
-/* ---------- the band: five players, five instruments (piano, cello, violin, guitar, saxophone) ---------- */
+/* ---------- the band: five players, five instruments (piano, cello, violin, guitar, saxophone), spread out on the grass among the guests ---------- */
 const bandPegs=[];
-{const g=new THREE.Group();g.position.copy(BAND);g.rotation.y=Math.atan2(-BAND.x,-BAND.z+9);venue.add(g);PARENT=g;
- rbox(5.2,.22,3.4,'#f1e4cc',{y:.11,r:.1});
+{const g=new THREE.Group();g.position.copy(BAND);g.rotation.y=Math.atan2(-BAND.x,10-BAND.z);venue.add(g);
  const wood='#a8683c',blk=M(PAL.dark,{roughness:.4});
- const player=(x,z,col,hat,ry=0)=>{const p=peg(col,hat,2.2,g);p.position.set(x,.22,z);p.rotation.y=ry;bandPegs.push(p);return p};
- /* piano */
- rbox(1.5,.9,1.7,blk,{x:-1.7,y:.67,z:-.5,r:.12});box(1.2,.06,.3,mWhite,{x:-1.7,y:1.0,z:.42});const lid=box(1.4,.05,1.4,blk,{x:-1.7,y:1.5,z:-.75});lid.rotation.x=-.55;
- player(-1.7,1.05,PAL.dark,'hair',Math.PI);
- /* cello */
- player(-.35,-.55,PAL.slate,'long');const ce=ball(1,wood,{x:-.35,y:.75,z:.05});ce.scale.set(.3,.46,.16);cyl(.035,.035,1.0,6,PAL.dark,{x:-.35,y:1.45,z:.05});
- /* violin */
- player(.75,-.7,'#c4563f','long');const vi=ball(1,wood,{x:1.02,y:1.38,z:-.55});vi.scale.set(.14,.07,.26);const bow=cyl(.015,.015,.8,5,PAL.cream,{x:1.1,y:1.5,z:-.5});bow.rotation.z=1.1;
- /* guitar */
- player(1.6,.45,PAL.mustard,'hair');const gb=cyl(.28,.28,.12,16,'#d9a05a',{x:1.6,y:1.0,z:.82});gb.rotation.x=Math.PI/2;const gn=box(.9,.08,.06,wood,{x:2.15,y:1.12,z:.82});gn.rotation.z=.25;
- /* saxophone */
- player(.35,.75,PAL.leaf[1],'hair');const sx=cyl(.05,.07,.7,8,mGold,{x:.35,y:1.05,z:1.12});sx.rotation.x=.35;const bell=mesh(new THREE.ConeGeometry(.17,.3,10,1,true),mGold,{x:.35,y:.75,z:1.3});bell.rotation.x=-1.9;
+ const spot=(x,z,ry,fn)=>{const sg=new THREE.Group();sg.position.set(x,0,z);sg.rotation.y=ry;g.add(sg);PARENT=sg;fn(sg);PARENT=venue};
+ const player=(sg,col,hat,ry=0)=>{const p=peg(col,hat,2.2,sg);p.rotation.y=ry;bandPegs.push(p);return p};
+ spot(-2.5,-.2,.3,sg=>{rbox(1.5,.9,1.7,blk,{y:.45,z:-1.55,r:.12});box(1.2,.06,.3,mWhite,{y:.78,z:-.63});const lid=box(1.4,.05,1.4,blk,{y:1.28,z:-1.8});lid.rotation.x=-.55;player(sg,PAL.dark,'hair',Math.PI)});
+ spot(-1.5,2.3,-.2,sg=>{player(sg,PAL.slate,'long');const ce=ball(1,wood,{y:.53,z:.6});ce.scale.set(.3,.46,.16);cyl(.035,.035,1.0,6,PAL.dark,{y:1.23,z:.6})});
+ spot(.5,.1,.15,sg=>{player(sg,'#c4563f','long');const vi=ball(1,wood,{x:.27,y:1.16,z:.15});vi.scale.set(.14,.07,.26);const bow=cyl(.015,.015,.8,5,PAL.cream,{x:.35,y:1.28,z:.2});bow.rotation.z=1.1});
+ spot(2.3,2.2,-.35,sg=>{player(sg,PAL.mustard,'hair');const gb=cyl(.28,.28,.12,16,'#d9a05a',{y:.78,z:.37});gb.rotation.x=Math.PI/2;const gn=box(.9,.08,.06,wood,{x:.55,y:.9,z:.37});gn.rotation.z=.25});
+ spot(3.3,-.6,-.5,sg=>{player(sg,PAL.leaf[1],'hair');const sx=cyl(.05,.07,.7,8,mGold,{y:.83,z:.37});sx.rotation.x=.35;const bell=mesh(new THREE.ConeGeometry(.17,.3,10,1,true),mGold,{y:.53,z:.55});bell.rotation.x=-1.9});
  PARENT=venue}
 
 /* ---------- people on the lawn: guests, welcome staff, and waiters carrying cocktails around ---------- */
@@ -484,11 +525,13 @@ const guests=[],waiters=[];
 {const cols=[PAL.slate,PAL.mustard,'#c4563f',PAL.leaf[1],'#8fa9b8',PAL.cream,'#d98fa0',PAL.dark];
  const stand=(x,z,face,col,hat)=>{const p=peg(col||pick(cols),hat||pick(['hair','long','hair']),2.2);p.position.set(x,LY,z);p.rotation.y=Math.atan2(face[0]-x,face[1]-z);guests.push({g:p,ph:rnd()*6});return p};
  COCK.forEach(([x,z],i)=>{stand(x-.95,z+.2,[x,z]);stand(x+.8,z-.6,[x,z]);if(i%2)stand(x+.2,z+1,[x,z])});
- stand(GPOS[1].x+1.6,GPOS[1].z+.3,[GPOS[1].x,GPOS[1].z]);stand(GPOS[2].x+1.7,GPOS[2].z+.8,[GPOS[2].x,GPOS[2].z]);
- stand(BACKDROP.x-2.2,BACKDROP.z-1.4,[0,26],'#fbf6ea','long');stand(BACKDROP.x-1.3,BACKDROP.z-2.1,[0,26],PAL.dark,'hair');   // a couple posing at the backdrop
- stand(WELCOME.x-.6,WELCOME.z-1,[WELCOME.x-.6,30],PAL.dark,'long');stand(WELCOME.x+.6,WELCOME.z-1,[WELCOME.x+.6,30],PAL.dark,'hair');   // welcome staff
- stand(-3.4,19.4,[WELCOME.x,WELCOME.z]);stand(-8.2,18.4,[WELCOME.x,WELCOME.z]);
- const loops=[[[-8,9],[-5.8,11.6],[-3.6,14.6],[-6.6,15.6],[-8.6,12.6]],[[3.4,16.6],[6.6,13.4],[4.6,10.2],[2.6,8.4],[3.2,12.6]]];
+ stand(GALLERY.x+2.1,GALLERY.z+.7,[GALLERY.x,GALLERY.z+.4]);stand(GALLERY.x+2.4,GALLERY.z-.6,[GALLERY.x,GALLERY.z-.6]);
+ const fx=Math.sin(BRY),fz=Math.cos(BRY),bx=BACKDROP.x+fx*1.3,bz=BACKDROP.z+fz*1.3;
+ stand(bx-fz*.75,bz+fx*.75,[bx+fx*9,bz+fz*9],'#fbf6ea','long');stand(bx-fz*1.5,bz+fx*1.5,[bx+fx*9,bz+fz*9],PAL.dark,'hair');   // a couple posing at the backdrop
+ stand(BACKDROP.x+fx*5,BACKDROP.z+fz*5,[BACKDROP.x,BACKDROP.z],PAL.slate,'cap');                                             // …and someone taking the picture
+ stand(WELCOME.x-.95,WELCOME.z-.55,[0,WELCOME.z-.55],PAL.dark,'long');stand(WELCOME.x-.95,WELCOME.z+.55,[0,WELCOME.z+.55],PAL.dark,'hair');   // welcome staff
+ stand(WELCOME.x+1.7,WELCOME.z+.3,[WELCOME.x,WELCOME.z]);stand(WELCOME.x+2,WELCOME.z-.8,[WELCOME.x,WELCOME.z]);
+ const loops=[[[-8,11.5],[-5.6,15.4],[-3.2,20.5],[-7,22.5],[-9.4,17]],[[3.2,23.5],[7,19.4],[4.6,13.6],[2.8,11],[3,17.4]]];
  loops.forEach((l,i)=>{const p=peg('#fbf6ea','tray',2.2);waiters.push({g:p,c:new THREE.CatmullRomCurve3(l.map(([x,z])=>V3(x,LY,z)),true,'catmullrom',.5),o:i*.5,dir:i?-1:1})})}
 
 /* ---------- pools ---------- */
@@ -496,7 +539,13 @@ const POOL=V3(0,0,46),POOL2=V3(21.4,0,53.9);
 function pool(c,r){cyl(r,r,.06,64,M('#fff',{map:waterTex,roughness:.2}),{x:c.x,y:.03,z:c.z,cast:false});
   mesh(new THREE.TorusGeometry(r+.25,.3,8,80),mWhite,{x:c.x,y:.08,z:c.z,cast:false}).rotation.x=Math.PI/2}
 pool(POOL,11);pool(POOL2,4.2);
-for(let i=0;i<6;i++){const f=.80+i*.115,dx=-Math.sin(f),dz=-Math.cos(f);rbox(1.8,.12,.6,'#e9f7fa',{x:POOL.x+dx*9.5,y:.1,z:POOL.z+dz*9.5,ry:-Math.atan2(dz,dx),cast:false,r:.05})}
+{const tiles=canvasTex(128,128,(g,w,h)=>{g.fillStyle='#bfe8f2';g.fillRect(0,0,w,h);g.strokeStyle='rgba(255,255,255,.75)';g.lineWidth=3;for(let i=-4;i<8;i++){g.beginPath();g.moveTo(i*24,0);g.lineTo(i*24+12,32);g.lineTo(i*24,64);g.lineTo(i*24+12,96);g.lineTo(i*24,128);g.stroke()}},6,1);
+ const shelf=new THREE.RingGeometry(8.1,10.95,40,1,Math.PI/2+.7,.78);shelf.rotateX(-Math.PI/2);mesh(shelf,M('#fff',{map:tiles,roughness:.3}),{x:POOL.x,y:.075,z:POOL.z,cast:false});
+ /* side profile of a curved pool lounger: head up at the pool edge, a dip for the seat, feet down toward the water */
+ const top=[[0,.66],[.2,.52],[.55,.27],[.95,.17],[1.35,.21],[1.75,.25],[1.95,.18]],sh=new THREE.Shape();
+ top.forEach(([u,v],i)=>i?sh.lineTo(u,v):sh.moveTo(u,v));top.slice().reverse().forEach(([u,v])=>sh.lineTo(u-.03,v-.075));sh.closePath();
+ const lg=new THREE.ExtrudeGeometry(sh,{depth:.66,bevelEnabled:true,bevelThickness:.03,bevelSize:.03,bevelSegments:2,curveSegments:4});lg.translate(0,0,-.33);
+ for(let i=0;i<6;i++){const f=.80+i*.115,dx=-Math.sin(f),dz=-Math.cos(f);mesh(lg,mWhite,{x:POOL.x+dx*10.45,y:.04,z:POOL.z+dz*10.45,ry:Math.atan2(dz,-dx)})}}
 
 /* =====================================================================================
    HOTEL GROUNDS ("H frame"): origin = big pool centre, +X = toward Tôn Đức Thắng / the river, +Z = south along the street.
@@ -514,6 +563,13 @@ box(58.3,2.6,80.3,M(PAL.glass,{roughness:.4}),{x:51,y:3,z:-18,cast:false});
 {const long=lit(M('#fff',{map:rep(winTex,18,15)}),18,15),end=lit(M('#fff',{map:rep(winTex,6,15)}),6,15);
  box(26,58,72,[long,long,mWhite,mWhite,end,end],{x:53,y:11+29,z:-18});
  rbox(27.4,1.6,73.4,mWhite,{x:53,y:11+58.6,z:-18,r:.6});rbox(12,5,30,'#eadfca',{x:53,y:11+62,z:-18,r:.8})}
+/* the LOTTE HOTELS sign with its round logo, on a plain band at the top of the street front (as in the photo); it glows at night */
+const signMat=(()=>{const t=canvasTex(1024,128,(g,w,h)=>{g.fillStyle='#fff';g.strokeStyle='#fff';
+   g.beginPath();g.arc(150,64,40,0,7);g.fill();g.globalCompositeOperation='destination-out';g.lineWidth=7;g.beginPath();g.moveTo(132,40);g.lineTo(132,86);g.lineTo(170,86);g.stroke();g.globalCompositeOperation='source-over';
+   g.font='600 76px "Be Vietnam Pro",sans-serif';g.textBaseline='middle';try{g.letterSpacing='10px'}catch(e){}g.fillText('LOTTE HOTELS',220,68)});
+  return M('#7a5a32',{map:t,transparent:true,emissive:'#000000',emissiveMap:t,emissiveIntensity:0})})();
+box(.4,4.6,62,'#eadfca',{x:66.1,y:65.6,z:-18,cast:false});
+{const s=mesh(new THREE.PlaneGeometry(36,4.5),signMat,{x:66.34,y:65.6,z:-18,cast:false,recv:false});s.rotation.y=Math.PI/2}
 rbox(4,3.4,7,M(PAL.glass,{roughness:.4}),{x:21.4,y:1.7,z:2,r:.3});rbox(6,.4,9,mWhite,{x:19.6,y:3.8,z:2,r:.15});          // garden door (pool side)
 /* forecourt paving */
 {const pv=mesh(new THREE.PlaneGeometry(33,66),M('#efe6d4'),{x:96.5,y:.02,z:-10,cast:false});pv.rotation.x=-Math.PI/2}
@@ -550,11 +606,22 @@ car(88,-12,Math.PI/2,PAL.dark);
 /* Tôn Đức Thắng, riverside park, river */
 {const r=mesh(new THREE.PlaneGeometry(20,180),M('#fff',{map:rep(roadTex,1,15)}),{x:124,y:.03,z:4,cast:false});r.rotation.x=-Math.PI/2;
  const sw=mesh(new THREE.PlaneGeometry(4,180),'#d9cdb8',{x:112.5,y:.035,z:4,cast:false});sw.rotation.x=-Math.PI/2;
+ const rt=canvasTex(1024,96,(g,w,h)=>{g.fillStyle='rgba(255,255,255,.92)';g.font='600 62px "Fredoka","Be Vietnam Pro",sans-serif';g.textAlign='center';g.textBaseline='middle';try{g.letterSpacing='14px'}catch(e){}g.fillText('TÔN ĐỨC THẮNG',w/2,h/2+4)});
+ for(const z of [-50,50]){const tg=new THREE.PlaneGeometry(54,5);tg.rotateX(-Math.PI/2);tg.rotateY(Math.PI/2);mesh(tg,M('#fff',{map:rt,transparent:true,depthWrite:false}),{x:129,y:.07,z,cast:false,recv:false})}   // the street name, painted on the road
  const pr=mesh(new THREE.PlaneGeometry(18,180),M('#fff',{map:rep(grassTex,3,22),roughness:1}),{x:143,y:.03,z:4,cast:false});pr.rotation.x=-Math.PI/2;
  const walk=mesh(new THREE.PlaneGeometry(4,180),'#eadfca',{x:154,y:.05,z:4,cast:false});walk.rotation.x=-Math.PI/2;
  const rv=mesh(new THREE.PlaneGeometry(20,180),M(PAL.water,{roughness:.25}),{x:166,y:.03,z:4,cast:false});rv.rotation.x=-Math.PI/2;
  for(let i=0;i<13;i++){anyTree(139+rnd()*9,-80+i*13.5+rnd()*4,5+rnd()*2,0);if(i%2)palm(147,-76+i*13,7,0)}
  for(let z=-78;z<=88;z+=13)if(Math.abs(z+10)>36&&Math.abs(z-27)>7&&Math.abs(z+51)>6)tree(113,z,5.5,'',0)}
+const mLampHead=M('#fff6dc',{emissive:'#ffcf80',emissiveIntensity:0});
+const streetLamps=[];
+for(let z=-80;z<=88;z+=14)for(const side of [1,-1]){
+  const x=side>0?114.6:133.6,ax=side;                                             // the arm reaches out over the road
+  if(side>0&&(Math.abs(z+40)<5||Math.abs(z-19.5)<5||Math.abs(z-27)<6||Math.abs(z+50)<6))continue;
+  cyl(.13,.2,7.4,8,PAL.dark,{x,y:3.7,z});cyl(.3,.3,.3,8,PAL.dark,{x,y:.15,z});
+  const arm=box(2.2,.12,.12,PAL.dark,{x:x+ax*1,y:7.3,z});
+  rbox(.9,.26,.55,PAL.dark,{x:x+ax*2.1,y:7.32,z,r:.08});box(.7,.06,.4,mLampHead,{x:x+ax*2.1,y:7.17,z,cast:false});
+  streetLamps.push([x+ax*2.1,7,z])}
 const traffic=[[-60,1,PAL.accent],[-15,1,PAL.cream],[40,1,PAL.slate],[75,-1,'#d9cdb8'],[-80,-1,PAL.dark],[10,-1,PAL.mustard]].map(([z,dir,col])=>({g:car(124-dir*4.5,z,dir>0?-Math.PI/2:Math.PI/2,col),z,dir}));
 /* car park: the lane on the south side, entered from Tôn Đức Thắng, running along the hotel's flank; guard booth at its mouth */
 const CARP=V3(70,0,31);
@@ -593,19 +660,25 @@ PARENT=venue;
  for(let i=0;i<3;i++)house(-29-rnd()*1.5,-15+i*10.5,8,9.4,9+rnd()*8)}
 const HC=h2w(22,0,22),HN=new THREE.Vector2(-.914,.407);
 const clearOfHotel=(x,z,m=3)=>(x-HC.x)*HN.x+(z-HC.z)*HN.y<-m;
-function umbrella(x,z){cyl(.06,.06,2.3,6,'#a9a9b0',{x,y:1.15,z});mesh(new THREE.ConeGeometry(1.45,.6,10),mWhite,{x,y:2.45,z});
-  for(const d of [-.5,.5])rbox(.65,.3,1.8,mWhite,{x:x+d*1.4,y:.2,z:z+.9,r:.1})}
+/* a wooden sun lounger with a cream cushion and a raised back */
+function lounger(x,z,ry){const g=new THREE.Group();g.position.set(x,0,z);g.rotation.y=ry;venue.add(g);PARENT=g;
+  rbox(.72,.12,2,'#c9a274',{y:.3,r:.04});for(const [lx,lz] of [[.3,.85],[-.3,.85],[.3,-.85],[-.3,-.85]])box(.07,.26,.07,'#a98256',{x:lx,y:.13,z:lz});
+  rbox(.64,.09,1.3,'#f6efe2',{y:.4,z:.3,r:.04});const b=rbox(.64,.09,.75,'#f6efe2',{y:.62,z:-.62,r:.04});b.rotation.x=.75;
+  PARENT=venue;return g}
+function umbrella(x,z){cyl(.06,.06,2.3,6,'#a9a9b0',{x,y:1.15,z});const c=mesh(new THREE.ConeGeometry(1.6,.55,12),mWhite,{x,y:2.45,z});
+  mesh(new THREE.CylinderGeometry(1.62,1.62,.12,12,1,true),mWhite,{x,y:2.16,z});
+  for(const d of [-.5,.5])lounger(x+d*1.5,z+.9,0)}
 [[13,33],[17,42],[-15,49],[-12,59],[-2,62],[9,61.5],[29,45],[31,60],[15,67],[25,35]].forEach(([x,z])=>umbrella(x,z));
 for(const [x,z,hh] of [[-19,27,6],[19,27,6],[-19.5,40,6],[28,39,5.4],[34,53,5],[10,69,5.8],[-8,68,6.2],[23,66,5.2]])palm(x,z,hh,0);
 for(let i=0;i<40;i++){const a=rnd()*Math.PI*2,r=13.5+rnd()*2.2,x=POOL.x+Math.cos(a)*r,z=POOL.z+Math.sin(a)*r;
   if(z<POOL.z-6||Math.hypot(x-POOL2.x,z-POOL2.z)<6.5||!clearOfHotel(x,z,2))continue;if(i%4===0)anyTree(x,z,3,0);else bush(x,z,.5+rnd()*.7)}
 
 /* ---------- walking routes: drawn over everything, with little peg guests hopping along each ---------- */
-const stepF=w2h(2.6,0,27.4),stepB=w2h(-2.6,0,27.4),lawnIn=w2h(0,0,21.5);
+const stepF=w2h(2.6,0,FZ+6.4),stepB=w2h(-2.6,0,FZ+6.4),lawnIn=w2h(0,0,FZ+.5);
 const lobby=[V3(66,.3,-10),V3(66,.3,1),V3(40,.3,2),V3(22,.3,2),V3(16.5,.3,5),V3(15,.3,13),V3(stepF.x+5,.3,stepF.z+1),V3(stepF.x,.3,stepF.z),V3(lawnIn.x,LY+.25,lawnIn.z)];
 const ROUTES={
   r1:{col:PAL.accent,pts:[V3(92,.3,-10),V3(80,.3,-10)].concat(lobby)},
-  r2:{col:'#2f6f9a',pts:[V3(CARP.x,.3,CARP.z),V3(62,.3,27),V3(24,.3,27.5),w2h(-22,.3,28.5),w2h(-8,.3,28.4),V3(stepB.x,.3,stepB.z),V3(lawnIn.x-.01,LY+.25,lawnIn.z+.01)]},
+  r2:{col:'#2f6f9a',pts:[V3(CARP.x,.3,CARP.z),V3(62,.3,27),V3(24,.3,27.5),w2h(-22,.3,FZ+7.5),w2h(-8,.3,FZ+7.4),V3(stepB.x,.3,stepB.z),V3(lawnIn.x-.01,LY+.25,lawnIn.z+.01)]},
   r3:{col:'#d99a1c',pts:[V3(MOTO.x,.3,MOTO.z),V3(104,.3,-48),V3(99,.3,-41),V3(92.5,.3,-30),V3(90.5,.3,-14),V3(80,.3,-11.5)].concat(lobby.map(p=>p.clone().add(V3(0,0,-1.2))))}
 };
 for(const k in ROUTES){const r=ROUTES[k];r.curve=new THREE.CatmullRomCurve3(r.pts,false,'catmullrom',.12);
@@ -623,12 +696,13 @@ const MAPD={
   river:"M818 0 L1000 0 L1000 79 C 960 110 920 130 880 154 C 830 190 800 215 770 246 C 740 280 728 300 717 334 C 700 380 690 410 682 440 C 672 490 664 530 660 572 C 656 610 653 640 651 666 L541 666 C 543 630 545 600 546 572 C 549 520 552 480 554 440 C 558 400 564 360 572 334 C 580 300 588 270 598 246 C 620 215 640 200 660 185 C 690 150 705 130 717 110 C 745 80 765 60 783 44 C 795 30 808 15 818 0 Z",
   waves:["M800 60 q 14 -7 28 0","M700 200 q 14 -7 28 0","M640 360 q 12 -6 24 0","M610 520 q 12 -6 24 0","M590 620 q 12 -6 24 0","M880 90 q 14 -7 28 0","M760 130 q 14 -7 28 0","M660 300 q 12 -6 24 0","M625 440 q 12 -6 24 0"],
   parks:["M152 318 L 200 288 L 232 300 L 182 338 Z","M18 392 L 70 362 L 86 430 L 34 462 Z","M552 438 L 566 440 L 562 506 L 548 504 Z","M820 300 C 860 290 900 310 920 350 L 880 390 C 850 380 830 350 818 330 Z"],
-  roads:["M440 0 C 470 70 520 150 585 232 C 568 300 552 380 544 450 C 538 530 533 600 528 666","M516 140 L 604 -4","M330 342 L 530 162","M110 380 L 470 110","M250 280 L 330 420 L 520 560","M230 380 L 470 600","M200 585 L 330 420","M200 600 L 530 640","M320 170 L 548 420","M150 540 L 565 268","M110 380 L 150 640","M0 470 L 110 380","M0 250 L 110 380","M690 666 C 780 610 880 570 1000 545","M770 246 C 820 230 880 260 940 320 L 1000 360","M836 373 C 890 404 950 438 1000 466"],
+  roads:["M440 0 C 470 70 520 150 585 232 C 568 300 552 380 544 450 C 538 530 533 600 528 666","M516 140 L 604 -4","M330 342 L 530 162","M110 380 L 470 110","M250 280 L 330 420 L 520 560","M230 380 L 470 600","M200 585 L 330 420","M200 600 L 530 640","M320 170 L 528 415","M150 540 L 565 268","M110 380 L 150 640","M0 470 L 110 380","M0 250 L 110 380","M690 666 C 780 610 880 570 1000 545","M770 246 C 820 230 880 260 940 320 L 1000 360","M836 373 C 890 404 950 438 1000 466"],
   minor:["M60 300 L 300 120","M80 520 L 360 300","M260 640 L 440 500","M380 60 L 500 190","M180 200 L 260 290","M400 330 L 470 260","M440 295 L 553 196","M420 520 L 500 420","M300 520 L 380 470","M760 420 L 900 470 L 1000 470","M720 520 L 860 560","M800 380 L 760 500"],
-  spokes:["M546 424 L 516 330","M546 424 L 506 417","M546 424 L 488 447","M546 424 L 492 472"],   // Thi Sách, Phan Văn Đạt, Hồ Huấn Nghiệp, Ngô Đức Kế (Tôn Đức Thắng ×2 and Hai Bà Trưng are in roads)
-  names:[["THI SÁCH",522,348,72],["NGÔ ĐỨC KẾ",499,476,-41],["TÔN ĐỨC THẮNG",470,90,58],["TÔN ĐỨC THẮNG",530,650,-86],["NGUYỄN HỮU CẢNH",531,128,-58.5],["LÝ TỰ TRỌNG",449,238,-42],["LÊ DUẨN",330,166,-37],["ĐỒNG KHỞI",392,476,37],["NGUYỄN HUỆ",330,506,42],["LÊ LỢI",236,538,-52],["HÀM NGHI",300,627,7],["HAI BÀ TRƯNG",410,250,48],["LÊ THÁNH TÔN",420,362,-34],["MAI CHÍ THỌ",800,632,-24]]
+  /* around Công trường Mê Linh: Thi Sách (bending up into Nguyễn Siêu), Nguyễn Siêu, Phan Văn Đạt, Hồ Huấn Nghiệp, Ngô Đức Kế. Hai Bà Trưng and Tôn Đức Thắng are in roads */
+  spokes:["M540 407 L 520 362 C 516 349 512 340 504 334","M475 360 L 504 334","M522 428 L 478 423","M526 444 L 481 484","M538 453 L 506 515"],
+  names:[["THI SÁCH",527,369,66,5.5],["NGUYỄN SIÊU",482,349,-42,4.5],["PHAN VĂN ĐẠT",479,420,6,5],["HỒ HUẤN NGHIỆP",480,479,-41.5,5],["NGÔ ĐỨC KẾ",505,507,-62.7,5.5],["TÔN ĐỨC THẮNG",470,90,58],["TÔN ĐỨC THẮNG",530,650,-86],["NGUYỄN HỮU CẢNH",531,128,-58.5],["LÝ TỰ TRỌNG",449,238,-42],["LÊ DUẨN",330,166,-37],["ĐỒNG KHỞI",392,476,37],["NGUYỄN HUỆ",329,482,42.5],["LÊ LỢI",236,538,-52],["HÀM NGHI",300,627,7],["HAI BÀ TRƯNG",410,250,48],["LÊ THÁNH TÔN",420,362,-34],["MAI CHÍ THỌ",800,632,-24]]
 };
-const CW=1000,CH=666,cx=x=>x-CW/2,cz=y=>y-CH/2,MELINH=[546,424];
+const CW=1000,CH=666,cx=x=>x-CW/2,cz=y=>y-CH/2,MELINH=[546,430];
 {const S=3,tex=canvasTex(CW*S,CH*S,(g)=>{g.scale(S,S);
     g.fillStyle=PAL.sand;g.fillRect(0,0,CW,CH);
     g.fillStyle='#c5dfa6';g.fill(new Path2D(MAPD.tt));
@@ -641,16 +715,28 @@ const CW=1000,CH=666,cx=x=>x-CW/2,cz=y=>y-CH/2,MELINH=[546,424];
     g.strokeStyle=PAL.road;g.lineWidth=9;MAPD.roads.forEach(d=>g.stroke(new Path2D(d)));
     g.strokeStyle='rgba(255,255,255,.55)';g.lineWidth=.8;g.setLineDash([5,5]);MAPD.roads.forEach(d=>g.stroke(new Path2D(d)));g.setLineDash([]);
     g.strokeStyle='#f4ecdb';g.lineWidth=8.5;MAPD.spokes.forEach(d=>g.stroke(new Path2D(d)));g.strokeStyle=PAL.road;g.lineWidth=6;MAPD.spokes.forEach(d=>g.stroke(new Path2D(d)));
-    /* Mê Linh roundabout */
-    g.fillStyle='#f4ecdb';g.beginPath();g.arc(MELINH[0],MELINH[1],16,0,7);g.fill();g.fillStyle=PAL.road;g.beginPath();g.arc(MELINH[0],MELINH[1],14,0,7);g.fill();g.fillStyle='#eadfca';g.beginPath();g.arc(MELINH[0],MELINH[1],7.5,0,7);g.fill();
-    g.font='600 10px "Fredoka","Be Vietnam Pro",sans-serif';g.textBaseline='alphabetic';try{g.letterSpacing='1px'}catch(e){}
-    MAPD.names.forEach(([t,x,y,r])=>{g.save();g.translate(x,y);g.rotate(r*Math.PI/180);g.lineWidth=3.2;g.strokeStyle=PAL.sand;g.strokeText(t,0,0);g.fillStyle='#5a4a3c';g.fillText(t,0,0);g.restore()});
+    /* Công trường Mê Linh: the half-round square west of Tôn Đức Thắng, the curved road around it, the garden with its paths, flower beds and the statue's pond */
+    {const [mx,my]=MELINH,q=Math.PI/2;
+     g.lineCap='butt';g.strokeStyle='#f4ecdb';g.lineWidth=9;g.beginPath();g.arc(mx,my,24,q-.14,3*q+.14);g.stroke();
+     g.strokeStyle=PAL.road;g.lineWidth=6.4;g.beginPath();g.arc(mx,my,24,q-.14,3*q+.14);g.stroke();
+     g.strokeStyle='rgba(255,255,255,.55)';g.lineWidth=.7;g.setLineDash([4,4]);g.beginPath();g.arc(mx,my,24,q,3*q);g.stroke();g.setLineDash([]);
+     const half=(r,a)=>{g.beginPath();g.arc(mx,my,r,q+a,3*q-a);g.closePath()};
+     g.fillStyle='#eadfca';half(20.4,.34);g.fill();
+     g.fillStyle='#b9d79a';half(18.6,.42);g.fill();
+     g.strokeStyle='#eadfca';g.lineWidth=1.6;for(const r of [9.5,14])g.beginPath(),g.arc(mx-9,my,r-3,q+.2,3*q-.2),g.stroke();
+     for(let i=0;i<5;i++){const a=q+.5+i*(Math.PI-1)/4;g.beginPath();g.moveTo(mx-9+Math.cos(a)*4,my+Math.sin(a)*4);g.lineTo(mx+Math.cos(a)*18.6,my+Math.sin(a)*18.6);g.stroke()}
+     for(let i=0;i<9;i++){const a=q+.52+i*(Math.PI-1.04)/8;g.fillStyle=['#e9a9bd','#f0b040','#b79ad9'][i%3];g.beginPath();g.arc(mx+Math.cos(a)*15.6,my+Math.sin(a)*15.6,1.5,0,7);g.fill()}
+     g.fillStyle='#eadfca';g.beginPath();g.arc(mx-10,my,5.6,0,7);g.fill();g.fillStyle=PAL.water;g.beginPath();g.arc(mx-10,my,4.3,0,7);g.fill()}
+    g.textBaseline='alphabetic';
+    MAPD.names.forEach(([t,x,y,r,f])=>{g.save();g.translate(x,y);g.rotate(r*Math.PI/180);g.font='600 '+(f||10)+'px "Fredoka","Be Vietnam Pro",sans-serif';try{g.letterSpacing=f?'.5px':'1px'}catch(e){}g.lineWidth=f?2:3.2;g.strokeStyle=PAL.sand;g.strokeText(t,0,0);g.fillStyle='#5a4a3c';g.fillText(t,0,0);g.restore()});
     g.save();g.translate(956,620);g.fillStyle=PAL.cream;g.beginPath();g.arc(0,0,20,0,7);g.fill();g.fillStyle=PAL.accent;g.beginPath();g.moveTo(0,-13);g.lineTo(5.5,5);g.lineTo(0,1.5);g.lineTo(-5.5,5);g.closePath();g.fill();g.fillStyle=PAL.dark;g.font='600 8px "Fredoka",sans-serif';g.textAlign='center';try{g.letterSpacing='0px'}catch(e){}g.fillText('N',0,16);g.restore()});
   tile(CW,CH,8,M('#fff',{map:tex,roughness:1}),{y:-4.02})}
 const mask=(()=>{const c=document.createElement('canvas');c.width=CW;c.height=CH;const g=c.getContext('2d',{willReadFrequently:true});g.fillStyle='#000';g.fillRect(0,0,CW,CH);
   g.globalCompositeOperation='lighter';g.fillStyle='#00ff00';g.fill(new Path2D(MAPD.tt));
-  g.fillStyle='#ff0000';g.strokeStyle='#ff0000';g.fill(new Path2D(MAPD.river));MAPD.parks.forEach(d=>g.fill(new Path2D(d)));g.beginPath();g.arc(MELINH[0],MELINH[1],19,0,7);g.fill();
+  g.fillStyle='#ff0000';g.strokeStyle='#ff0000';g.fill(new Path2D(MAPD.river));MAPD.parks.forEach(d=>g.fill(new Path2D(d)));g.beginPath();g.arc(MELINH[0],MELINH[1],31,0,7);g.fill();
   g.lineCap='round';g.lineWidth=18;MAPD.roads.forEach(d=>g.stroke(new Path2D(d)));g.lineWidth=12;MAPD.spokes.forEach(d=>g.stroke(new Path2D(d)));g.lineWidth=7;MAPD.minor.forEach(d=>g.stroke(new Path2D(d)));
+  /* keep the little houses off the street names too, so the names stay readable */
+  MAPD.names.forEach(([t,x,y,r,f])=>{f=f||10;g.save();g.translate(x,y);g.rotate(r*Math.PI/180);g.font='600 '+f+'px "Fredoka","Be Vietnam Pro",sans-serif';const w=g.measureText(t).width+t.length*(f<10?.5:1);g.fillRect(-4,-f-4,w+8,f+9);g.restore()});
   const d=g.getImageData(0,0,CW,CH).data;return (x,y,ch)=>x<0||y<0||x>=CW||y>=CH?255:d[((y|0)*CW+(x|0))*4+ch]})();
 const LM={dinh:[88,400,54],ndb:[232,262,42],post:[286,300,32],opera:[330,432,32],bt:[196,594,52],bitexco:[452,640,20],lotte:[536,338,36],metro:[548,196,10]};
 {const list=[],cols=[PAL.cream,PAL.cream,'#efe0c6','#eadfca','#d9cdb8','#cfd6dc','#f3d9a0','#b9cfd9'].map(c=>new THREE.Color(c));
@@ -731,11 +817,12 @@ function lm(x,y){const g=new THREE.Group();g.position.set(cx(x),0,cz(y));city.ad
 /* Ga Ba Son (metro) */
 {lm(548,196);const t=canvasTex(96,96,(g,w,h)=>{g.fillStyle='#2f6f9a';g.beginPath();g.arc(48,48,44,0,7);g.fill();g.lineWidth=7;g.strokeStyle='#fff';g.stroke();g.fillStyle='#fff';g.font='600 60px "Fredoka",sans-serif';g.textAlign='center';g.textBaseline='middle';g.fillText('M',48,52)});
  cyl(.7,.7,12,6,PAL.dark,{y:6});const s=new THREE.Sprite(new THREE.SpriteMaterial({map:t}));s.position.set(0,17,0);s.scale.set(13,13,1);PARENT.add(s)}
-/* Công trường Mê Linh: the roundabout by the river with the Trần Hưng Đạo statue on its tall plinth */
-{lm(MELINH[0],MELINH[1]);cyl(7.5,7.5,.8,28,'#eadfca',{y:.4});cyl(5.6,5.6,1.2,24,PAL.grass,{y:.7});
- cyl(1.3,2.2,15,3,mWhite,{y:8.5});cyl(2,2,1,12,mWhite,{y:16.4});
- const st=peg(PAL.bronze,'',9,PARENT);st.position.y=16.9;st.traverse(o=>{if(o.isMesh)o.material=mBronze});
- for(let i=0;i<6;i++){const a=i/6*Math.PI*2;ball(1.1,PAL.leaf[i%3],{x:Math.cos(a)*4.3,y:1.8,z:Math.sin(a)*4.3})}}
+/* Công trường Mê Linh: the Trần Hưng Đạo statue on its tall plinth in the pond, trees around the half-round garden */
+{lm(MELINH[0]-10,MELINH[1]);cyl(4.3,4.3,.5,24,PAL.water,{y:.25,cast:false});mesh(new THREE.TorusGeometry(4.9,.55,6,28),'#eadfca',{y:.35,cast:false}).rotation.x=Math.PI/2;
+ cyl(1.1,1.9,13,3,mWhite,{y:6.5});cyl(1.7,1.7,.8,12,mWhite,{y:13.4});
+ const st=peg(PAL.bronze,'',8,PARENT);st.position.y=13.8;st.traverse(o=>{if(o.isMesh)o.material=mBronze});
+ for(let i=0;i<6;i++){const a=Math.PI/2+.62+i*(Math.PI-1.24)/5;tree(10+Math.cos(a)*12.2,Math.sin(a)*12.2,5,i%2?'pale':'',0,PARENT)}
+ for(let i=0;i<9;i++){const a=Math.PI/2+.52+i*(Math.PI-1.04)/8;ball(.95,['#e9a9bd','#f0b040','#b79ad9'][i%3],{x:10+Math.cos(a)*15.6,y:.6,z:Math.sin(a)*15.6,cast:false})}}
 /* Lotte Hotel Saigon + heart pin */
 const lotteG=lm(536,338);
 {const long=lit(M('#fff',{map:rep(winTex,7,9)}),7,9),end=lit(M('#fff',{map:rep(winTex,3,9)}),3,9);
@@ -766,27 +853,82 @@ const cityCars=[];
  const boat=new THREE.Group();const hull=new THREE.Mesh(new RoundedBoxGeometry(22,4,8,3,1.8),M(PAL.cream));hull.position.y=1.4;hull.castShadow=true;boat.add(hull);const cab=new THREE.Mesh(new RoundedBoxGeometry(9,4,5.6,3,1.2),M(PAL.accent));cab.position.set(-2,5,0);boat.add(cab);city.add(boat);
  cityCars.push({g:boat,c:new THREE.CatmullRomCurve3([[905,30],[790,150],[700,255],[645,380],[612,520],[597,655]].map(([x,y])=>V3(cx(x),0,cz(y)))),o:.2,dir:1,off:0,sp:.012,pp:true})}
 
+/* a little biplane looping over the city, flown by the two cats: chubby Danou at the front in flying goggles and a red bow tie,
+   Bébé behind with a mustard scarf in the wind (both tabby and white, like the real ones). It leaves a trail of smoke puffs. */
+const plane=new THREE.Group();plane.rotation.order='YXZ';plane.scale.setScalar(3.2);city.add(plane);
+let prop,scarf;
+{PARENT=plane;
+ const red=M(PAL.accent,{roughness:.6}),cr=M(PAL.cream,{roughness:.7}),mu=M(PAL.mustard,{roughness:.6});
+ const fus=mesh(new THREE.CapsuleGeometry(1.25,6.6,8,18),red,{});fus.rotation.z=Math.PI/2;fus.scale.set(1,1,.95);
+ ball(1.15,cr,{x:4.5});const sp=mesh(new THREE.ConeGeometry(.42,.8,14),mu,{x:5.75});sp.rotation.z=-Math.PI/2;
+ prop=new THREE.Group();prop.position.x=5.85;plane.add(prop);for(const a of [0,Math.PI/2]){const b=new THREE.Mesh(new RoundedBoxGeometry(.14,4.4,.5,2,.06),M(PAL.dark));b.rotation.x=a;prop.add(b)}
+ rbox(2.6,.26,13.5,cr,{x:1.3,y:-.55,r:.12});rbox(2.6,.26,13.5,cr,{x:3.3,y:2.75,r:.12});        // two wings
+ for(const z of [-5.2,5.2])for(const x of [1.6,3.4]){const st=cyl(.08,.08,3.4,6,PAL.dark,{x:x-.45,y:1.1,z});st.rotation.z=-.3}
+ for(const z of [-1.1,1.1]){const st=cyl(.07,.07,1.6,6,PAL.dark,{x:3.4,y:2,z});st.rotation.x=z>0?-.5:.5}
+ rbox(1.7,.22,5.2,cr,{x:-4.6,y:.3,r:.08});rbox(1.9,2.3,.24,mu,{x:-4.75,y:1.35,r:.08});      // tail
+ for(const z of [-1.5,1.5]){const l=cyl(.07,.07,1.3,6,PAL.dark,{x:1.6,y:-1.6,z:z*.8});l.rotation.x=z>0?-.4:.4;const w=cyl(.48,.48,.3,14,PAL.dark,{x:1.6,y:-2.2,z});w.rotation.x=Math.PI/2}
+ for(const x of [.2,-2.7]){const r=mesh(new THREE.TorusGeometry(.92,.14,8,22),M(PAL.dark),{x,y:1.2});r.rotation.x=Math.PI/2}
+ /* a cartoon cat facing forward (+x): big head, huge shiny eyes, pink nose, blush, whiskers, paws on the rim */
+ const S=new THREE.SphereGeometry(1,18,14),tb=M('#8a6c50'),tbd=M('#5e4634'),wh=M('#fffaf2'),pk=M('#f39aa6'),dk=M('#1d1d24');
+ const blush=new THREE.MeshBasicMaterial({color:'#f6a0ad',transparent:true,opacity:.55});
+ function cat(xp,sc,fat,iris){const c=new THREE.Group();c.position.set(xp,.9,0);c.scale.setScalar(sc);plane.add(c);
+   const add=(geo,m,px,py,pz,sx=1,sy=sx,sz=sx)=>{const o=new THREE.Mesh(geo,m);o.position.set(px,py,pz);o.scale.set(sx,sy,sz);o.castShadow=true;c.add(o);return o};
+   add(S,tb,-.1,.55,0,.9*fat,.75,.95*fat);add(S,wh,.25,.55,0,.65,.65,.75*fat);                 // shoulders and white chest
+   add(S,wh,0,1.85,0,.98,.9,1.05*fat);add(S,tb,-.2,2.12,0,.92,.74,1.06*fat);                   // white face under a tabby cap
+   for(const k of [-1,0,1]){const m=add(new THREE.CapsuleGeometry(.05,.22,3,6),tbd,.55,2.62,k*.2);m.rotation.x=k*.25}   // forehead stripes
+   for(const sd of [-1,1]){const e=add(new THREE.ConeGeometry(.36,.7,4),tb,-.1,2.72,sd*.56*fat);e.rotation.x=sd*.42;
+     const ie=add(new THREE.ConeGeometry(.2,.42,4),pk,.06,2.7,sd*.55*fat);ie.rotation.x=sd*.42;
+     add(S,wh,.82,1.98,sd*.34,.11,.25,.19);add(S,M(iris),.9,1.96,sd*.34,.07,.19,.14);add(S,dk,.95,1.95,sd*.34,.05,.13,.1);add(S,wh,1.0,2.06,sd*.31,.035);
+     add(S,blush,.86,1.72,sd*.56*fat,.05,.13,.17);
+     for(const t of [-.18,0,.18]){const w=add(new THREE.CylinderGeometry(.01,.01,.75,4),dk,.95,1.66+t*.3,sd*(.42+.2)*1);w.rotation.x=Math.PI/2;w.rotation.z=sd*t}
+     add(S,wh,.8,.98,sd*.42,.24,.2,.22)}                                                        // paws on the cockpit rim
+   add(S,wh,.95,1.62,-.13,.18,.15,.17);add(S,wh,.95,1.62,.13,.18,.15,.17);add(S,pk,1.04,1.76,0,.09,.07,.1);   // muzzle and nose
+   return c}
+ const danou=cat(.2,1.45,1.28,'#7d9a3c');
+ for(const sd of [-1,1]){const g=new THREE.Mesh(new THREE.TorusGeometry(.2,.06,6,14),M('#6b4a2e'));g.position.set(.72,2.42,sd*.27);g.rotation.y=Math.PI/2;danou.add(g);
+   const l=new THREE.Mesh(new THREE.CircleGeometry(.18,14),M('#9fd3e6',{roughness:.2}));l.position.set(.74,2.42,sd*.27);l.rotation.y=Math.PI/2;danou.add(l);
+   const bt=new THREE.Mesh(S,M(PAL.accent));bt.position.set(.9,1.12,sd*.2);bt.scale.set(.1,.17,.2);danou.add(bt)}
+ const bebe=cat(-2.7,1.22,1,'#8a9a3c');
+ const sc=new THREE.Mesh(new THREE.TorusGeometry(.62,.13,6,18),mu);sc.position.y=1.1;sc.rotation.x=Math.PI/2;bebe.add(sc);
+ scarf=new THREE.Mesh(new THREE.CapsuleGeometry(.13,1.4,4,8),mu);scarf.position.set(-.95,1.15,.35);scarf.rotation.z=Math.PI/2+.25;bebe.add(scarf);
+ PARENT=city}
+/* smoke: a pool of soft puffs re-used in turn */
+const puffs=[],puffG=new THREE.SphereGeometry(1,12,9);let puffNext=0,puffI=0;
+for(let i=0;i<70;i++){const m=new THREE.Mesh(puffG,new THREE.MeshStandardMaterial({color:'#ffffff',roughness:1,transparent:true,opacity:0,depthWrite:false}));m.visible=false;city.add(m);puffs.push({m,t:-99})}
+const catLbl={k:'c.cats',p:V3(0,0,0),d:300};
+function planeTick(et){const a=et*.11,R=300;
+  plane.position.set(cx(500)+Math.cos(a)*R,150+10*Math.sin(et*.7),cz(340)+Math.sin(a)*R);
+  plane.rotation.set(.34,Math.atan2(-Math.cos(a),-Math.sin(a)),.05*Math.sin(et*.7));
+  prop.rotation.x=et*28;scarf.rotation.x=.35*Math.sin(et*9);
+  catLbl.p.set(plane.position.x,plane.position.y+26,plane.position.z);
+  if(et>puffNext){puffNext=et+.13;const p=puffs[puffI++%puffs.length];p.t=et;p.m.visible=true;p.m.position.copy(plane.localToWorld(V3(-6.2,.2,0)));p.y0=p.m.position.y}
+  for(const p of puffs){if(!p.m.visible)continue;const k=(et-p.t)/3.4;if(k>=1){p.m.visible=false;continue}
+    p.m.scale.setScalar(1.6+k*7.5);p.m.material.opacity=.75*(1-k)*(1-k);p.m.position.y=p.y0+k*10}}
+
 /* =====================================================================================
    EVENING: glow sprites on the tables, candles along the aisle, string lights overhead, a few warm lamps, lit windows.
    ===================================================================================== */
 const glowTex=canvasTex(64,64,(g,w,h)=>{const r=g.createRadialGradient(32,32,0,32,32,32);r.addColorStop(0,'rgba(255,225,160,1)');r.addColorStop(.3,'rgba(255,190,100,.55)');r.addColorStop(1,'rgba(255,170,80,0)');g.fillStyle=r;g.fillRect(0,0,w,h)});
 const nightV=new THREE.Group(),nightC=new THREE.Group();venue.add(nightV);city.add(nightC);nightV.visible=nightC.visible=false;
-const glowM=new THREE.SpriteMaterial({map:glowTex,blending:THREE.AdditiveBlending,depthWrite:false,transparent:true});
-const glow=(pt,sc,par=nightV)=>{const o=new THREE.Sprite(glowM);o.position.copy(pt);o.scale.set(sc,sc,1);par.add(o);return o};
+const glowM=new THREE.SpriteMaterial({map:glowTex,blending:THREE.AdditiveBlending,depthWrite:false,transparent:true,opacity:.42}),glowMC=new THREE.SpriteMaterial({map:glowTex,blending:THREE.AdditiveBlending,depthWrite:false,transparent:true});
+const glow=(pt,sc,par=nightV)=>{const o=new THREE.Sprite(par===nightC?glowMC:glowM);o.position.copy(pt);o.scale.set(sc,sc,1);par.add(o);return o};
 const bulbM=new THREE.MeshBasicMaterial({color:'#ffe2a8'});
 const bulb=(pt,r)=>{const b=new THREE.Mesh(fG,bulbM);b.scale.setScalar(r);b.position.copy(pt);nightV.add(b)};
-for(const t of TABLES){glow(V3(t.x,LY+1.2,t.z),3.4);bulb(V3(t.x,LY+1.42,t.z),.13);for(let k=0;k<3;k++){const a=k*2.1+t.x;bulb(V3(t.x+Math.cos(a)*.5,LY+.86,t.z+Math.sin(a)*.5),.05)}}
+for(const t of TABLES){glow(V3(t.x,LY+1.2,t.z),2.8);bulb(V3(t.x,LY+1.42,t.z),.13);for(let k=0;k<3;k++){const a=k*2.1+t.x;bulb(V3(t.x+Math.cos(a)*.5,LY+.86,t.z+Math.sin(a)*.5),.05)}}
 for(const c of candles){glow(c,1.4);bulb(c,.07)}
 for(const [x,z] of COCK){glow(V3(x,LY+1.3,z),2.2);bulb(V3(x,LY+1.22,z),.06)}
 glow(V3(WELCOME.x,LY+1.2,WELCOME.z),3);glow(V3(BACKDROP.x,LY+2.6,BACKDROP.z),7);glow(V3(STAGE.x,LY+1.4,STAGE.z),8);glow(V3(BAND.x,LY+1.6,BAND.z),5);
-{const pts=[],poles=[[-13.6,-2],[13.6,-2],[-12.2,8],[12.2,8],[-10.4,17],[10.4,17],[0,-12]].map(([x,z])=>V3(x,LY+5.4,z));
+{const pts=[],poles=[[-13,-2],[13,-2],[-12.4,9],[12.4,9],[-12.6,21],[12.6,21],[0,-11]].map(([x,z])=>V3(x,LY+5.4,z));
  const str=(a,b,n)=>{for(let i=0;i<=n;i++){const u=i/n;pts.push(V3(a.x+(b.x-a.x)*u,a.y-Math.sin(Math.PI*u)*1.5,a.z+(b.z-a.z)*u))}};
  [[0,1],[2,3],[4,5],[0,3],[1,2],[2,5],[3,4],[6,0],[6,1],[0,2],[1,3],[2,4],[3,5]].forEach(([a,b])=>str(poles[a],poles[b],28));
- nightV.add(new THREE.Points(new THREE.BufferGeometry().setFromPoints(pts),new THREE.PointsMaterial({color:'#ffd88a',size:.7,map:glowTex,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending})));
+ nightV.add(new THREE.Points(new THREE.BufferGeometry().setFromPoints(pts),new THREE.PointsMaterial({color:'#ffd88a',size:.55,opacity:.7,map:glowTex,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending})));
  for(const pl of poles){const m=new THREE.Mesh(new THREE.CylinderGeometry(.07,.07,5.4,6),M('#fbf6ea'));m.position.set(pl.x,LY+2.7,pl.z);venue.add(m)}}
 for(const [x,y,z,s] of [[POOL.x,.6,POOL.z,26],[POOL2.x,.6,POOL2.z,11]])glow(V3(x,y,z),s).material=new THREE.SpriteMaterial({map:glowTex,color:'#7fd6ff',blending:THREE.AdditiveBlending,depthWrite:false,transparent:true,opacity:.6});
 for(const [hx,hz] of [[88,-10],[96,-10],[110,-45.6],[109.5,32.4],[97,-58],[60,27],[40,27],[16,8],[14,18]])glow(h2w(hx,3.4,hz),9);
-const lamps=[[0,6,-8.6,90],[0,7,2,120],[0,6,13,110],[BACKDROP.x,5,BACKDROP.z,50],[BAND.x,5,BAND.z,40]].map(([x,y,z,i])=>{const l=new THREE.PointLight('#ffc98a',0,70,1.5);l.position.set(x,y,z);l.userData.i=i;venue.add(l);return l});
+for(const [hx,hy,hz] of streetLamps){glow(h2w(hx,hy,hz),6).material=glowMC;                     // the lamp itself
+  const pool=new THREE.Mesh(new THREE.CircleGeometry(4.2,24),new THREE.MeshBasicMaterial({map:glowTex,color:'#ffcf80',transparent:true,opacity:.55,blending:THREE.AdditiveBlending,depthWrite:false}));
+  pool.rotation.x=-Math.PI/2;pool.position.copy(h2w(hx,.12,hz));nightV.add(pool)}             // and its pool of light on the road
+const lamps=[[0,6,-8.6,42],[0,7,2,55],[0,6,13,50],[0,6,22,36],[BACKDROP.x,5,BACKDROP.z,24],[BAND.x,5,BAND.z,20]].map(([x,y,z,i])=>{const l=new THREE.PointLight('#ffc98a',0,70,1.5);l.position.set(x,y,z);l.userData.i=i;venue.add(l);return l});
 for(const [x,y,h] of [[536,338,70],[232,262,50],[88,396,34],[288,302,26],[330,430,26],[196,592,36],[452,640,96],[546,424,22],[548,196,18]])glow(V3(cx(x),h*.55,cz(y)),h*1.7+36,nightC);
 for(let i=0;i<24;i++){const pt=bridgePts[(i*2.5)|0];glow(V3(pt.x,pt.y+3,pt.z),14,nightC)}
 let night=false;
@@ -794,8 +936,10 @@ function setNight(on){night=on;document.body.classList.toggle('night',on);
   scene.background.set(on?'#141b33':PAL.backdrop);hemi.intensity=on?.38:1.25;hemi.color.set(on?'#7389cc':'#cfe0ff');hemi.groundColor.set(on?'#2a2f45':'#c9b79a');
   sun.intensity=on?.55:2.4;sun.color.set(on?'#9fb4e8':'#ffe3c0');renderer.toneMappingExposure=on?1.0:1.08;
   nightV.visible=nightC.visible=on;lamps.forEach(l=>l.intensity=on?l.userData.i:0);
+  mLampHead.emissiveIntensity=on?1.6:0;signMat.emissive.set(on?'#fff3d6':'#000000');signMat.emissiveIntensity=on?1.3:0;
   winMats.forEach(m=>{m.emissiveMap=on?m.userData.nm:null;m.emissive.set(on?'#ffffff':'#000000');m.emissiveIntensity=on?.9:0;m.needsUpdate=true});
-  const k=on?'b.day':'b.night';document.getElementById('nightTx').dataset.t=k;document.getElementById('bNight').dataset.ta=k;applyLang()}
+  /* the button says what it is NOW: sun + "Trời sáng" by day, moon + "Trời tối" in the evening */
+  document.getElementById('nightTx').dataset.t=on?'b.night':'b.day';document.getElementById('bNight').dataset.ta=on?'a.today':'a.tonight';applyLang()}
 
 /* =====================================================================================
    LABELS, CAMERA, MODES
@@ -803,19 +947,15 @@ function setNight(on){night=on;document.body.classList.toggle('night',on);
 const labelsEl=document.getElementById('labels');
 const up=(v,dy)=>v.clone().add(V3(0,dy,0));
 const ZV=[   // order = priority (later ones hide when they would overlap an earlier one)
-  {k:'z.entrance',p:V3(0,1.2,25.2),hi:true,d:42},
-  {k:'z.hotel',p:h2w(53,76,-18),d:210},
+  {k:'z.entrance',p:V3(0,1.2,FZ+4.2),hi:true,d:42},
   {k:'z.gate',p:h2w(96,9.5,-10),hi:true,d:90},
   {k:'z.car',p:h2w(96,5,29),cls:'p',d:80},
   {k:'z.moto',p:h2w(MOTO.x,6,MOTO.z),cls:'m',d:70},
   {k:'z.stage',p:up(STAGE,1.2),d:36},
-  {k:'z.pool',p:up(POOL,1),w:true,d:60},
-  {k:'z.welcome',p:up(WELCOME,1.4),d:30},
-  {k:'z.gallery',p:up(GPOS[1],2.5),d:30},
-  {k:'z.backdrop',p:up(BACKDROP,3.8),d:32},
-  {k:'z.cocktail',p:V3(-6.1,LY+1.9,11.8),d:30},
-  {k:'z.pool2',p:up(POOL2,1),w:true,d:44},
-  {k:'z.tdt',p:h2w(124,1,62),cls:'road',d:120},
+  {k:'z.welcome',p:up(WELCOME,1.7),d:30},
+  {k:'z.gallery',p:up(GALLERY,3),d:30},
+  {k:'z.backdrop',p:up(BACKDROP,4.2),d:32},
+  {k:'z.cocktail',p:V3(COCK[0][0],LY+1.9,COCK[0][1]),d:30},
   {k:'z.river',p:h2w(166,1,-30),w:true,d:160}
 ];
 const ZC=[
@@ -823,7 +963,7 @@ const ZC=[
   {k:'c.ndb',p:V3(cx(232),62,cz(262)),d:330},
   {k:'c.dinh',p:V3(cx(88),48,cz(396)),d:380},
   {k:'c.bridge',p:V3(cx(742),20,cz(322)),d:420},
-  {k:'c.melinh',p:V3(cx(MELINH[0]),30,cz(MELINH[1])),d:260},
+  {k:'c.melinh',p:V3(cx(MELINH[0]-10),27,cz(MELINH[1])),d:230},
   {k:'c.bt',p:V3(cx(196),50,cz(600)),d:380},
   {k:'c.opera',p:V3(cx(330),32,cz(432)),d:300},
   {k:'c.post',p:V3(cx(288),30,cz(302)),d:300},
@@ -831,7 +971,8 @@ const ZC=[
   {k:'c.metro',p:V3(cx(548),26,cz(196)),d:260},
   {k:'c.park',p:V3(cx(557),14,cz(486)),d:260},
   {k:'z.river',p:V3(cx(625),2,cz(540)),w:true,d:420},
-  {k:'c.tt',p:V3(cx(870),4,cz(500)),w:true,d:480}
+  {k:'c.tt',p:V3(cx(870),4,cz(500)),w:true,d:480},
+  catLbl
 ];
 function mkLabels(list,m){for(const z of list){const d=document.createElement('div');d.className='lbl'+(z.hi?' hi':'')+(z.w?' water':'')+(z.cls?' '+z.cls:'');d.innerHTML='<span></span>';
   d.onclick=()=>{hideHint();if(z.go)setMode(z.go);else flyTo(z.p.clone().setY(0),(isM()?1.35:1)*z.d)};labelsEl.appendChild(d);z.el=d;z.sp=d.firstChild;z.m=m}}
@@ -847,33 +988,44 @@ function placeLabels(){const w=innerWidth,h=innerHeight,shown=[];
     z.el.style.display=vis?'':'none';z.vis=vis;if(!vis)continue;
     z.el.style.transform=`translate(${x}px,${y}px) translate(-50%,-100%)`}}
 
-let anim=null,spin=true;
+let anim=null,spin=true,holdUntil=0;
 const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduce)spin=false;
 function flyCam(pos,target,dur=1500){if(reduce||dur<=0){camera.position.copy(pos);controls.target.copy(target);anim=null;return}
   anim={p0:camera.position.clone(),t0:controls.target.clone(),p1:pos,t1:target,s:performance.now(),d:dur}}
 function flyTo(target,dist){const dir=camera.position.clone().sub(controls.target).setY(0);if(dir.lengthSq()<1)dir.set(0,0,1);dir.normalize().multiplyScalar(.8).setY(.7).normalize();flyCam(target.clone().add(dir.multiplyScalar(dist)),target.clone())}
 const VIEWS={
-  city:m=>[V3(m?190:210,m?1300:560,m?1500:760),V3(m?40:20,0,m?0:10)],
+  city:m=>{const D=m?1700:800;return [V3(-10+D*.84,D*.5,5+D*.2),V3(-10,0,5)]},        // from over the river, straight at the front of Lotte Hotel Saigon
   citytop:m=>[V3(0,m?2500:1400,.5),V3(0,0,0)],
-  venue:m=>[h2w(30-(m?1.9:1)*190,(m?1.9:1)*150,10+(m?1.9:1)*120),h2w(30,0,10)],
+  venue:m=>{const D=m?640:325;return [h2w(46+D*.574,D*.819,-4),h2w(46,0,-4)]},      // from in front of the main entrance: the whole building with the party lawn behind
   venuetop:m=>[up(h2w(50,0,4.5),m?640:400),h2w(50,0,4)],
-  lawn:m=>[V3(m?12:9,m?84:50,m?128:94),V3(0,0,m?12:9)]
+  lawn:m=>{const D=m?150:90;return [V3(0,D*.7071,8+D*.7071),V3(0,0,8)]}             // square on to the party lawn, 45° up
 };
 function view(name,dur){const [p,t]=VIEWS[name](isM());flyCam(p,t,dur)}
 controls.addEventListener('start',()=>{anim=null;hideHint()});
+/* opening moves. An "orbit" animation turns around the target (radius, tilt and bearing all eased) instead of flying in a straight line.
+   City: start high above, turn half a circle while coming down to the view in front of Lotte, rest a beat, then the slow turntable.
+   Hotel: start square on to the party lawn at 45°, then pull back and swing round to the front of the main entrance, and ask how the guest is coming. */
+const sphT=new THREE.Spherical(),sphOf=(pos,tg)=>new THREE.Spherical().setFromVector3(pos.clone().sub(tg));
+function orbit(t0,t1,s0,s1,dur,done,delay=0){anim={orb:true,t0:t0.clone(),t1:t1.clone(),s0,s1,s:performance.now()+delay,d:dur,done};camera.position.setFromSpherical(s0).add(t0);controls.target.copy(t0)}
+const introDone={city:false,venue:false};
+function intro(){const m=isM(),[p1,t1]=VIEWS[mode](m),s1=sphOf(p1,t1);introDone[mode]=true;
+  if(reduce){camera.position.copy(p1);controls.target.copy(t1);if(mode==='venue')askShow();return}
+  if(mode==='city')orbit(t1,t1,new THREE.Spherical(Math.min(s1.radius*2.2,3900),.14,s1.theta-Math.PI),s1,11000,()=>{holdUntil=performance.now()+1600},500);
+  else{const [p0,t0]=VIEWS.lawn(m),s0=sphOf(p0,t0);while(s1.theta>s0.theta)s1.theta-=2*Math.PI;while(s1.theta<=s0.theta-2*Math.PI)s1.theta+=2*Math.PI;
+    orbit(t0,t1,s0,s1,9000,()=>{holdUntil=performance.now()+1200;askShow()},2200)}}
 
 const fadeEl=document.getElementById('fade');
 function applyMode(){city.visible=mode==='city';venue.visible=mode==='venue';document.body.dataset.mode=mode;
   const c=mode==='city';
   camera.near=c?8:1;camera.far=c?9000:2500;camera.updateProjectionMatrix();
-  controls.minDistance=c?140:10;controls.maxDistance=c?3200:900;
+  controls.minDistance=c?140:10;controls.maxDistance=c?4200:1100;controls.autoRotateSpeed=c?-.35:.14;
   if(c){sun.position.set(-420,640,420);sun.target.position.set(0,0,0);Object.assign(sun.shadow.camera,{left:-680,right:680,top:680,bottom:-680,near:50,far:2400})}
   else{const t=h2w(50,0,4),s=h2w(50-110,170,4+120);sun.position.copy(s);sun.target.position.copy(t);Object.assign(sun.shadow.camera,{left:-170,right:170,top:170,bottom:-170,near:10,far:520})}
   sun.shadow.camera.updateProjectionMatrix();sun.target.updateMatrixWorld();
   document.getElementById('sub').dataset.t='sub.'+mode;
   document.querySelectorAll('.modes button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===mode?'true':'false'));
-  closeCard();applyLang();view(mode,0);controls.update()}
+  closeCard();askHide();applyLang();if(introDone[mode])view(mode,0);else intro();controls.update()}
 function setMode(m){if(m===mode)return;fadeEl.classList.add('on');
   setTimeout(()=>{mode=m;applyMode();const u=new URL(location.href);u.searchParams.set('mode',mode);history.replaceState(null,'',u);requestAnimationFrame(()=>fadeEl.classList.remove('on'))},400)}
 document.querySelectorAll('.modes button').forEach(b=>b.onclick=()=>{hideHint();setMode(b.dataset.m)});
@@ -882,12 +1034,19 @@ document.querySelectorAll('.modes button').forEach(b=>b.onclick=()=>{hideHint();
 const card=document.getElementById('card');let curRoute=null;
 function showRoute(k){curRoute=k;const r=ROUTES[k];r.t0=performance.now();r.mesh.geometry.setDrawRange(0,0);
   card.className='card glass on '+k;renderCard();
-  const a=h2w(r.pts[0].x,0,r.pts[0].z),b=V3(0,0,21),mid=a.clone().lerp(b,.5),dist=a.distanceTo(b)*(isM()?3.2:1.5)+50;
+  const a=h2w(r.pts[0].x,0,r.pts[0].z),b=V3(0,0,FZ),mid=a.clone().lerp(b,.5),dist=a.distanceTo(b)*(isM()?3.2:1.5)+50;
   const side=V3(b.z-a.z,0,a.x-b.x).normalize();if(side.z>0)side.negate();
   flyCam(mid.clone().add(side.multiplyScalar(dist*.55)).add(V3(0,dist*.75,0)),mid,1700)}
 function renderCard(){if(!curRoute)return;document.getElementById('cK').textContent=tr('b.'+curRoute);document.getElementById('cP').textContent=tr(curRoute+'.p')}
 function closeCard(){card.classList.remove('on');curRoute=null}
 document.getElementById('cx').onclick=closeCard;
+/* "how are you coming?" */
+const ask=document.getElementById('ask');let asked=false;
+function askShow(){if(asked||mode!=='venue')return;asked=true;ask.classList.add('on')}
+function askHide(){ask.classList.remove('on')}
+document.getElementById('askX').onclick=askHide;
+addEventListener('keydown',e=>{if(e.key==='Escape')askHide()});
+ask.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>{askHide();hideHint();showRoute(b.dataset.go)});
 document.querySelectorAll('.ctl [data-r]').forEach(b=>b.onclick=()=>{hideHint();showRoute(b.dataset.r)});
 
 /* tap the Lotte building on the city map → go to the hotel */
@@ -897,7 +1056,7 @@ canvas.addEventListener('pointerup',e=>{if(!down||Math.hypot(e.clientX-down.x,e.
   ptr.set(e.clientX/innerWidth*2-1,-(e.clientY/innerHeight)*2+1);ray.setFromCamera(ptr,camera);
   if(ray.intersectObject(lotteG,true).length){hideHint();setMode('venue')}});
 
-document.getElementById('bAll').onclick=()=>{hideHint();closeCard();view(mode)};
+document.getElementById('bAll').onclick=()=>{hideHint();closeCard();spin=!reduce;view(mode)};   // back up high: the slow turntable resumes
 document.getElementById('bTop').onclick=()=>{hideHint();view(mode+'top')};
 document.getElementById('bLawn').onclick=()=>{hideHint();closeCard();view('lawn')};
 document.getElementById('bNight').onclick=()=>{hideHint();setNight(!night)};
@@ -905,10 +1064,10 @@ if(QS.get('night')==='1')setTimeout(()=>setNight(true),0);
 function applyLang(){document.documentElement.lang=lang;
   document.querySelectorAll('[data-t]').forEach(e=>e.textContent=trm(e.dataset.t));
   document.querySelectorAll('[data-ta]').forEach(e=>e.setAttribute('aria-label',tr(e.dataset.ta)));
-  document.querySelectorAll('.langs button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===lang?'true':'false'));
+  document.getElementById('bLang').textContent=lang.toUpperCase();
   for(const z of ZV.concat(ZC)){z.sp.textContent=tr(z.k);z.bw=0}
   renderCard()}
-document.querySelectorAll('.langs button').forEach(b=>b.onclick=()=>{lang=b.dataset.l;const u=new URL(location.href);u.searchParams.set('lang',lang);history.replaceState(null,'',u);applyLang()});
+document.getElementById('bLang').onclick=()=>{lang={vi:'en',en:'fr',fr:'vi'}[lang];const u=new URL(location.href);u.searchParams.set('lang',lang);history.replaceState(null,'',u);applyLang()};   // one button: each tap moves on to the next language
 const hint=document.getElementById('hint');let hintT=setTimeout(()=>hint.classList.add('off'),9000);
 function hideHint(){hint.classList.add('off');clearTimeout(hintT);spin=false}   // any interaction also stops the slow turntable
 
@@ -921,9 +1080,13 @@ resize();applyMode();
 const clock=new THREE.Clock(),tmp=new THREE.Vector3(),tmp2=new THREE.Vector3();
 const hop=(t)=>Math.abs(Math.sin(t));
 renderer.setAnimationLoop(()=>{const now=performance.now(),et=clock.getElapsedTime();
-  if(anim){const k=Math.min(1,(now-anim.s)/anim.d),e=ease(k);camera.position.lerpVectors(anim.p0,anim.p1,e);controls.target.lerpVectors(anim.t0,anim.t1,e);if(k>=1)anim=null}
-  controls.autoRotate=spin&&!anim;controls.update();
-  if(mode==='city'){heart.position.y=62+3*Math.sin(et*2.2);heart.rotation.y=et*.9;const s=1+.14*Math.sin(et*3);lotteRing.scale.set(s,s,1);lotteRing.material.opacity=.45+.3*Math.sin(et*3);
+  if(anim){const k=Math.min(1,Math.max(0,(now-anim.s)/anim.d)),e=ease(k);
+    if(anim.orb){const a=anim.s0,b=anim.s1;controls.target.lerpVectors(anim.t0,anim.t1,e);sphT.set(a.radius+(b.radius-a.radius)*e,a.phi+(b.phi-a.phi)*e,a.theta+(b.theta-a.theta)*e);camera.position.setFromSpherical(sphT).add(controls.target)}
+    else{camera.position.lerpVectors(anim.p0,anim.p1,e);controls.target.lerpVectors(anim.t0,anim.t1,e)}
+    if(k>=1){const d=anim.done;anim=null;if(d)d()}}
+  controls.autoRotate=spin&&!anim&&now>holdUntil;controls.update();
+  if(mode==='city'){planeTick(et);
+    heart.position.y=62+3*Math.sin(et*2.2);heart.rotation.y=et*.9;const s=1+.14*Math.sin(et*3);lotteRing.scale.set(s,s,1);lotteRing.material.opacity=.45+.3*Math.sin(et*3);
     for(const c of cityCars){let u,sgn=c.dir;if(c.pp){u=(c.o+et*c.sp)%2;if(u>1){u=2-u;sgn=-1}}else{u=(c.o+et*c.sp)%1;if(c.dir<0)u=1-u}
       c.c.getPointAt(u,tmp);c.c.getTangentAt(u,tmp2);
       c.g.position.set(tmp.x-tmp2.z*c.off,tmp.y,tmp.z+tmp2.x*c.off);c.g.rotation.y=Math.atan2(-tmp2.z*sgn,tmp2.x*sgn)}}
