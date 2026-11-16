@@ -94,6 +94,11 @@ body.wed .rail nav button,body.stry .rail nav button,body.wed .rail .lang button
 body.wed .rail nav button.on,body.stry .rail nav button.on,body.wed .rail .lang button.on,body.stry .rail .lang button.on{opacity:1}
 body.wed .track,body.stry .track{box-shadow:0 0 0 1.5px rgba(252,252,251,.7),0 0 8px rgba(252,252,251,.95)}
 body.wed .snd,body.stry .snd,body.wed .phgo svg,body.stry .phgo svg{filter:drop-shadow(0 0 2px rgba(252,252,251,1)) drop-shadow(0 0 6px rgba(252,252,251,.9))}
+/* Wedding: the whole bottom menu is one frosted, nearly opaque off-white bar, so the page under it no longer shows through */
+body.wed .rail{background:rgba(252,252,251,.96);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 -1px 0 rgba(22,21,20,.08)}
+body.wed .rail nav button,body.wed .rail .lang button,body.wed .phgo{text-shadow:none}
+body.wed .track{box-shadow:none}
+body.wed .snd,body.wed .phgo svg{filter:none}
 /* over a photo: white letters with a soft dark shadow (like the intro) */
 body.railimg .rail{color:#fff}
 body.railimg .rail nav button{opacity:.6}
@@ -501,6 +506,8 @@ img[data-src]{width:100%;display:block;background:var(--soft);max-width:100%}
 .b53empty{grid-column:1/-1;text-align:center;padding:30px 16px 0;color:var(--mute);font:italic 400 clamp(18px,2.2vw,24px)/1.4 var(--serif)}
 /* --- Bottega53-style strip (B53STRIP): on desktop the page scroll slides the photos sideways; on phones one full-screen photo per swipe; a rolling photo number sits bottom-left --- */
 .b53grid.strip{display:block;margin-top:0;position:relative}
+/* opened from the plane on the 3D map: the back button is just the arrow (it goes back to the map, not to the globe) */
+html.from3d #gback [data-t]{display:none}
 /* the strip is the end of the page: no extra space below it, so the last slide ("All categories") is where scrolling stops */
 html.b53end #wedding{padding-bottom:0}
 .b53pin{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--bg)}
@@ -1371,6 +1378,7 @@ var T={
 "st.29122026h":["Về lại nơi bắt đầu","Back to Where It All Began","Retour aux sources"],
 "st.29122026p":["Trở về Sài Gòn thân thương để mở tiệc ăn mừng cùng gia đình và bạn bè. Lần này, nắng đẹp hơn xưa rất nhiều vì trong ngày vui của tụi mình có thêm sự hiện diện của bạn!","Returning to beloved Saigon to celebrate with our families and friends. This time around, the sunshine is brighter and warmer than ever, because our big day includes you!","De retour dans notre chère Saïgon pour faire la fête avec la famille et les amis. Cette fois, le soleil brille bien plus qu’avant, car vous serez là pour notre grand jour !"],
 "g.back":["Địa cầu","Globe","Globe"],
+"g.back3d":["Quay lại bản đồ 3D","Back to the 3D map","Retour au plan 3D"],
 "g.next":["Tiếp theo","Next","Suivant"],
 "g.go":["Đi tiếp","Continue to","Continuer vers"],
 "g.empty":["Ảnh {c} sẽ được thêm vào đây","Photos of {c} coming soon","Photos de {c} à venir"],
@@ -1575,7 +1583,7 @@ function applyNav(st){
 }
 /* an entry without saved state (hash typed or linked by hand) is read from the #hash, so the screen always follows the URL */
 function hashNav(){var h=(location.hash||"").slice(1),st=navState();st.c=null;
-  if(ORDER.indexOf(h)>=0)st.v=h;else if(["baohy","damcuoi","photos"].indexOf(h)>=0||(h==="upload"&&GUEST_API)){st.v="wedding";st.w=h}else st.v="intro";return st}
+  if(ORDER.indexOf(h)>=0)st.v=h;else if(h==="cats"){st.v="journey";st.c="cats"}else if(["baohy","damcuoi","photos"].indexOf(h)>=0||(h==="upload"&&GUEST_API)){st.v="wedding";st.w=h}else st.v="intro";return st}
 addEventListener("popstate",function(e){applyNav(e.state||hashNav())});
 function show(v){
   if(!document.getElementById(v))return;
@@ -1972,7 +1980,7 @@ addEventListener("scroll",onScroll,{passive:true});
 (function(){var rail=$("#rail"),tk=0;
   function onPhoto(x,y){var els=document.elementsFromPoint(x,y);for(var i=0;i<els.length;i++){var e=els[i];if(rail.contains(e)||e.classList.contains("ascroll")||e.closest(".ascroll"))continue;
       return /^(IMG|VIDEO)$/.test(e.tagName)||!!e.closest(".pw-hero,.feat .mid,.feat .side,.hs-track figure,.mg-ph,.gph,.b53grid figure:not(.ph),.ti-img")}return false}
-  function tone(){tk=0;if(cur==="intro"){document.body.classList.remove("railimg");return}
+  function tone(){tk=0;if(cur==="intro"||cur==="wedding"){document.body.classList.remove("railimg");return}   /* Wedding has its own solid bar */
     var r=rail.getBoundingClientRect(),y=r.top+r.height*.3,w=innerWidth;
     document.body.classList.toggle("railimg",onPhoto(w*.25,y)||onPhoto(w*.5,y)||onPhoto(w*.75,y))}
   window.railTone=function(){if(!tk)tk=requestAnimationFrame(tone)};
@@ -2213,6 +2221,8 @@ var G=window.G=(function(){
   addEventListener("keydown",function(e){if(e.key==="Escape"&&gal.classList.contains("on"))closeStep()});
   return{cat:CAT,start:function(){if(run)return;run=true;SP=RM?99:0;relabel();requestAnimationFrame(resize);last=performance.now();raf=requestAnimationFrame(draw)},
     stop:function(){run=false;cancelAnimationFrame(raf);NS.c=null;if(gal.classList.contains("on")){gal.classList.remove("on");zoom=1;fade=1;busy=false}document.documentElement.classList.remove("galon");keepY=null},resize:resize,relabel:relabel,
+    /* straight into a place's photos, with no globe zoom (used by #cats, the plane on the 3D map) */
+    show:function(k){var ct=k==="cats"?CAT:CITIES.filter(function(x){return x.k===k})[0];if(!ct)return;busy=true;NS.c=ct.k;keepY=scrollY;zoom=14;fade=0;openGal(ct)},
     open:function(k){var ct=k==="cats"?CAT:CITIES.filter(function(x){return x.k===k})[0];if(!ct)return;if(gal.classList.contains("on")){NS.c=k;openGal(ct)}else{busy=false;select(ct)}},
     close:function(){if(gal.classList.contains("on"))back();else NS.c=null},rk:function(){return RK}};
 })();
@@ -2334,6 +2344,8 @@ var h=(location.hash||"").slice(1);
 if(ORDER.indexOf(h)>=0)show(h);
 else if(["baohy","damcuoi","photos"].indexOf(h)>=0||(h==="upload"&&GUEST_API)){show("wedding");wtab(h)}
 else if(h==="guests"){show("wedding");wtab("photos");ptab("wed");B53.wed.c="fromguests";b53render("wed")}
+/* #cats (from the plane on the 3D map): open Danou & Bébé straight away, without an extra history step, so Back / the gallery's close go right back to the map */
+else if(h==="cats"){show("journey");G.show("cats");document.documentElement.classList.add("from3d");var gb=$("#gback");gb.dataset.ta="g.back3d";gb.setAttribute("aria-label",tr("g.back3d"))}
 else if(h==="guests-family"){show("wedding");wtab("photos");ptab("family");(B53.family||(B53.family={})).c="fromguests";b53render("family")}
 try{history.replaceState(navState(),"",location.hash||"#intro")}catch(e){}
 })();
