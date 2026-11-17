@@ -333,7 +333,41 @@ html.galon,html.galon body{overflow:hidden}
 .sp.pane.on .tli,.sp.pane.on .menu>*{animation:floatin .6s ease backwards}
 .sp.pane.on .tli:nth-child(1){animation-delay:.15s}.sp.pane.on .tli:nth-child(2){animation-delay:.35s}.sp.pane.on .tli:nth-child(3){animation-delay:.55s}.sp.pane.on .tli:nth-child(4){animation-delay:.75s}
 .sp.pane.on .menu>:nth-child(1),.sp.pane.on .menu>:nth-child(2){animation-delay:.15s}.sp.pane.on .menu>:nth-child(3),.sp.pane.on .menu>:nth-child(4){animation-delay:.35s}.sp.pane.on .menu>:nth-child(5),.sp.pane.on .menu>:nth-child(6){animation-delay:.55s}
+.sp.pane.on .tli:nth-child(5){animation-delay:.95s}
 @media (prefers-reduced-motion:reduce){.sp.pane.on,.sp.pane.on .tli,.sp.pane.on .menu>*{animation:none}}
+/* 20:00 quiz: the timeline button, then a pop-up (code → name → 15 questions one by one → bonus guess → result) */
+.qzopen{margin-top:12px;border:1px solid var(--ink);background:none;color:var(--ink);border-radius:40px;padding:9px 20px;font:500 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background .3s,color .3s}
+.qzopen:hover{background:var(--ink);color:var(--bg)}
+.qz{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(22,21,20,.5);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.qz.on{display:flex;animation:vin .35s ease}
+.qzc{position:relative;width:min(540px,100%);max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow:auto;background:var(--bg);border-radius:22px;padding:38px 30px 28px;box-shadow:0 30px 80px -20px rgba(0,0,0,.45);text-align:center;box-sizing:border-box}
+.qzx{position:absolute;top:10px;right:10px;width:40px;height:40px;border:0;border-radius:50%;background:none;font:300 26px/1 var(--sans);color:var(--mute);cursor:pointer}
+.qzx:hover{background:var(--soft)}
+.qzk{font:500 11px/1.4 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--hy);margin:0 0 12px}
+.qzh{font:400 clamp(22px,4.6vw,28px)/1.3 var(--serif);margin:0 0 12px;color:var(--ink)}
+.qzp{font:400 16px/1.6 var(--sans);color:var(--mute);margin:0 0 22px}
+.qzcode{display:block;margin:6px auto 0;width:230px;max-width:100%;box-sizing:border-box;border:0;border-bottom:2px solid var(--ink);background:none;outline:none;text-align:center;font:400 46px/1.2 var(--serif);letter-spacing:.45em;padding:6px 0 8px .45em;color:var(--ink);font-variant-numeric:lining-nums tabular-nums}
+.qzcode::placeholder{color:#cfcac2}
+.qzcode.bad{animation:qzshake .4s}
+@keyframes qzshake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+.qzerr{min-height:1.5em;margin:12px 0 4px;font:400 14.5px/1.5 var(--sans);color:var(--hy)}
+.qzin{display:block;width:100%;box-sizing:border-box;border:1px solid #cfcac2;border-radius:14px;padding:15px 16px;font:400 18px/1.3 var(--sans);color:var(--ink);background:#fff;outline:none;text-align:center}
+.qzin:focus{border-color:var(--ink)}
+.qzbtn{display:inline-flex;align-items:center;justify-content:center;min-width:190px;margin-top:22px;border:0;border-radius:40px;padding:15px 30px;background:var(--ink);color:#fff;font:500 16px/1 var(--sans);letter-spacing:.04em;cursor:pointer}
+.qzbtn:disabled{opacity:.3;cursor:default}
+.qzbar{height:4px;border-radius:4px;background:var(--soft);overflow:hidden;margin:0 0 16px}.qzbar i{display:block;height:100%;background:var(--hy);transition:width .4s ease}
+.qzq{font:400 clamp(20px,4.2vw,24px)/1.4 var(--serif);margin:0 0 18px;color:var(--ink)}
+.qzo{display:flex;align-items:center;gap:14px;width:100%;box-sizing:border-box;margin:0 0 10px;border:1.5px solid var(--line);border-radius:16px;padding:15px 16px;background:#fff;text-align:left;font:400 17px/1.35 var(--sans);color:var(--ink);cursor:pointer;transition:border-color .2s,background .2s}
+.qzo b{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;border:1.5px solid #cfcac2;font:600 14px/1 var(--sans);color:var(--mute)}
+.qzo:hover{border-color:#cfcac2}
+.qzo.on{border-color:var(--ink);background:var(--soft)}.qzo.on b{background:var(--ink);border-color:var(--ink);color:#fff}
+.qznav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:8px}
+.qznav .qzbtn{margin-top:8px;min-width:150px;margin-left:auto}
+.qzback{border:0;background:none;padding:12px 6px;font:400 15px/1 var(--sans);color:var(--mute);cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.qzback[hidden]{display:inline-block;visibility:hidden}
+.qzbig{font:400 64px/1 var(--serif);margin:6px 0 10px;color:var(--ink);font-variant-numeric:lining-nums tabular-nums}
+.qzbig small{font-size:28px;color:var(--mute)}
+@media (max-width:760px){.qzc{padding:34px 18px 22px;border-radius:18px}.qzo{font-size:16px;padding:14px}.qzbtn{min-width:150px}}
 .tl{list-style:none;margin:0;padding:0;max-width:600px;margin-inline:auto}
 .tl li{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
 .tl time{font:400 26px/1 var(--serif);font-variant-numeric:tabular-nums}
@@ -1196,6 +1230,7 @@ body{font:400 15.5px/1.75 var(--sans)}
           <li class="tli"><span class="tli-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 20.5V4.5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v16"/><path d="M4 20.5h16"/><circle cx="14.6" cy="12.5" r=".9" fill="currentColor"/></svg></span><span class="tli-nd"><i></i><b></b></span><span class="tli-tx"><time>17:30</time><span data-t="lt.1h"></span></span></li>
           <li class="tli"><span class="tli-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/></svg></span><span class="tli-nd"><i></i><b></b></span><span class="tli-tx"><time>18:30</time><span data-t="lt.2h"></span></span></li>
           <li class="tli"><span class="tli-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v7a2 2 0 0 0 2 2v9M11 3v7a2 2 0 0 1-2 2M9 3v6"/><path d="M16.5 21V3c-2 1.5-3 4-3 7v3h3"/></svg></span><span class="tli-nd"><i></i><b></b></span><span class="tli-tx"><time>19:00</time><span data-t="lt.3h"></span></span></li>
+          <li class="tli"><span class="tli-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="9" width="17" height="4" rx="1"/><path d="M5 13v7.5h14V13M12 9v11.5"/><path d="M12 9c-1.5-3.6-5.5-4.2-5.5-1.8C6.5 9 12 9 12 9zM12 9c1.5-3.6 5.5-4.2 5.5-1.8C17.5 9 12 9 12 9z"/></svg></span><span class="tli-nd"><i></i><b></b></span><span class="tli-tx"><time>20:00</time><span data-t="lt.qh">Đố vui có thưởng</span><button type="button" class="qzopen" id="qzopen" data-t="qz.open">Chơi ngay</button></span></li>
           <li class="tli"><span class="tli-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V6.5a1.5 1.5 0 0 1 3 0V12M11 11V5a1.5 1.5 0 0 1 3 0v6M14 11V6.5a1.5 1.5 0 0 1 3 0V14c0 4-2.6 7-6.5 7-2.5 0-4.2-1.3-5.4-3.4L3.6 15a1.5 1.5 0 0 1 2.5-1.6L8 15.5"/></svg></span><span class="tli-nd"><i></i><b></b></span><span class="tli-tx"><time>21:00</time><span data-t="lt.4h"></span></span></li>
         </ol>
         <p class="tree-note" data-t="lt.note">Đón khách từ 17:30. Lễ cưới bắt đầu lúc 18:30, sau đó là tiệc tối.</p>
@@ -1250,7 +1285,7 @@ body{font:400 15.5px/1.75 var(--sans)}
             <figure class="mg-pol p3"><div class="mg-fr"><img alt=""></div></figure>
             <button class="mg-btn" id="mgSee"><span data-t="civ.see">Xem album</span></button>
             <svg class="mg-circle" id="mgCircle" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 36C14 31.6 3 24.5 3 14.6 3 9 7.2 5 12 5c3.6 0 6.3 2 8 4.6C21.7 7 24.4 5 28 5c4.8 0 9 4 9 9.6C37 24.5 26 31.6 20 36z"/></svg>
-            <div class="mg-rev" id="mgRev"><div class="mg-head"><h3 class="mg-name mg-date">26.07.2025</h3><p class="mg-name mg-date mg-place" data-t="civ.h1">Tại tòa thị chính Montréal</p><p class="mg-sub" data-t="civ.h2">Cả hai ký giấy kết hôn</p></div></div>
+            <div class="mg-rev" id="mgRev"><div class="mg-head"><h3 class="mg-name mg-date">26.07.2025</h3><p class="mg-name mg-date mg-place" data-t="civ.h1">Tại Tòa án Montréal</p><p class="mg-sub" data-t="civ.h2">Cả hai ký giấy kết hôn</p></div></div>
           </div>
         </div>
         <div class="mg-gal" id="mgGal">
@@ -1319,6 +1354,7 @@ body{font:400 15.5px/1.75 var(--sans)}
   </div>
 </div>
 <audio id="music" preload="metadata"></audio>
+<div class="qz" id="qz" role="dialog" aria-modal="true" aria-labelledby="qzh"><div class="qzc"><button type="button" class="qzx" id="qzx" data-ta="qz.close" aria-label="Đóng">×</button><div id="qzb"></div></div></div>
 <script>
 (function(){
 "use strict";
@@ -1360,7 +1396,7 @@ var T={
 "as.off":["Bật tự cuộn","Start auto-scroll","Lancer le défilement"],
 "civ.t1":["Lễ đăng ký","Civil","Mariage"],
 "civ.t2":["kết hôn","Ceremony","civil"],
-"civ.h1":["Tại tòa thị chính Montréal","At Montréal City Hall","Au Palais de justice de Montréal"],
+"civ.h1":["Tại Tòa án Montréal","At the Montréal Courthouse","Au Palais de justice de Montréal"],
 "civ.h2":["Cả hai ký giấy kết hôn","The two of us signed our marriage papers","Nous avons signé notre acte de mariage"],
 "st.t":["Câu chuyện của chúng mình","Our story","Notre histoire"],
 "st.go":["Đến đám cưới","To the wedding","Vers le mariage"],
@@ -1377,7 +1413,7 @@ var T={
 "st.2023h":["Muốn thì tìm cách!","Where There’s a Will, There’s a Way!","Quand on veut, on peut !"],
 "st.2023p":["Không tìm lý do nữa, tụi mình chọn tìm cách. Cứ vài tháng, hai đứa lại bay đến một nước thứ ba để hẹn hò: từ Hàn Quốc, Philippines sang tới Đài Loan. Đằng sau những chuyến bay, Huy âm thầm chơi lớn: tháng 8/2023, xách vali sang Canada học thêm bằng Thạc sĩ thứ hai — chính thức rút ngắn khoảng cách địa lý về bằng không!","Done looking for excuses, we chose to find a way. Every few months, we flew to a new country just to date—from South Korea and the Philippines to Taiwan. Behind all those flights, Huy was quietly plotting a bold move: in August 2023, he packed his bags and flew to Canada for a second Master’s degree—officially bringing the distance down to zero!","Fini les excuses : nous avons choisi de trouver un moyen. Tous les quelques mois, nous nous retrouvions dans un pays tiers pour un rendez-vous, de la Corée du Sud aux Philippines jusqu’à Taïwan. Derrière tous ces vols, Huy préparait en secret un grand coup : en août 2023, il fait ses valises pour le Canada et une deuxième maîtrise — ramenant officiellement la distance à zéro !"],
 "st.2025h":["Chốt đơn tại Montréal","Sealing the Deal in Montreal","Signé à Montréal"],
-"st.2025p":["Tại Tòa thị chính Montréal, hai đứa chính thức đặt bút ký vào tờ giấy quan trọng nhất cuộc đời — hơn 15 năm kể từ ngày đầu tiên chạm mắt nhau ở sân trường Lê Hồng Phong.","At Montreal City Hall, we officially signed the most important piece of paper of our lives—more than 15 years after our eyes first met in the Le Hong Phong schoolyard.","À l’hôtel de ville de Montréal, nous avons officiellement signé le papier le plus important de notre vie — plus de 15 ans après nos premiers regards échangés dans la cour du lycée Lê Hồng Phong."],
+"st.2025p":["Tại Tòa án Montréal (Palais de justice de Montréal), hai đứa chính thức đặt bút ký vào tờ giấy quan trọng nhất cuộc đời — hơn 15 năm kể từ ngày đầu tiên chạm mắt nhau ở sân trường Lê Hồng Phong.","At the Montreal Courthouse (Palais de justice de Montréal), we officially signed the most important piece of paper of our lives—more than 15 years after our eyes first met in the Le Hong Phong schoolyard.","Au Palais de justice de Montréal, nous avons officiellement signé le papier le plus important de notre vie — plus de 15 ans après nos premiers regards échangés dans la cour du lycée Lê Hồng Phong."],
 "st.29122026h":["Về lại nơi bắt đầu","Back to Where It All Began","Retour aux sources"],
 "st.29122026p":["Trở về Sài Gòn thân thương để mở tiệc ăn mừng cùng gia đình và bạn bè. Lần này, nắng đẹp hơn xưa rất nhiều vì trong ngày vui của tụi mình có thêm sự hiện diện của bạn!","Returning to beloved Saigon to celebrate with our families and friends. This time around, the sunshine is brighter and warmer than ever, because our big day includes you!","De retour dans notre chère Saïgon pour faire la fête avec la famille et les amis. Cette fois, le soleil brille bien plus qu’avant, car vous serez là pour notre grand jour !"],
 "g.back":["Địa cầu","Globe","Globe"],
@@ -1486,6 +1522,33 @@ var T={
 "lt.2h":["Làm lễ","Ceremony","Cérémonie"],
 "lt.3h":["Khai tiệc","Dinner","Dîner"],
 "lt.4h":["Kết thúc","Farewell","Au revoir"],
+"lt.qh":["Đố vui có thưởng","Quiz with Prizes","Quiz avec cadeaux"],
+"qz.open":["Chơi ngay","Play now","Jouer"],
+"qz.k":["Đố vui có thưởng","Quiz with prizes","Quiz avec cadeaux"],
+"qz.close":["Đóng","Close","Fermer"],
+"qz.codeh":["Nhập mã để bắt đầu","Enter the Code to Start","Saisissez le code pour commencer"],
+"qz.codep":["Mã 4 số đang hiện trên màn hình ở sân tiệc.","The 4-digit code is on the screen at the party.","Le code à 4 chiffres s’affiche sur l’écran de la réception."],
+"qz.codebad":["Mã chưa đúng, bạn nhìn lại màn hình nhé.","That’s not the code. Please check the screen again.","Ce n’est pas le bon code, regardez à nouveau l’écran."],
+"qz.nameh":["Bạn tên gì nè?","What’s Your Name?","Comment vous appelez-vous ?"],
+"qz.namep":["Để tụi mình biết ai thắng mà trao quà. Có 15 câu, không tính giờ, cứ thong thả nhé!","So we know who gets the prize. 15 questions, no timer, so take your time!","Pour savoir à qui remettre le cadeau. 15 questions, sans chrono : prenez votre temps !"],
+"qz.nameph":["Họ và tên","Your name","Votre nom"],
+"qz.start":["Bắt đầu","Start","Commencer"],
+"qz.of":["Câu {n} / {t}","Question {n} of {t}","Question {n} sur {t}"],
+"qz.prev":["Câu trước","Back","Précédente"],
+"qz.next":["Câu tiếp","Next","Suivante"],
+"qz.bonusk":["Câu phụ","Bonus question","Question bonus"],
+"qz.bonusq":["Theo bạn, tối nay có bao nhiêu khách tới dự?","How many guests do you think are here tonight?","Selon vous, combien d’invités sont présents ce soir ?"],
+"qz.bonusp":["Chỉ dùng khi có người bằng điểm: ai đoán gần nhất sẽ thắng.","Only used for ties: the closest guess wins.","Seulement en cas d’égalité : l’estimation la plus proche l’emporte."],
+"qz.bonusph":["Số khách","Number of guests","Nombre d’invités"],
+"qz.send":["Nộp bài","Submit","Envoyer"],
+"qz.sending":["Đang gửi…","Sending…","Envoi…"],
+"qz.err":["Chưa gửi được, bạn bấm thử lại nhé.","Couldn’t send. Please try again.","L’envoi a échoué, veuillez réessayer."],
+"qz.closed":["Trò chơi đã khép lại. Cảm ơn bạn nhiều!","The quiz is now closed. Thank you!","Le quiz est terminé. Merci beaucoup !"],
+"qz.doneh":["Cảm ơn bạn đã chơi!","Thanks for Playing!","Merci d’avoir joué !"],
+"qz.score":["Bạn trả lời đúng","You got","Bonnes réponses"],
+"qz.donep":["Người thắng sẽ được công bố trên sân khấu. Chúc bạn may mắn!","The winner will be announced on stage. Good luck!","Le gagnant sera annoncé sur scène. Bonne chance !"],
+"qz.own":["Câu hỏi của Huy số {n} (đang soạn)","Huy’s question no. {n} (coming soon)","Question n° {n} de Huy (à venir)"],
+"qz.ownA":["Đáp án","Answer","Réponse"],
 "lt.note":["Đón khách từ 17:30. Lễ cưới bắt đầu lúc 18:30, sau đó là tiệc tối.","Doors open at 5:30 PM. The ceremony begins at 6:30 PM, followed by dinner.","Accueil des invités dès 17 h 30. La cérémonie commence à 18 h 30, suivie du dîner."],
 "td.cap":["Đang hoàn thiện cùng khách sạn","Being finalised with the hotel","En cours de finalisation avec l’hôtel"],
 "td.1":["Khai vị","Starters","Entrées"],"td.2":["Món chính","Main course","Plat principal"],"td.3":["Tráng miệng","Dessert","Dessert"],
@@ -1562,6 +1625,7 @@ function applyLang(l){
   if(typeof mgLang==="function")mgLang();
   if(typeof asPaint==="function")asPaint();
   if(upLang)upLang();
+  if(typeof qzLang==="function")qzLang();
   calLink();
   try{localStorage.setItem("qhtt-lang",l)}catch(e){}
   fitPW();
@@ -1872,6 +1936,94 @@ function stab(k){if(k==="hoidap")k="chitiet";
   var t=$("#wedding").offsetTop;if(scrollY>t)window.scrollTo(0,t);
   sizeStrips();onScroll();
 }
+
+/* ---------- 20:00 quiz: code shown on the screen at the party → name → 15 questions (no timer) → bonus guess → score.
+   The answer key lives only in the Apps Script (tools/guest-upload/Code.gs), which scores and stores each entry in the Sheet. ---------- */
+var QUIZ_API=/^(127\.0\.0\.1|localhost)$/.test(location.hostname)?"quizapi":GUEST_API;   /* local preview: a fake scorer */
+var QZ=[
+ {q:["Huy và Trang biết tới nhau lần đầu ở đâu?","Where did Huy and Trang first get to know each other?","Où Huy et Trang se sont-ils connus pour la première fois ?"],
+  o:[["Trần Đại Nghĩa","Trần Đại Nghĩa","Trần Đại Nghĩa"],["Lê Hồng Phong","Lê Hồng Phong","Lê Hồng Phong"],["Nguyễn Thị Minh Khai","Nguyễn Thị Minh Khai","Nguyễn Thị Minh Khai"],["Gia Định","Gia Định","Gia Định"]]},
+ {q:["Hồi cấp 3, Trang làm Huy “say nắng” nhờ chơi giỏi môn gì?","Back in high school, which sport was Trang so good at that Huy fell for her?","Au lycée, dans quel sport Trang brillait-elle au point de faire craquer Huy ?"],
+  o:[["Cầu lông","Badminton","Badminton"],["Bơi lội","Swimming","Natation"],["Bóng chuyền","Volleyball","Volley-ball"],["Bóng rổ","Basketball","Basket-ball"]]},
+ {q:["Trang sang Canada năm nào?","In what year did Trang move to Canada?","En quelle année Trang est-elle partie au Canada ?"],
+  o:[["2009","2009","2009"],["2010","2010","2010"],["2011","2011","2011"],["2013","2013","2013"]]},
+ {q:["Từ 2018 đến 2020, Huy sống ở đâu?","Where did Huy live from 2018 to 2020?","Où Huy a-t-il vécu de 2018 à 2020 ?"],
+  o:[["Tokyo, Nhật Bản","Tokyo, Japan","Tokyo, Japon"],["Seoul, Hàn Quốc","Seoul, South Korea","Séoul, Corée du Sud"],["Singapore","Singapore","Singapour"],["Sydney, Úc","Sydney, Australia","Sydney, Australie"]]},
+ {q:["Huy và Trang gặp lại nhau ở Sài Gòn khi nào?","When did Huy and Trang meet again in Saigon?","Quand Huy et Trang se sont-ils retrouvés à Saïgon ?"],
+  o:[["Tết 2019","Lunar New Year 2019","Au Têt 2019"],["Giáng sinh 2020","Christmas 2020","À Noël 2020"],["Hè 2022","Summer 2022","À l’été 2022"],["Hè 2023","Summer 2023","À l’été 2023"]]},
+ {q:["Bé mèo Bébé có tính tình như thế nào?","What is Bébé the cat like?","Quel est le caractère de la chatte Bébé ?"],
+  o:[["Cực kỳ tình cảm, mê thịt kho","Super cuddly and crazy about braised pork","Très câline et folle de porc caramélisé"],["Hiếu động, chạy nhảy suốt ngày","Hyperactive, running around all day","Turbulente, elle court toute la journée"],["Ồn ào, hay kêu meo meo đòi ăn","Noisy, always meowing for food","Bruyante, elle miaule sans cesse pour manger"],["Độc lập nhưng rất nhút nhát","Independent yet very shy","Indépendante mais très timide"]]},
+ {q:["Huy sang Canada khi nào?","When did Huy move to Canada?","Quand Huy est-il parti au Canada ?"],
+  o:[["Tháng 1/2023","January 2023","En janvier 2023"],["Tháng 8/2023","August 2023","En août 2023"],["Tháng 8/2022","August 2022","En août 2022"],["Tháng 12/2024","December 2024","En décembre 2024"]]},
+ {q:["Huy và Trang ký giấy đăng ký kết hôn ở đâu?","Where did Huy and Trang sign their marriage certificate?","Où Huy et Trang ont-ils signé leur acte de mariage ?"],
+  o:[["Tòa án Montréal (Palais de justice de Montréal)","Montreal Courthouse (Palais de justice de Montréal)","Palais de justice de Montréal"],["Một nhà thờ ở Seoul","A church in Seoul","Une église à Séoul"],["Một bãi biển ở Philippines","A beach in the Philippines","Une plage aux Philippines"],["Las Vegas","Las Vegas","Las Vegas"]]},
+ {q:["Hai “nhân vật” mèo trong nhà Huy và Trang tên là gì?","What are the names of Huy and Trang’s two cats?","Comment s’appellent les deux chats de Huy et Trang ?"],
+  o:[["Mochi & Bơ","Mochi & Bơ","Mochi & Bơ"],["Danou & Bébé","Danou & Bébé","Danou & Bébé"],["Mimi & Miu","Mimi & Miu","Mimi & Miu"],["Kem & Bông","Kem & Bông","Kem & Bông"]]},
+ {q:["Món khoái khẩu của bé mèo Danou là gì?","What is Danou the cat’s favorite food?","Quel est le plat préféré du chat Danou ?"],
+  o:[["Cá hấp","Steamed fish","Poisson vapeur"],["Pate","Pâté","Pâté"],["Thịt kho","Braised pork","Porc caramélisé"],["Sữa","Milk","Lait"]]},
+ {own:1},{own:2},{own:3},{own:4},{own:5}
+];
+var QZ_H=830512,QZ_N=QZ.length,qzEl=$("#qz"),qzB=$("#qzb");
+var qz={st:"code",i:0,a:[],name:"",guess:"",code:"",res:null};
+try{var qsv=JSON.parse(localStorage.getItem("qhtt-quiz")||"null");if(qsv&&qsv.a)for(var qk in qsv)qz[qk]=qsv[qk]}catch(e){}
+var qzDev="";try{qzDev=localStorage.getItem("qhtt-dev")||"";if(!qzDev){qzDev=Date.now().toString(36)+Math.random().toString(36).slice(2,10);localStorage.setItem("qhtt-dev",qzDev)}}catch(e){qzDev=Math.random().toString(36).slice(2)}
+function qzSave(){try{localStorage.setItem("qhtt-quiz",JSON.stringify(qz))}catch(e){}}
+function qzHash(s){var h=7;for(var i=0;i<s.length;i++)h=(h*131+s.charCodeAt(i))%1000003;return h}
+function qzEsc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function qzT(k,v){var s=tr(k);for(var x in v)s=s.replace("{"+x+"}",v[x]);return s}
+function qzQ(i){var it=QZ[i],L=LI[lang];
+  if(it.own)return{q:qzT("qz.own",{n:it.own}),o:["A","B","C","D"].map(function(c){return tr("qz.ownA")+" "+c})};
+  return{q:it.q[L],o:it.o.map(function(o){return o[L]})}}
+function qzRender(focus){var h="",st=qz.st;
+  if(st==="code"){
+    h='<p class="qzk">'+tr("qz.k")+'</p><h2 class="qzh" id="qzh">'+tr("qz.codeh")+'</h2><p class="qzp">'+tr("qz.codep")+'</p>'+
+      '<input class="qzcode" id="qzcode" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="····" aria-label="'+qzEsc(tr("qz.codeh"))+'"><p class="qzerr" id="qzerr" aria-live="polite"></p>';
+  }else if(st==="name"){
+    h='<p class="qzk">'+tr("qz.k")+'</p><h2 class="qzh" id="qzh">'+tr("qz.nameh")+'</h2><p class="qzp">'+tr("qz.namep")+'</p>'+
+      '<input class="qzin" id="qzname" maxlength="60" autocomplete="name" placeholder="'+qzEsc(tr("qz.nameph"))+'" value="'+qzEsc(qz.name)+'">'+
+      '<button type="button" class="qzbtn" id="qzgo"'+(qz.name.trim()?'':' disabled')+'>'+tr("qz.start")+'</button>';
+  }else if(st==="q"){var Q=qzQ(qz.i),sel=qz.a[qz.i];
+    h='<div class="qzbar"><i style="width:'+((qz.i+1)/(QZ_N+1)*100)+'%"></i></div><p class="qzk">'+qzT("qz.of",{n:qz.i+1,t:QZ_N})+'</p><h2 class="qzq" id="qzh">'+qzEsc(Q.q)+'</h2>'+
+      Q.o.map(function(o,j){return '<button type="button" class="qzo'+(sel===j?' on':'')+'" data-j="'+j+'" aria-pressed="'+(sel===j)+'"><b>'+"ABCD"[j]+'</b><span>'+qzEsc(o)+'</span></button>'}).join("")+
+      '<div class="qznav"><button type="button" class="qzback" id="qzprev"'+(qz.i?'':' hidden')+'>‹ '+tr("qz.prev")+'</button><button type="button" class="qzbtn" id="qznext"'+(sel===undefined||sel===null?' disabled':'')+'>'+tr("qz.next")+' ›</button></div>';
+  }else if(st==="bonus"){
+    h='<div class="qzbar"><i style="width:100%"></i></div><p class="qzk">'+tr("qz.bonusk")+'</p><h2 class="qzq" id="qzh">'+tr("qz.bonusq")+'</h2><p class="qzp">'+tr("qz.bonusp")+'</p>'+
+      '<input class="qzin" id="qzguess" inputmode="numeric" maxlength="4" placeholder="'+qzEsc(tr("qz.bonusph"))+'" value="'+qzEsc(qz.guess)+'"><p class="qzerr" id="qzerr" aria-live="polite"></p>'+
+      '<div class="qznav"><button type="button" class="qzback" id="qzprev">‹ '+tr("qz.prev")+'</button><button type="button" class="qzbtn" id="qzsend"'+(qz.guess?'':' disabled')+'>'+tr("qz.send")+'</button></div>';
+  }else if(st==="done"){var r=qz.res||{};
+    h='<p class="qzk">'+tr("qz.k")+'</p><h2 class="qzh" id="qzh">'+tr("qz.doneh")+'</h2>'+
+      (r.closed?'<p class="qzp">'+tr("qz.closed")+'</p>':'<p class="qzp" style="margin-bottom:4px">'+tr("qz.score")+'</p><p class="qzbig">'+r.s+'<small> / '+r.t+'</small></p><p class="qzp">'+tr("qz.donep")+'</p>')+
+      '<button type="button" class="qzbtn" id="qzend">'+tr("qz.close")+'</button>';
+  }
+  qzB.innerHTML=h;qzBind();
+  if(focus){var f=$("#qzcode")||$("#qzname")||$("#qzguess");if(f&&matchMedia("(hover:hover)").matches)f.focus()}}
+function qzGo(st,i){qz.st=st;if(i!==undefined)qz.i=i;qzSave();qzRender(true);$(".qzc").scrollTop=0}
+function qzBind(){
+  var c=$("#qzcode");if(c)c.addEventListener("input",function(){c.value=c.value.replace(/\D/g,"").slice(0,4);var e=$("#qzerr");e.textContent="";c.classList.remove("bad");
+    if(c.value.length===4){if(qzHash(c.value)===QZ_H){qz.code=c.value;qzGo("name")}else{e.textContent=tr("qz.codebad");void c.offsetWidth;c.classList.add("bad");setTimeout(function(){c.value=""},450)}}});
+  var n=$("#qzname");if(n){n.addEventListener("input",function(){qz.name=n.value;$("#qzgo").disabled=!n.value.trim();qzSave()});
+    n.addEventListener("keydown",function(e){if(e.key==="Enter"&&n.value.trim())qzGo("q",0)})}
+  var g=$("#qzgo");if(g)g.onclick=function(){qzGo("q",0)};
+  $$(".qzo",qzB).forEach(function(b){b.onclick=function(){qz.a[qz.i]=+b.dataset.j;qzSave();qzRender()}});
+  var nx=$("#qznext");if(nx)nx.onclick=function(){if(qz.i<QZ_N-1)qzGo("q",qz.i+1);else qzGo("bonus")};
+  var pv=$("#qzprev");if(pv)pv.onclick=function(){if(qz.st==="bonus")qzGo("q",QZ_N-1);else if(qz.i>0)qzGo("q",qz.i-1)};
+  var gs=$("#qzguess");if(gs)gs.addEventListener("input",function(){gs.value=gs.value.replace(/\D/g,"").slice(0,4);qz.guess=gs.value;$("#qzsend").disabled=!gs.value;qzSave()});
+  var sd=$("#qzsend");if(sd)sd.onclick=qzSend;
+  var en=$("#qzend");if(en)en.onclick=qzClose}
+function qzSend(){var b=$("#qzsend"),e=$("#qzerr");b.disabled=true;b.textContent=tr("qz.sending");e.textContent="";
+  var body={action:"quiz",code:qz.code,dev:qzDev,name:qz.name.trim(),lang:lang,a:qz.a.slice(0,QZ_N),guess:qz.guess};
+  fetch(QUIZ_API,{method:"POST",body:JSON.stringify(body)}).then(function(r){return r.json()}).then(function(d){
+    if(d&&d.ok){qz.res={s:d.score,t:d.total};qzGo("done")}
+    else if(d&&d.err==="closed"){qz.res={closed:true};qzGo("done")}
+    else if(d&&d.err==="code"){qz.code="";qzGo("code")}
+    else throw 0}).catch(function(){e.textContent=tr("qz.err");b.disabled=false;b.textContent=tr("qz.send")})}
+var qzBack=null;
+function qzOpen(){qzBack=document.activeElement;qzEl.classList.add("on");document.documentElement.style.overflow="hidden";qzRender(true)}
+function qzClose(){qzEl.classList.remove("on");document.documentElement.style.overflow="";if(qzBack&&qzBack.focus)qzBack.focus()}
+function qzLang(){if(qzEl&&qzEl.classList.contains("on"))qzRender()}
+$("#qzopen").addEventListener("click",qzOpen);$("#qzx").addEventListener("click",qzClose);
+qzEl.addEventListener("click",function(e){if(e.target===qzEl)qzClose()});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&qzEl.classList.contains("on"))qzClose()});
 
 /* ---------- countdown ---------- */
 var END=new Date("2026-12-29T17:30:00+07:00");
