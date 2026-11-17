@@ -115,6 +115,7 @@ var T={
  "pinh":["Trang dành cho MC","For the MC","Espace MC"],
  "pinp":["Nhập mật khẩu để xem kết quả đố vui.","Enter the password to see the quiz results.","Saisissez le mot de passe pour voir les résultats du quiz."],
  "pinbad":["Mật khẩu chưa đúng.","Wrong password.","Mot de passe incorrect."],
+ "noserver":["Máy chủ chưa có phần đố vui: cần dán Code.gs mới, chạy setupQuiz và triển khai phiên bản mới.","The server doesn’t have the quiz yet: paste the new Code.gs, run setupQuiz and deploy a new version.","Le serveur n’a pas encore le quiz : collez le nouveau Code.gs, lancez setupQuiz et déployez une nouvelle version."],
  "pwph":["Mật khẩu","Password","Mot de passe"],
  "enter":["Vào","Enter","Entrer"],
  "neterr":["Chưa kết nối được, đang thử lại…","Can’t connect, retrying…","Connexion impossible, nouvel essai…"],
@@ -183,7 +184,7 @@ function show(on){$("#lock").hidden=on;$("#dash").hidden=!on;if(on)poll();else $
 $("#pin").addEventListener("input",function(){$("#perr").textContent=""});
 $("#pwf").addEventListener("submit",function(ev){ev.preventDefault();var el=$("#pin");if(!el.value)return;pin=el.value;
   call("status").then(function(d){if(d.ok){try{sessionStorage.setItem("qhtt-mcpin",pin)}catch(e){}el.value="";show(true)}
-    else{pin="";el.value="";$("#perr").textContent=tr("pinbad")}}).catch(function(){pin="";$("#perr").textContent=tr("neterr")})});
+    else{pin="";if(d.err==="pin")el.value="";$("#perr").textContent=tr(d.err==="pin"?"pinbad":"noserver")}}).catch(function(){pin="";$("#perr").textContent=tr("neterr")})});
 
 $("#saveA").onclick=function(){call("actual",{n:$("#actual").value}).then(function(d){if(d.ok){$("#okA").hidden=false;setTimeout(function(){$("#okA").hidden=true},1500);poll()}})};
 $("#actual").addEventListener("keydown",function(e){if(e.key==="Enter")$("#saveA").click()});
