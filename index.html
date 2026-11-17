@@ -336,7 +336,7 @@ html.galon,html.galon body{overflow:hidden}
 .sp.pane.on .tli:nth-child(5){animation-delay:.95s}
 @media (prefers-reduced-motion:reduce){.sp.pane.on,.sp.pane.on .tli,.sp.pane.on .menu>*{animation:none}}
 /* 20:00 quiz: the timeline button, then a pop-up (code → name → 15 questions one by one → bonus guess → result) */
-.qzopen{margin-top:12px;border:1px solid var(--ink);background:none;color:var(--ink);border-radius:40px;padding:9px 20px;font:500 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background .3s,color .3s}
+.qzopen{margin-top:12px;min-width:84px;border:1px solid var(--ink);background:none;color:var(--ink);border-radius:40px;padding:9px 20px;font:500 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background .3s,color .3s}
 .qzopen:hover{background:var(--ink);color:var(--bg)}
 .qz{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(22,21,20,.5);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 .qz.on{display:flex;animation:vin .35s ease}
@@ -346,9 +346,18 @@ html.galon,html.galon body{overflow:hidden}
 .qzk{font:500 11px/1.4 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--hy);margin:0 0 12px}
 .qzh{font:400 clamp(22px,4.6vw,28px)/1.3 var(--serif);margin:0 0 12px;color:var(--ink)}
 .qzp{font:400 16px/1.6 var(--sans);color:var(--mute);margin:0 0 22px}
-.qzcode{display:block;margin:6px auto 0;width:230px;max-width:100%;box-sizing:border-box;border:0;border-bottom:2px solid var(--ink);background:none;outline:none;text-align:center;font:400 46px/1.2 var(--serif);letter-spacing:.45em;padding:6px 0 8px .45em;color:var(--ink);font-variant-numeric:lining-nums tabular-nums}
-.qzcode::placeholder{color:#cfcac2}
-.qzcode.bad{animation:qzshake .4s}
+.qzpins{display:flex;justify-content:center;gap:12px;margin:4px 0 0}
+.qzpins span{width:56px;height:68px;box-sizing:border-box;border:1.5px solid #cfcac2;border-radius:12px;background:#fff;display:grid;place-items:center;transition:border-color .2s,box-shadow .2s}
+.qzpins span.cur{border-color:var(--ink);box-shadow:0 0 0 3px rgba(22,21,20,.08)}
+.qzpins span.on{border-color:var(--ink)}
+.qzpins span.on::after{content:"";width:18px;height:18px;border-radius:50%;background:var(--ink);animation:qzdot .18s ease}
+@keyframes qzdot{from{transform:scale(0)}to{transform:scale(1)}}
+.qzpins.bad{animation:qzshake .4s}.qzpins.bad span{border-color:var(--hy)}.qzpins.bad span.on::after{background:var(--hy)}
+.qzkp{display:grid;grid-template-columns:repeat(3,76px);gap:10px;justify-content:center;margin:6px 0 0}
+.qzkp button{height:58px;border:1px solid var(--line);border-radius:16px;background:#fff;color:var(--ink);font:400 26px/1 var(--sans);font-variant-numeric:lining-nums;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:background .15s}
+.qzkp button:active,.qzkp button.hit{background:var(--soft)}
+.qzkp button.del{border-color:transparent;background:none;display:grid;place-items:center}.qzkp button.del svg{width:28px;height:28px}
+.qzkp i{display:block}
 @keyframes qzshake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
 .qzerr{min-height:1.5em;margin:12px 0 4px;font:400 14.5px/1.5 var(--sans);color:var(--hy)}
 .qzin{display:block;width:100%;box-sizing:border-box;border:1px solid #cfcac2;border-radius:14px;padding:15px 16px;font:400 18px/1.3 var(--sans);color:var(--ink);background:#fff;outline:none;text-align:center}
@@ -367,7 +376,7 @@ html.galon,html.galon body{overflow:hidden}
 .qzback[hidden]{display:inline-block;visibility:hidden}
 .qzbig{font:400 64px/1 var(--serif);margin:6px 0 10px;color:var(--ink);font-variant-numeric:lining-nums tabular-nums}
 .qzbig small{font-size:28px;color:var(--mute)}
-@media (max-width:760px){.qzc{padding:34px 18px 22px;border-radius:18px}.qzo{font-size:16px;padding:14px}.qzbtn{min-width:150px}}
+@media (max-width:760px){.qzc{padding:34px 18px 22px;border-radius:18px}.qzpins span{width:52px;height:62px}.qzkp{grid-template-columns:repeat(3,74px)}.qzo{font-size:16px;padding:14px}.qzbtn{min-width:150px}}
 .tl{list-style:none;margin:0;padding:0;max-width:600px;margin-inline:auto}
 .tl li{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
 .tl time{font:400 26px/1 var(--serif);font-variant-numeric:tabular-nums}
@@ -1230,7 +1239,7 @@ body{font:400 15.5px/1.75 var(--sans)}
           <li class="tli"><span class="tli-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 20.5V4.5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v16"/><path d="M4 20.5h16"/><circle cx="14.6" cy="12.5" r=".9" fill="currentColor"/></svg></span><span class="tli-nd"><i></i><b></b></span><span class="tli-tx"><time>17:30</time><span data-t="lt.1h"></span></span></li>
           <li class="tli"><span class="tli-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/></svg></span><span class="tli-nd"><i></i><b></b></span><span class="tli-tx"><time>18:30</time><span data-t="lt.2h"></span></span></li>
           <li class="tli"><span class="tli-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v7a2 2 0 0 0 2 2v9M11 3v7a2 2 0 0 1-2 2M9 3v6"/><path d="M16.5 21V3c-2 1.5-3 4-3 7v3h3"/></svg></span><span class="tli-nd"><i></i><b></b></span><span class="tli-tx"><time>19:00</time><span data-t="lt.3h"></span></span></li>
-          <li class="tli"><span class="tli-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="9" width="17" height="4" rx="1"/><path d="M5 13v7.5h14V13M12 9v11.5"/><path d="M12 9c-1.5-3.6-5.5-4.2-5.5-1.8C6.5 9 12 9 12 9zM12 9c1.5-3.6 5.5-4.2 5.5-1.8C17.5 9 12 9 12 9z"/></svg></span><span class="tli-nd"><i></i><b></b></span><span class="tli-tx"><time>20:00</time><span data-t="lt.qh">Đố vui có thưởng</span><button type="button" class="qzopen" id="qzopen" data-t="qz.open">Chơi ngay</button></span></li>
+          <li class="tli"><span class="tli-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="9" width="17" height="4" rx="1"/><path d="M5 13v7.5h14V13M12 9v11.5"/><path d="M12 9c-1.5-3.6-5.5-4.2-5.5-1.8C6.5 9 12 9 12 9zM12 9c1.5-3.6 5.5-4.2 5.5-1.8C17.5 9 12 9 12 9z"/></svg></span><span class="tli-nd"><i></i><b></b></span><span class="tli-tx"><time>20:00</time><span data-t="lt.qh">???</span><button type="button" class="qzopen" id="qzopen" data-t="qz.open" data-ta="qz.opena" aria-label="Bất ngờ lúc 20:00">???</button></span></li>
           <li class="tli"><span class="tli-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V6.5a1.5 1.5 0 0 1 3 0V12M11 11V5a1.5 1.5 0 0 1 3 0v6M14 11V6.5a1.5 1.5 0 0 1 3 0V14c0 4-2.6 7-6.5 7-2.5 0-4.2-1.3-5.4-3.4L3.6 15a1.5 1.5 0 0 1 2.5-1.6L8 15.5"/></svg></span><span class="tli-nd"><i></i><b></b></span><span class="tli-tx"><time>21:00</time><span data-t="lt.4h"></span></span></li>
         </ol>
         <p class="tree-note" data-t="lt.note">Đón khách từ 17:30. Lễ cưới bắt đầu lúc 18:30, sau đó là tiệc tối.</p>
@@ -1522,15 +1531,18 @@ var T={
 "lt.2h":["Làm lễ","Ceremony","Cérémonie"],
 "lt.3h":["Khai tiệc","Dinner","Dîner"],
 "lt.4h":["Kết thúc","Farewell","Au revoir"],
-"lt.qh":["Đố vui có thưởng","Quiz with Prizes","Quiz avec cadeaux"],
-"qz.open":["Chơi ngay","Play now","Jouer"],
+"lt.qh":["???","???","???"],
+"qz.open":["???","???","???"],
+"qz.opena":["Bất ngờ lúc 20:00","A surprise at 8 PM","Une surprise à 20 h"],
 "qz.k":["Đố vui có thưởng","Quiz with prizes","Quiz avec cadeaux"],
 "qz.close":["Đóng","Close","Fermer"],
 "qz.codeh":["Nhập mã để bắt đầu","Enter the Code to Start","Saisissez le code pour commencer"],
 "qz.codep":["Mã 4 số đang hiện trên màn hình ở sân tiệc.","The 4-digit code is on the screen at the party.","Le code à 4 chiffres s’affiche sur l’écran de la réception."],
+"qz.del":["Xóa số","Delete","Effacer"],
+"qz.typed":["Đã nhập {n} / 4 số","{n} of 4 digits entered","{n} chiffres saisis sur 4"],
 "qz.codebad":["Mã chưa đúng, bạn nhìn lại màn hình nhé.","That’s not the code. Please check the screen again.","Ce n’est pas le bon code, regardez à nouveau l’écran."],
 "qz.nameh":["Bạn tên gì nè?","What’s Your Name?","Comment vous appelez-vous ?"],
-"qz.namep":["Để tụi mình biết ai thắng mà trao quà. Có 15 câu, không tính giờ, cứ thong thả nhé!","So we know who gets the prize. 15 questions, no timer, so take your time!","Pour savoir à qui remettre le cadeau. 15 questions, sans chrono : prenez votre temps !"],
+"qz.namep":["Để tụi mình biết ai thắng mà trao quà. Có 10 câu, không tính giờ, cứ thong thả nhé!","So we know who gets the prize. 10 questions, no timer, so take your time!","Pour savoir à qui remettre le cadeau. 10 questions, sans chrono : prenez votre temps !"],
 "qz.nameph":["Họ và tên","Your name","Votre nom"],
 "qz.start":["Bắt đầu","Start","Commencer"],
 "qz.of":["Câu {n} / {t}","Question {n} of {t}","Question {n} sur {t}"],
@@ -1547,8 +1559,7 @@ var T={
 "qz.doneh":["Cảm ơn bạn đã chơi!","Thanks for Playing!","Merci d’avoir joué !"],
 "qz.score":["Bạn trả lời đúng","You got","Bonnes réponses"],
 "qz.donep":["Người thắng sẽ được công bố trên sân khấu. Chúc bạn may mắn!","The winner will be announced on stage. Good luck!","Le gagnant sera annoncé sur scène. Bonne chance !"],
-"qz.own":["Câu hỏi của Huy số {n} (đang soạn)","Huy’s question no. {n} (coming soon)","Question n° {n} de Huy (à venir)"],
-"qz.ownA":["Đáp án","Answer","Réponse"],
+
 "lt.note":["Đón khách từ 17:30. Lễ cưới bắt đầu lúc 18:30, sau đó là tiệc tối.","Doors open at 5:30 PM. The ceremony begins at 6:30 PM, followed by dinner.","Accueil des invités dès 17 h 30. La cérémonie commence à 18 h 30, suivie du dîner."],
 "td.cap":["Đang hoàn thiện cùng khách sạn","Being finalised with the hotel","En cours de finalisation avec l’hôtel"],
 "td.1":["Khai vị","Starters","Entrées"],"td.2":["Món chính","Main course","Plat principal"],"td.3":["Tráng miệng","Dessert","Dessert"],
@@ -1942,7 +1953,7 @@ function stab(k){if(k==="hoidap")k="chitiet";
 var QUIZ_API=/^(127\.0\.0\.1|localhost)$/.test(location.hostname)?"quizapi":GUEST_API;   /* local preview: a fake scorer */
 var QZ=[
  {q:["Huy và Trang biết tới nhau lần đầu ở đâu?","Where did Huy and Trang first get to know each other?","Où Huy et Trang se sont-ils connus pour la première fois ?"],
-  o:[["Trần Đại Nghĩa","Trần Đại Nghĩa","Trần Đại Nghĩa"],["Lê Hồng Phong","Lê Hồng Phong","Lê Hồng Phong"],["Nguyễn Thị Minh Khai","Nguyễn Thị Minh Khai","Nguyễn Thị Minh Khai"],["Gia Định","Gia Định","Gia Định"]]},
+  o:[["Trường Trần Đại Nghĩa","Trần Đại Nghĩa High School","Lycée Trần Đại Nghĩa"],["Trường Lê Hồng Phong","Lê Hồng Phong High School","Lycée Lê Hồng Phong"],["Trường Nguyễn Thị Minh Khai","Nguyễn Thị Minh Khai High School","Lycée Nguyễn Thị Minh Khai"],["Trường Gia Định","Gia Định High School","Lycée Gia Định"]]},
  {q:["Hồi cấp 3, Trang làm Huy “say nắng” nhờ chơi giỏi môn gì?","Back in high school, which sport was Trang so good at that Huy fell for her?","Au lycée, dans quel sport Trang brillait-elle au point de faire craquer Huy ?"],
   o:[["Cầu lông","Badminton","Badminton"],["Bơi lội","Swimming","Natation"],["Bóng chuyền","Volleyball","Volley-ball"],["Bóng rổ","Basketball","Basket-ball"]]},
  {q:["Trang sang Canada năm nào?","In what year did Trang move to Canada?","En quelle année Trang est-elle partie au Canada ?"],
@@ -1959,9 +1970,8 @@ var QZ=[
   o:[["Tòa án Montréal (Palais de justice de Montréal)","Montreal Courthouse (Palais de justice de Montréal)","Palais de justice de Montréal"],["Một nhà thờ ở Seoul","A church in Seoul","Une église à Séoul"],["Một bãi biển ở Philippines","A beach in the Philippines","Une plage aux Philippines"],["Las Vegas","Las Vegas","Las Vegas"]]},
  {q:["Hai “nhân vật” mèo trong nhà Huy và Trang tên là gì?","What are the names of Huy and Trang’s two cats?","Comment s’appellent les deux chats de Huy et Trang ?"],
   o:[["Mochi & Bơ","Mochi & Bơ","Mochi & Bơ"],["Danou & Bébé","Danou & Bébé","Danou & Bébé"],["Mimi & Miu","Mimi & Miu","Mimi & Miu"],["Kem & Bông","Kem & Bông","Kem & Bông"]]},
- {q:["Món khoái khẩu của bé mèo Danou là gì?","What is Danou the cat’s favorite food?","Quel est le plat préféré du chat Danou ?"],
-  o:[["Cá hấp","Steamed fish","Poisson vapeur"],["Pate","Pâté","Pâté"],["Thịt kho","Braised pork","Porc caramélisé"],["Sữa","Milk","Lait"]]},
- {own:1},{own:2},{own:3},{own:4},{own:5}
+ {q:["Món khoái khẩu nhất của bé mèo Danou là gì?","What is Danou the cat’s very favorite food?","Quel est le plat préféré entre tous du chat Danou ?"],
+  o:[["Cá hấp","Steamed fish","Poisson vapeur"],["Pate","Pâté","Pâté"],["Thịt kho","Braised pork","Porc caramélisé"],["Sữa","Milk","Lait"]]}
 ];
 var QZ_H=830512,QZ_N=QZ.length,qzEl=$("#qz"),qzB=$("#qzb");
 var qz={st:"code",i:0,a:[],name:"",guess:"",code:"",res:null};
@@ -1972,12 +1982,13 @@ function qzHash(s){var h=7;for(var i=0;i<s.length;i++)h=(h*131+s.charCodeAt(i))%
 function qzEsc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function qzT(k,v){var s=tr(k);for(var x in v)s=s.replace("{"+x+"}",v[x]);return s}
 function qzQ(i){var it=QZ[i],L=LI[lang];
-  if(it.own)return{q:qzT("qz.own",{n:it.own}),o:["A","B","C","D"].map(function(c){return tr("qz.ownA")+" "+c})};
   return{q:it.q[L],o:it.o.map(function(o){return o[L]})}}
 function qzRender(focus){var h="",st=qz.st;
   if(st==="code"){
     h='<p class="qzk">'+tr("qz.k")+'</p><h2 class="qzh" id="qzh">'+tr("qz.codeh")+'</h2><p class="qzp">'+tr("qz.codep")+'</p>'+
-      '<input class="qzcode" id="qzcode" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="····" aria-label="'+qzEsc(tr("qz.codeh"))+'"><p class="qzerr" id="qzerr" aria-live="polite"></p>';
+      '<div class="qzpins" id="qzpins" role="img" aria-label="'+qzEsc(qzT("qz.typed",{n:0}))+'"><span class="cur"></span><span></span><span></span><span></span></div><p class="qzerr" id="qzerr" aria-live="polite"></p>'+
+      '<div class="qzkp" id="qzkp">'+[1,2,3,4,5,6,7,8,9].map(function(d){return '<button type="button" data-d="'+d+'">'+d+'</button>'}).join("")+
+      '<i></i><button type="button" data-d="0">0</button><button type="button" class="del" data-d="x" aria-label="'+qzEsc(tr("qz.del"))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5h11a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H9l-6-7z"/><path d="M12 9.5l5 5M17 9.5l-5 5"/></svg></button></div>';
   }else if(st==="name"){
     h='<p class="qzk">'+tr("qz.k")+'</p><h2 class="qzh" id="qzh">'+tr("qz.nameh")+'</h2><p class="qzp">'+tr("qz.namep")+'</p>'+
       '<input class="qzin" id="qzname" maxlength="60" autocomplete="name" placeholder="'+qzEsc(tr("qz.nameph"))+'" value="'+qzEsc(qz.name)+'">'+
@@ -1996,11 +2007,10 @@ function qzRender(focus){var h="",st=qz.st;
       '<button type="button" class="qzbtn" id="qzend">'+tr("qz.close")+'</button>';
   }
   qzB.innerHTML=h;qzBind();
-  if(focus){var f=$("#qzcode")||$("#qzname")||$("#qzguess");if(f&&matchMedia("(hover:hover)").matches)f.focus()}}
+  if(focus){var f=$("#qzname")||$("#qzguess");if(f&&matchMedia("(hover:hover)").matches)f.focus()}}
 function qzGo(st,i){qz.st=st;if(i!==undefined)qz.i=i;qzSave();qzRender(true);$(".qzc").scrollTop=0}
 function qzBind(){
-  var c=$("#qzcode");if(c)c.addEventListener("input",function(){c.value=c.value.replace(/\D/g,"").slice(0,4);var e=$("#qzerr");e.textContent="";c.classList.remove("bad");
-    if(c.value.length===4){if(qzHash(c.value)===QZ_H){qz.code=c.value;qzGo("name")}else{e.textContent=tr("qz.codebad");void c.offsetWidth;c.classList.add("bad");setTimeout(function(){c.value=""},450)}}});
+  qzBuf="";var kp=$("#qzkp");if(kp)kp.addEventListener("click",function(e){var b=e.target.closest("button");if(b)qzKey(b.dataset.d)});
   var n=$("#qzname");if(n){n.addEventListener("input",function(){qz.name=n.value;$("#qzgo").disabled=!n.value.trim();qzSave()});
     n.addEventListener("keydown",function(e){if(e.key==="Enter"&&n.value.trim())qzGo("q",0)})}
   var g=$("#qzgo");if(g)g.onclick=function(){qzGo("q",0)};
@@ -2017,6 +2027,19 @@ function qzSend(){var b=$("#qzsend"),e=$("#qzerr");b.disabled=true;b.textContent
     else if(d&&d.err==="closed"){qz.res={closed:true};qzGo("done")}
     else if(d&&d.err==="code"){qz.code="";qzGo("code")}
     else throw 0}).catch(function(){e.textContent=tr("qz.err");b.disabled=false;b.textContent=tr("qz.send")})}
+/* the code: four boxes that each show a big dot once a digit is in; typed on the number pad (or a keyboard) */
+var qzBuf="",qzBusy=false;
+function qzPins(){var w=$("#qzpins");if(!w)return;$$("span",w).forEach(function(sp,i){sp.className=i<qzBuf.length?"on":i===qzBuf.length?"cur":""});
+  w.setAttribute("aria-label",qzT("qz.typed",{n:qzBuf.length}))}
+function qzKey(d){if(qz.st!=="code"||qzBusy)return;var w=$("#qzpins"),e=$("#qzerr");if(!w)return;
+  if(d==="x")qzBuf=qzBuf.slice(0,-1);else if(/^\d$/.test(d)&&qzBuf.length<4)qzBuf+=d;else return;
+  e.textContent="";w.classList.remove("bad");qzPins();
+  if(qzBuf.length===4){qzBusy=true;
+    if(qzHash(qzBuf)===QZ_H){qz.code=qzBuf;setTimeout(function(){qzBusy=false;qzGo("name")},250)}
+    else{void w.offsetWidth;w.classList.add("bad");e.textContent=tr("qz.codebad");setTimeout(function(){qzBuf="";qzBusy=false;w.classList.remove("bad");qzPins()},700)}}}
+document.addEventListener("keydown",function(e){if(!qzEl.classList.contains("on")||qz.st!=="code")return;
+  var d=/^\d$/.test(e.key)?e.key:e.key==="Backspace"?"x":null;if(!d)return;e.preventDefault();
+  var b=$('#qzkp [data-d="'+d+'"]');if(b){b.classList.add("hit");setTimeout(function(){b.classList.remove("hit")},120)}qzKey(d)});
 var qzBack=null;
 function qzOpen(){qzBack=document.activeElement;qzEl.classList.add("on");document.documentElement.style.overflow="hidden";qzRender(true)}
 function qzClose(){qzEl.classList.remove("on");document.documentElement.style.overflow="";if(qzBack&&qzBack.focus)qzBack.focus()}
