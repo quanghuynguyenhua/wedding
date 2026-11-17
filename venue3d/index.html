@@ -99,12 +99,14 @@ body.night .load,body.night .hint{color:#c9d3ea}
   .langs button{padding:5px 8px;font-size:11px}
   .modes{bottom:calc(14px + env(safe-area-inset-bottom,0px))}
   .modes button{padding:9px 16px;font-size:13px}
-  .ctl{flex-direction:row;right:auto;left:var(--gut);bottom:calc(72px + env(safe-area-inset-bottom,0px));gap:5px}
-  .ctl button,.ctl a{padding:8px 9px;font-size:12px}
+  /* the round icon buttons sit in one row centred on the screen; each icon centred in its circle */
+  .ctl{flex-direction:row;left:0;right:0;justify-content:center;align-items:center;bottom:calc(72px + env(safe-area-inset-bottom,0px));gap:10px;pointer-events:none}
+  .ctl button,.ctl a{pointer-events:auto;width:44px;height:44px;padding:0;justify-content:center;gap:0;font-size:12px}
   .ctl .tx{display:none}
-  .ctl .c-only .tx{display:inline}
   #gmaps .gpin{width:20px;height:20px}
-  @media (max-width:760px){#gmaps .tx{display:none}}
+  /* the three route buttons: a small column on the right edge, mid-screen */
+  .ctl .r1,.ctl .r2,.ctl .r3{position:fixed;right:12px;width:46px;height:34px}
+  .ctl .r1{top:calc(50% - 46px)}.ctl .r2{top:calc(50% - 6px)}.ctl .r3{top:calc(50% + 34px)}
   .card{left:var(--gut);right:16px;width:auto;bottom:calc(122px + env(safe-area-inset-bottom,0px));padding:10px 40px 10px 14px;border-radius:14px}
   .card p{font-size:12.5px;margin-top:4px}
   .lbl span{font-size:11px;padding:2px 8px 3px}
