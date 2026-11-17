@@ -2240,7 +2240,7 @@ var G=window.G=(function(){
     $$("img[data-src]",root).forEach(function(im){io.observe(im)});
     var rv=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");rv.unobserve(e.target)}})},{threshold:.12});
     $$(".rv",root).forEach(function(el){rv.observe(el)})}
-  fetch("assets/photos/photos.json",{cache:"no-cache"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(M){
+  window.photosP=fetch("assets/photos/photos.json",{cache:"no-cache"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(M){
     /* journey places + cats */
     CITIES.forEach(function(ct){var l=M["journey/"+CITYDIR[ct.k]]||(ct.k==="yyc"&&M["journey/calgary"]);if(l&&l.length)ct.img=l});
     if(M["journey/cats"]&&M["journey/cats"].length&&G.cat)G.cat.img=M["journey/cats"];
@@ -2345,7 +2345,7 @@ if(ORDER.indexOf(h)>=0)show(h);
 else if(["baohy","damcuoi","photos"].indexOf(h)>=0||(h==="upload"&&GUEST_API)){show("wedding");wtab(h)}
 else if(h==="guests"){show("wedding");wtab("photos");ptab("wed");B53.wed.c="fromguests";b53render("wed")}
 /* #cats (from the plane on the 3D map): open Danou & Bébé straight away, without an extra history step, so Back / the gallery's close go right back to the map */
-else if(h==="cats"){show("journey");G.show("cats");document.documentElement.classList.add("from3d");var gb=$("#gback");gb.dataset.ta="g.back3d";gb.setAttribute("aria-label",tr("g.back3d"))}
+else if(h==="cats"){show("journey");(window.photosP||Promise.resolve()).then(function(){G.show("cats")});document.documentElement.classList.add("from3d");var gb=$("#gback");gb.dataset.ta="g.back3d";gb.setAttribute("aria-label",tr("g.back3d"))}
 else if(h==="guests-family"){show("wedding");wtab("photos");ptab("family");(B53.family||(B53.family={})).c="fromguests";b53render("family")}
 try{history.replaceState(navState(),"",location.hash||"#intro")}catch(e){}
 })();
